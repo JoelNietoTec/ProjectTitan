@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TitanDB", "TitanDB\TitanDB.sqlproj", "{1A710D2D-9829-4FEF-9B46-03B63CB2F738}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TitanWebAPI", "TitanWebAPI\TitanWebAPI.csproj", "{D08AF86B-3588-43AC-9288-96491909E2FE}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "TitanWebApp", "TitanWebApp\TitanWebApp.njsproj", "{6CAF4A36-6955-4DD0-9FF3-A0A5EC4F3817}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{D08AF86B-3588-43AC-9288-96491909E2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D08AF86B-3588-43AC-9288-96491909E2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D08AF86B-3588-43AC-9288-96491909E2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CAF4A36-6955-4DD0-9FF3-A0A5EC4F3817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CAF4A36-6955-4DD0-9FF3-A0A5EC4F3817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CAF4A36-6955-4DD0-9FF3-A0A5EC4F3817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CAF4A36-6955-4DD0-9FF3-A0A5EC4F3817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
