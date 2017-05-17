@@ -15,3 +15,12 @@ export interface ParamCategory {
     Name: string;
     EnglishName: string;
 }
+
+export interface ParamValue {
+    ID: number;
+    ParamMasterID: number,
+    DisplayValue: string,
+    EnglishDisplayValue: string,
+    Score: number,
+    ParamMaster: ParamMaster;
+}

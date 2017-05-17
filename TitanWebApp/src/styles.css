@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400');
 
-body {
+body, button, input, optgroup, select, textarea {
     font-family: 'Comfortaa', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 14px;
 }
+
+
 
 /*
  * Base structure
@@ -15,7 +18,7 @@ body {
  */
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding-bottom: 9px;
   border-bottom: 1px solid #eee;
 }
