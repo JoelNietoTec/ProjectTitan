@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // Main Dependencies
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 // Routers
 import { AppRoutingModule } from './app-router.module';
@@ -25,7 +28,9 @@ import { IndividualsModule } from './individuals/individuals.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     CoreModule,
+    SharedModule,
     HomeModule,
     ParamsModule,
     IndividualsModule,

@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
 
 body, button, input, optgroup, select, textarea {
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 15px;
 }
 
-
+.card, .btn, .form-control, .input-group, .input-group-addon {
+  border-radius: 0;
+}
 
 /*
  * Base structure
@@ -16,6 +18,10 @@ body, button, input, optgroup, select, textarea {
 /*
  * Typography
  */
+
+label {
+  font-weight: bold;
+}
 
 h1 {
   margin-bottom: 30px;

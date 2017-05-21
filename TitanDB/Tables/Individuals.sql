@@ -7,5 +7,7 @@
     [ThirdName] NVARCHAR(100) NULL, 
     [FourthName] NVARCHAR(100) NULL, 
     [GenderID] INT NOT NULL, 
-    [BirthDate] DATE NULL
+    [BirthDate] DATE NULL, 
+    [Email] VARCHAR(100) NULL, 
+    CONSTRAINT [FK_Individuals_ToGenders] FOREIGN KEY ([GenderID]) REFERENCES [Genders]([ID])
 )
