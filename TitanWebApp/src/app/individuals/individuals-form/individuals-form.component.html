@@ -40,7 +40,7 @@
                 <label for="gender">Gender</label>
                 <select class="form-control" [(ngModel)]="individual.GenderID" name="GenderID" id="GenderID">
                   <option value="" disabled selected>Select one</option>
-                  <option *ngFor="let gender of genders" [value]="gender.ID">{{gender.Name}}</option>
+                  <option *ngFor="let gender of genders" [value]="gender.ID">{{gender.EnglishName}}</option>
                 </select>
                 <small id="gender" class="text-muted">*Select one</small>
               </div>
@@ -49,7 +49,7 @@
               <div class="form-group">
                 <label for="birthDate">Birth Date</label>
                 <div class="input-group">
-                  <input class="form-control" [(ngModel)]="individual.BirthDate" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
+                  <input class="form-control" [(ngModel)]="individual.FormBirthDate" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
                   <div class="input-group-addon" (click)="d.toggle()">
                     <i class="fa fa-calendar" aria-hidden="true"></i>
                   </div>

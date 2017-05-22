@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+
 
 import { Individual } from '../../shared/models/individuals.model';
 import { IndividualService } from '../../shared/services/individuals.service';
@@ -17,7 +19,10 @@ export class IndividualsFormComponent implements OnInit {
 
   private genders: Gender[];
 
-  constructor(private _gendersService: GendersService, private _individualsService: IndividualService) { }
+  constructor(
+    private _gendersService: GendersService,
+    private _individualsService: IndividualService,
+    private _dateFormatter: NgbDateParserFormatter) { }
 
   ngOnInit() {
     this._gendersService.getGenders()
