@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { Individual } from '../../shared/models/individuals.model';
 import { IndividualService } from '../../shared/services/individuals.service';
 import { GendersService } from '../../shared/services/genders.service';
 import { Gender } from '../../shared/models/genders.model';
+
+interface FormIndividual extends Individual {
+  formBirthDate?: NgbDateStruct;
+};
 
 @Component({
   selector: 'individuals-form',
@@ -15,7 +19,8 @@ import { Gender } from '../../shared/models/genders.model';
 })
 export class IndividualsFormComponent implements OnInit {
 
-  private individual = new Individual();
+  private individual: FormIndividual;
+  private birthdate:string;
 
   private genders: Gender[];
 
@@ -25,6 +30,8 @@ export class IndividualsFormComponent implements OnInit {
     private _dateFormatter: NgbDateParserFormatter) { }
 
   ngOnInit() {
+    this.individual = {};
+
     this._gendersService.getGenders()
       .subscribe(data => {
         this.genders = data;
@@ -32,9 +39,12 @@ export class IndividualsFormComponent implements OnInit {
   };
 
   saveIndividual() {
+    // console.log(this.individual);
+    this.individual.BirthDate = new Date(this._dateFormatter.format(this.individual.formBirthDate));
+    // this.birthdate = this._dateFormatter.format(this.individual.formBirthDate);
     console.log(this.individual);
     this._individualsService.createIndividual(this.individual)
       .subscribe();
-  }
+  };
 
-}
+};

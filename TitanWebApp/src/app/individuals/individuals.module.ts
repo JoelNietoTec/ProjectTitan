@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { IndividualsComponent } from './individuals.component';
 import { IndividualsFormComponent } from './individuals-form/individuals-form.component';
+import { IndividualsListComponent } from './individuals-list/individuals-list.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { IndividualsFormComponent } from './individuals-form/individuals-form.co
     FormsModule,
     NgbModule
   ],
-  declarations: [IndividualsComponent, IndividualsFormComponent]
+  declarations: [IndividualsComponent, IndividualsFormComponent, IndividualsListComponent]
 })
 export class IndividualsModule { }

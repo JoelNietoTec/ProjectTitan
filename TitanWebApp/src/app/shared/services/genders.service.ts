@@ -5,13 +5,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
-import { Gender } from '../models/genders.model'
-
+import { Gender } from '../models/genders.model';
 
 @Injectable()
 export class GendersService {
 
-    private gendersURL = "http://localhost:51544/api/genders";
+    private gendersURL = "http://localhost:53212/api/genders";
 
     private genders: Gender[];
 

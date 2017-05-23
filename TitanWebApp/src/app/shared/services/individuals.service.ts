@@ -11,7 +11,7 @@ export class IndividualService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    private individualURL = "http://localhost:51544/api/individuals"
+    private individualURL = "http://localhost:53212/api/individuals"
 
     private individuals: Individual[];
 

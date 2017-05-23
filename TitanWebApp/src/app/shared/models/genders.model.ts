@@ -1,7 +1,5 @@
-export class Gender {
-
-    constructor(
-        ID: number,
-        Name: string,
-        EnglishName: string) { }
+export interface Gender {
+    ID: number;
+    Name: string;
+    EnglishName: string;
 }
