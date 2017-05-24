@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConnectionsComponent } from './connections/connections.component';
+
+
 import { GendersService } from './services/genders.service';
-import { IndividualService } from './services/individuals.service'
+import { IndividualService } from './services/individuals.service';
+import { ConnectionService } from './services/connection.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  providers: [GendersService, IndividualService ],
-  declarations: [ConnectionsComponent]
+  providers: [GendersService, IndividualService, ConnectionService],
+  declarations: []
 })
 export class SharedModule { }

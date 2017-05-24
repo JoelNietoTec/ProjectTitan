@@ -6,15 +6,18 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 import { Gender } from '../models/genders.model';
+import { ConnectionService } from './connection.service';
 
 @Injectable()
 export class GendersService {
 
-    private gendersURL = "http://localhost:53212/api/genders";
+    private gendersURL:string;
 
     private genders: Gender[];
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private _conn: ConnectionService) { 
+        this.gendersURL = _conn.APIUrl + "genders";
+    }
 
     getGenders() {
         return this.http.get(this.gendersURL)
@@ -23,6 +26,6 @@ export class GendersService {
                 return this.genders
             });
     };
-    
+
 
 }
