@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,14 +21,16 @@ interface FormIndividual extends Individual {
 export class IndividualsFormComponent implements OnInit {
 
   private individual: FormIndividual;
-  private birthdate:string;
+  private birthdate: string;
 
   private genders: Gender[];
 
   constructor(
     private _gendersService: GendersService,
     private _individualsService: IndividualService,
-    private _dateFormatter: NgbDateParserFormatter) { }
+    private _dateFormatter: NgbDateParserFormatter,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
     this.individual = {};
@@ -44,7 +47,9 @@ export class IndividualsFormComponent implements OnInit {
     // this.birthdate = this._dateFormatter.format(this.individual.formBirthDate);
     console.log(this.individual);
     this._individualsService.createIndividual(this.individual)
-      .subscribe();
+      .subscribe(data => {
+        this._router.navigate(['/individuals']);
+      });
   };
 
 };

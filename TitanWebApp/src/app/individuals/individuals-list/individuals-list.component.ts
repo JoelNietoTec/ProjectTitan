@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Individual } from '../../shared/models/individuals.model';
+import { IndividualService } from '../../shared/services/individuals.service';
+
 @Component({
   selector: 'app-individuals-list',
   templateUrl: './individuals-list.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndividualsListComponent implements OnInit {
 
-  constructor() { }
+  private individuals: Individual[];
+
+  constructor( private _indService: IndividualService) { }
 
   ngOnInit() {
-  }
+    this._indService.getIndividuals()
+    .subscribe(data =>{
+      this.individuals = data;
+    });
+  };
 
 }

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { IndividualsRoutingModule } from './individuals-router.module';
+
 import { IndividualsComponent } from './individuals.component';
 import { IndividualsFormComponent } from './individuals-form/individuals-form.component';
 import { IndividualsListComponent } from './individuals-list/individuals-list.component';
@@ -12,7 +14,8 @@ import { IndividualsListComponent } from './individuals-list/individuals-list.co
   imports: [
     CommonModule, 
     FormsModule,
-    NgbModule
+    NgbModule, 
+    IndividualsRoutingModule
   ],
   declarations: [IndividualsComponent, IndividualsFormComponent, IndividualsListComponent]
 })
