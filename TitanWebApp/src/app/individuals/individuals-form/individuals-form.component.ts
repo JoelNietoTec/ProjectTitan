@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
@@ -29,10 +30,21 @@ export class IndividualsFormComponent implements OnInit {
     private _gendersService: GendersService,
     private _individualsService: IndividualService,
     private _dateFormatter: NgbDateParserFormatter,
-    private _router: Router
-  ) { }
+    private _router: Router, 
+    private _route: ActivatedRoute
+  ) {
+    const id: string = _route.snapshot.params.id;
+    const url: string = _route.snapshot.url.toString();
+    const parent: string =_route.snapshot.parent.url.toString();
+    const user = _route.snapshot.data.user;
+
+    console.log(url);
+    console.log(parent);
+
+   }
 
   ngOnInit() {
+
     this.individual = {};
 
     this._gendersService.getGenders()

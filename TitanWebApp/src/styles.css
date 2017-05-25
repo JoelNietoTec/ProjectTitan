@@ -7,7 +7,7 @@ body, button, input, optgroup, select, textarea {
     font-size: 15px;
 }
 
-.card, .btn, .form-control, .input-group, .input-group-addon {
+.card, .btn, .form-control, .input-group, .input-group-addon, .breadcrumb {
   border-radius: 0;
 }
 

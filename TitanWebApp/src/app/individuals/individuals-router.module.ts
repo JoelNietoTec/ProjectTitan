@@ -7,14 +7,14 @@ import { IndividualsFormComponent } from './individuals-form/individuals-form.co
 
 const routes: Routes = [
   {
-    path: 'individuals',
+    path: 'Individuals',
     component: IndividualsComponent,
     children: [
       {
         path: '', component: IndividualsListComponent
       },
       {
-        path: 'new', component: IndividualsFormComponent
+        path: 'New', component: IndividualsFormComponent
       }
     ]
   },

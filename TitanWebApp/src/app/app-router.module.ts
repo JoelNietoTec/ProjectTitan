@@ -6,9 +6,9 @@ import { ParamsComponent } from './params/params.component';
 import { IndividualsComponent } from './individuals/individuals.component'; 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'params', component: ParamsComponent },
-  { path: 'individuals', component: IndividualsComponent},
+  { path: 'Home', component: HomeComponent },
+  { path: 'Params', component: ParamsComponent },
+  { path: 'Individuals', component: IndividualsComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
