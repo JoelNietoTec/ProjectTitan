@@ -1,0 +1,28 @@
+.user-img {
+  height: 120px;
+}
+
+h3.user-name {
+  font-size: 20px;
+}
+
+.nav-link {
+  border-radius: 0;
+}
+
+
+h4.section-title {
+  font-size: 18px;
+  margin-top: 20px;
+  /*padding-bottom: 10px;*/
+  color: #636c72;
+}
+
+.info-section {
+  border-right: 1px solid #eee;
+}
+
+.info-name {
+  color: #015197;
+  font-weight: bold;
+}

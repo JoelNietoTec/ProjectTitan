@@ -1,4 +1,4 @@
-import { Gender } from './genders.model'
+import { Gender } from './genders.model';
 
 export interface Individual {
     ID?: number;

@@ -10,34 +10,46 @@ import { ConnectionService } from './connection.service';
 @Injectable()
 export class IndividualService {
 
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+  private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    private individualURL: string;
+  private individualURL: string;
 
-    private individuals: Individual[];
+  private individual: Individual;
 
-    private newIndividual: Individual;
+  private individuals: Individual[];
 
-    constructor(private http: Http, private _conn: ConnectionService) {
-        this.individualURL = _conn.APIUrl + "individuals"
-    };
+  private newIndividual: Individual;
 
-    getIndividuals() {
-        return this.http
-            .get(this.individualURL)
-            .map(response => {
-                this.individuals = response.json();
-                return this.individuals;
-            });
-    };
+  constructor(private http: Http, private _conn: ConnectionService) {
+    this.individualURL = _conn.APIUrl + 'individuals';
+  };
 
-    createIndividual(ind: any): Observable<Individual> {
-        return this.http
-            .post(this.individualURL, JSON.stringify(ind), { headers: this.headers })
-            .map(response => {
-                this.newIndividual = response.json();
-                return this.newIndividual;
-            });
-    };
+  getIndividuals() {
+    return this.http
+      .get(this.individualURL)
+      .map(response => {
+        this.individuals = response.json();
+        return this.individuals;
+      });
+  };
+
+  getIndividual(_id: number) {
+    return this.http
+    .get(this.individualURL + '/' + _id)
+    .map(response => {
+      console.log(this.individualURL + '/' + _id);
+      this.individual = response.json();
+      return this.individual;
+    });
+  };
+
+  createIndividual(ind: any): Observable<Individual> {
+    return this.http
+      .post(this.individualURL, JSON.stringify(ind), { headers: this.headers })
+      .map(response => {
+        this.newIndividual = response.json();
+        return this.newIndividual;
+      });
+  };
 
 }

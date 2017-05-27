@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndividualsComponent } from './individuals.component';
 import { IndividualsListComponent } from './individuals-list/individuals-list.component';
 import { IndividualsFormComponent } from './individuals-form/individuals-form.component';
+import { IndividualDetailsComponent } from './individual-details/individual-details.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
       },
       {
         path: 'New', component: IndividualsFormComponent
+      },
+      {
+        path: ':id', component: IndividualDetailsComponent
       }
     ]
   },
@@ -29,5 +33,6 @@ export class IndividualsRoutingModule { }
 export const routedComponents = [
   IndividualsComponent,
   IndividualsListComponent,
-  IndividualsFormComponent
+  IndividualsFormComponent,
+  IndividualDetailsComponent
 ];

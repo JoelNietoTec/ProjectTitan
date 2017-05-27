@@ -9,14 +9,19 @@ import { IndividualsRoutingModule } from './individuals-router.module';
 import { IndividualsComponent } from './individuals.component';
 import { IndividualsFormComponent } from './individuals-form/individuals-form.component';
 import { IndividualsListComponent } from './individuals-list/individuals-list.component';
+import { IndividualDetailsComponent } from './individual-details/individual-details.component';
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     FormsModule,
-    NgbModule, 
+    NgbModule,
     IndividualsRoutingModule
   ],
-  declarations: [IndividualsComponent, IndividualsFormComponent, IndividualsListComponent]
+  declarations: [
+    IndividualsComponent,
+    IndividualsFormComponent,
+    IndividualsListComponent,
+    IndividualDetailsComponent]
 })
 export class IndividualsModule { }

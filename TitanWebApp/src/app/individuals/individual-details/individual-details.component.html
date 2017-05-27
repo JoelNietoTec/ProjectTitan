@@ -1,0 +1,51 @@
+<div *ngIf="_individual">
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a href="#info" class="nav-link active" role="tab" data-toggle="tab">Info</a>
+        </li>
+        <li class="nav-item">
+          <a href="#documents" class="nav-link" role="tab" data-toggle="tab">Docs</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="info" role="tabpanel">
+        <div class="card-block">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 text-center info-section">
+                <h3 class="user-name">{{ _individual.FirstName }} {{ _individual.SecondName }} {{_individual.ThirdName }} {{ _individual.FourthName
+                  }}</h3>
+                <img src="assets/img/user.jpg" alt="" class="img-thumbnail img-fluid user-img">
+                <h4 class="section-title">General Info</h4>
+                <table class="table table-sm">
+                  <tbody>
+                    <tr>
+                      <td class="info-name"><i class="fa fa-venus-mars" aria-hidden="true"></i> Gender:</td>
+                      <td>{{ _individual.Gender.EnglishName }}</td>
+                    </tr>
+                    <tr>
+                      <td class="info-name"><i class="fa fa-calendar" aria-hidden="true"></i> Birth Date:</td>
+                      <td>{{ _individual.BirthDate | date: 'mediumDate' }}</td>
+                    </tr>
+                    <tr>
+                      <td class="info-name"><i class="fa fa-map-marker" aria-hidden="true"></i> Birth Place</td>
+                      <td>Panama City, Panama</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="documents" role="tabpanel">
+        <div class="card-block">
+          Documents
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

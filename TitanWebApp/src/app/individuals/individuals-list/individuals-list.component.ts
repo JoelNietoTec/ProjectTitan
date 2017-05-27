@@ -10,15 +10,15 @@ import { IndividualService } from '../../shared/services/individuals.service';
 })
 export class IndividualsListComponent implements OnInit {
 
-  private individuals: Individual[];
+  individuals: Individual[];
 
-  constructor( private _indService: IndividualService) { }
+  constructor(private _indService: IndividualService) { }
 
   ngOnInit() {
     this._indService.getIndividuals()
-    .subscribe(data =>{
-      this.individuals = data;
-    });
+      .subscribe(data => {
+        this.individuals = data;
+      });
   };
 
 }

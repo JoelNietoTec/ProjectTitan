@@ -11,6 +11,13 @@ body, button, input, optgroup, select, textarea {
   border-radius: 0;
 }
 
+a:not([href]):not([tabindex]) {
+  color: #0275d8 !important
+}
+.breadcrumb-item  {
+  font-weight: bold;
+}
+
 /*
  * Base structure
  */
