@@ -59,7 +59,8 @@ export class IndividualsFormComponent implements OnInit {
     console.log(this.individual);
     this._individualsService.createIndividual(this.individual)
       .subscribe(data => {
-        this._router.navigate(['/individuals']);
+        console.log(data);
+        this._router.navigate(['/Individuals', data.ID]);
       });
   };
 

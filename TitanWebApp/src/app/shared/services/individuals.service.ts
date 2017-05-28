@@ -35,12 +35,12 @@ export class IndividualService {
 
   getIndividual(_id: number) {
     return this.http
-    .get(this.individualURL + '/' + _id)
-    .map(response => {
-      console.log(this.individualURL + '/' + _id);
-      this.individual = response.json();
-      return this.individual;
-    });
+      .get(this.individualURL + '/' + _id)
+      .map(response => {
+        console.log(this.individualURL + '/' + _id);
+        this.individual = response.json();
+        return this.individual;
+      });
   };
 
   createIndividual(ind: any): Observable<Individual> {

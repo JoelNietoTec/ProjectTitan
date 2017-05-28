@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ParamsComponent } from './params.component';
+import { FormsModule } from '@angular/forms';
 
-import { ParamsService } from './params.service';
+import { ParamsComponent } from './params.component';
+import { ParamsCategoriesComponent } from './params-categories/params-categories.component';
+import { ParamMatricesComponent } from './param-matrices/param-matrices.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
-    ParamsService
   ],
-  declarations: [ParamsComponent]
+  declarations: [ParamsComponent, ParamsCategoriesComponent, ParamMatricesComponent]
 })
 export class ParamsModule { }

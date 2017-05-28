@@ -6,30 +6,26 @@ namespace TitanWebAPI.Models.Params
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class ParamCategory
+    public partial class ParamMatrix
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ParamCategory()
+        public ParamMatrix()
         {
-            ParamMasters = new HashSet<ParamMaster>();
+            ParamCategories = new HashSet<ParamCategory>();
         }
 
         public int ID { get; set; }
 
-        public int MatrixID { get; set; }
-
         [StringLength(100)]
         public string Name { get; set; }
 
-        [StringLength(100)]
-        public string EnglishName { get; set; }
+        [StringLength(50)]
+        public string Code { get; set; }
 
-        [Column(TypeName = "numeric")]
-        public decimal? Weighting { get; set; }
-
-        public virtual ParamMatrix ParamMatrix { get; set; }
+        [Column(TypeName = "ntext")]
+        public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParamMaster> ParamMasters { get; set; }
+        public virtual ICollection<ParamCategory> ParamCategories { get; set; }
     }
 }

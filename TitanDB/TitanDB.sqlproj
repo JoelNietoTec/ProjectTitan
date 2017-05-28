@@ -67,6 +67,8 @@
     <Build Include="Tables\ParamCategories.sql" />
     <Build Include="Tables\ParamValues.sql" />
     <Build Include="Tables\Genders.sql" />
+    <Build Include="Tables\ParamMatrices.sql" />
+    <Build Include="Tables\IndiviualParams.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

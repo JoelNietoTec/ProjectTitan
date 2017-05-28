@@ -22,6 +22,7 @@ import { IndividualDetailsComponent } from './individual-details/individual-deta
     IndividualsComponent,
     IndividualsFormComponent,
     IndividualsListComponent,
-    IndividualDetailsComponent]
+    IndividualDetailsComponent
+  ]
 })
 export class IndividualsModule { }

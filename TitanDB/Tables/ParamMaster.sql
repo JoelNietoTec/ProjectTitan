@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ParamMaster]
 (
-	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY,
     [CategoryID] INT NOT NULL, 
     [Name] NVARCHAR(100) NULL, 
     [EnglishName] NVARCHAR(100) NULL, 

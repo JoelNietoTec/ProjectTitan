@@ -19,6 +19,6 @@ export class IndividualsListComponent implements OnInit {
       .subscribe(data => {
         this.individuals = data;
       });
-  };
+  }
 
 }

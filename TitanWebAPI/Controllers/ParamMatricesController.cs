@@ -10,44 +10,44 @@ using TitanWebAPI.Models.Params;
 namespace TitanWebAPI.Controllers
 {
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-    public class ParamMastersController : ApiController
+    public class ParamMatricesController : ApiController
     {
         private ParamsModel db = new ParamsModel();
 
-        // GET: api/ParamMasters
-        public IQueryable<ParamMaster> GetParamMasters()
+        // GET: api/ParamMatrices
+        public IQueryable<ParamMatrix> GetParamMatrices()
         {
-            return db.ParamMasters;
+            return db.ParamMatrices;
         }
 
-        // GET: api/ParamMasters/5
-        [ResponseType(typeof(ParamMaster))]
-        public IHttpActionResult GetParamMaster(int id)
+        // GET: api/ParamMatrices/5
+        [ResponseType(typeof(ParamMatrix))]
+        public IHttpActionResult GetParamMatrix(int id)
         {
-            ParamMaster paramMaster = db.ParamMasters.Find(id);
-            if (paramMaster == null)
+            ParamMatrix paramMatrix = db.ParamMatrices.Find(id);
+            if (paramMatrix == null)
             {
                 return NotFound();
             }
 
-            return Ok(paramMaster);
+            return Ok(paramMatrix);
         }
 
-        // PUT: api/ParamMasters/5
+        // PUT: api/ParamMatrices/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutParamMaster(int id, ParamMaster paramMaster)
+        public IHttpActionResult PutParamMatrix(int id, ParamMatrix paramMatrix)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != paramMaster.ID)
+            if (id != paramMatrix.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(paramMaster).State = EntityState.Modified;
+            db.Entry(paramMatrix).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace TitanWebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ParamMasterExists(id))
+                if (!ParamMatrixExists(id))
                 {
                     return NotFound();
                 }
@@ -68,35 +68,35 @@ namespace TitanWebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ParamMasters
-        [ResponseType(typeof(ParamMaster))]
-        public IHttpActionResult PostParamMaster(ParamMaster paramMaster)
+        // POST: api/ParamMatrices
+        [ResponseType(typeof(ParamMatrix))]
+        public IHttpActionResult PostParamMatrix(ParamMatrix paramMatrix)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ParamMasters.Add(paramMaster);
+            db.ParamMatrices.Add(paramMatrix);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = paramMaster.ID }, paramMaster);
+            return CreatedAtRoute("DefaultApi", new { id = paramMatrix.ID }, paramMatrix);
         }
 
-        // DELETE: api/ParamMasters/5
-        [ResponseType(typeof(ParamMaster))]
-        public IHttpActionResult DeleteParamMaster(int id)
+        // DELETE: api/ParamMatrices/5
+        [ResponseType(typeof(ParamMatrix))]
+        public IHttpActionResult DeleteParamMatrix(int id)
         {
-            ParamMaster paramMaster = db.ParamMasters.Find(id);
-            if (paramMaster == null)
+            ParamMatrix paramMatrix = db.ParamMatrices.Find(id);
+            if (paramMatrix == null)
             {
                 return NotFound();
             }
 
-            db.ParamMasters.Remove(paramMaster);
+            db.ParamMatrices.Remove(paramMatrix);
             db.SaveChanges();
 
-            return Ok(paramMaster);
+            return Ok(paramMatrix);
         }
 
         protected override void Dispose(bool disposing)
@@ -108,9 +108,9 @@ namespace TitanWebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ParamMasterExists(int id)
+        private bool ParamMatrixExists(int id)
         {
-            return db.ParamMasters.Count(e => e.ID == id) > 0;
+            return db.ParamMatrices.Count(e => e.ID == id) > 0;
         }
     }
 }

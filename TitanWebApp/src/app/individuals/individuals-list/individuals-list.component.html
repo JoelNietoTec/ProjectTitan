@@ -1,27 +1,34 @@
 <a class="btn btn-primary" href="#" role="button" [routerLink]="['New']">New <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
 <br>
 <br>
-<table class="table table-hover table-sm">
-  <thead class="text-white bg-primary">
-    <tr>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Second Name</th>
-      <th>Third Name</th>
-      <th>Fourth Name</th>
-      <th>Gender</th>
-      <th>BirthDate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let individual of individuals">
-      <td>{{ individual.ID }}</td>
-      <td>{{ individual.FirstName }}</td>
-      <td>{{ individual.SecondName }}</td>
-      <td>{{ individual.ThirdName }}</td>
-      <td>{{ individual.FourthName }}</td>
-      <td>{{ individual.Gender.EnglishName }}</td>
-      <td>{{ individual.BirthDate | date:'mediumDate' }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div class="card-block">
+    <table *ngIf="individuals" class="table table-hover table-sm">
+      <thead class="text-white bg-primary">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Second Name</th>
+          <th>Third Name</th>
+          <th>Fourth Name</th>
+          <th>Gender</th>
+          <th>BirthDate</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let individual of individuals">
+          <td>{{ individual.ID }}</td>
+          <td>{{ individual.FirstName }}</td>
+          <td>{{ individual.SecondName }}</td>
+          <td>{{ individual.ThirdName }}</td>
+          <td>{{ individual.FourthName }}</td>
+          <td>{{ individual.Gender.EnglishName }}</td>
+          <td>{{ individual.BirthDate | date:'mediumDate' }}</td>
+          <td>
+            <a [routerLink]="['/Individuals', individual.ID]"><i class="fa fa-id-card" aria-hidden="true" placement="left" ngbTooltip="Details"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
