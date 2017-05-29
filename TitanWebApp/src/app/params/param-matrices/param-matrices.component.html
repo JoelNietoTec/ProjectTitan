@@ -46,6 +46,7 @@
               <th>Code</th>
               <th>Name</th>
               <th>Description</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -54,6 +55,9 @@
               <td>{{ matrix.Code }}</td>
               <td>{{ matrix.Name }}</td>
               <td>{{ matrix.Description }}</td>
+              <td>
+                <a [routerLink]="['/Params/Matrix', matrix.ID]"> <i class="fa fa-edit" aria-hidden="true" placement="top" ngbToolTip="Edit"></i></a>
+              </td>
             </tr>
           </tbody>
         </table>

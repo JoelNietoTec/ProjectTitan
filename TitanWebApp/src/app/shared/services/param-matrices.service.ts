@@ -13,6 +13,7 @@ export class ParamMatricesService {
 
   private matrixURL: string;
   private newMatrix: ParamMatrix;
+  private matrix: ParamMatrix;
   private matrices: ParamMatrix[];
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -28,6 +29,15 @@ export class ParamMatricesService {
       .map(response => {
         this.matrices = response.json();
         return this.matrices;
+      });
+  }
+
+  getMatrix(_id: number) {
+    return this.http
+      .get(this.matrixURL + '/' + _id)
+      .map(response => {
+        this.matrix = response.json();
+        return this.matrix;
       });
   }
 
