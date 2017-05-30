@@ -6,8 +6,8 @@ export interface ParamMaster {
     FreeField: string;
     IsRequired: string;
     Weighting: number;
+    ParamCategoryID: number;
     ParamCategory: ParamCategory;
-
 }
 
 export interface ParamCategory {
@@ -18,9 +18,9 @@ export interface ParamCategory {
 
 export interface ParamValue {
     ID: number;
-    ParamMasterID: number,
-    DisplayValue: string,
-    EnglishDisplayValue: string,
-    Score: number,
+    ParamMasterID: number;
+    DisplayValue: string;
+    EnglishDisplayValue: string;
+    Score: number;
     ParamMaster: ParamMaster;
 }
