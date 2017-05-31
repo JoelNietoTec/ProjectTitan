@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ParamMatrix } from '../../shared/models/param-matrices.model';
+import { ParamCategory, ParamMaster, ParamValue } from '../../shared/models/params.models';
 import { ParamMatricesService } from '../../shared/services/param-matrices.service';
 
 @Component({
@@ -14,6 +15,7 @@ import { ParamMatricesService } from '../../shared/services/param-matrices.servi
 export class ParamMatrixComponent implements OnInit {
 
   _matrix: ParamMatrix;
+  _newCategory: ParamCategory;
 
   constructor(
     private _route: ActivatedRoute,
@@ -25,7 +27,15 @@ export class ParamMatrixComponent implements OnInit {
       this._matrixService.getMatrix(params['id'])
         .subscribe(data => {
           this._matrix = data;
+          console.log(this._matrix);
         });
     });
+    this._newCategory = {};
+  }
+
+  addCategory() {
+    this._matrix.ParamCategories.push(this._newCategory);
+    console.log(this._matrix);
+    this._newCategory = {};
   }
 }

@@ -5,5 +5,5 @@ export interface ParamMatrix {
   Name?: string;
   Code?: string;
   Description?: string;
-  ParamCategories: ParamCategory[];
+  ParamCategories?: ParamCategory[];
 }
