@@ -1,11 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400');
 
-body, button, input, optgroup, select, textarea, .tooltip {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 300;
-    font-size: 15px;
+body, button, input, input.form-control, optgroup, select, select.form-control, textarea, .tooltip {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
 }
+
+/*
+select.form-control {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTBweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMTAgMTgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiAgICAgICAgPHRpdGxlPlVudGl0bGVkPC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPjwvZGVmcz4gICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+ICAgICAgICA8ZyBpZD0ic2VsZWN0LWFycm93cyIgc2tldGNoOnR5cGU9Ik1TTGF5ZXJHcm91cCIgZmlsbD0iIzAwMDAwMCI+ICAgICAgICAgICAgPHBhdGggZD0iTTUsMCBMMCw3IEwxMCw3IEw1LDAgTDUsMCBaIE01LDE4IEwxMCwxMSBMMCwxMSBMNSwxOCBMNSwxOCBaIiBpZD0iU2hhcGUiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==);
+  background-size: .5em;
+  background-repeat: no-repeat;
+  background-position: right .5em center;
+  padding-right: 2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}*/
 
 .tooltip {
   font-size: 13px;
