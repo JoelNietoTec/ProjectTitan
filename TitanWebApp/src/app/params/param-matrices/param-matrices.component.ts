@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 import { ParamMatrix } from '../../shared/models/param-matrices.model';
 import { ParamMatricesService } from '../../shared/services/param-matrices.service';
