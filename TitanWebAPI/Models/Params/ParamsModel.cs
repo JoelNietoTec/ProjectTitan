@@ -8,7 +8,7 @@ namespace TitanWebAPI.Models.Params
     public partial class ParamsModel : DbContext
     {
         public ParamsModel()
-            : base("name=ParamsModel")
+            : base("name=AzureServer")
         {
         }
 

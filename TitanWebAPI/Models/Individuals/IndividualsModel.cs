@@ -8,7 +8,7 @@ namespace TitanWebAPI.Models.Individuals
     public partial class IndividualsModel : DbContext
     {
         public IndividualsModel()
-            : base("name=IndividualsModel")
+            : base("name=AzureServer")
         {
         }
 
