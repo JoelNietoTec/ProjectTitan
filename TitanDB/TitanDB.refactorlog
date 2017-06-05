@@ -98,4 +98,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="0d1fd7bc-f001-439d-8572-fc34473da07b" ChangeDateTime="06/05/2017 16:30:18">
+    <Property Name="ElementName" Value="[dbo].[Countries].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Countries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="54ed9f4b-5508-4082-be81-b3d359560930" ChangeDateTime="06/05/2017 16:33:26">
+    <Property Name="ElementName" Value="[dbo].[Countries].[Official Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Countries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OfficialName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="53e8fd36-0442-4173-9ad2-c73d0d1fba40" ChangeDateTime="06/05/2017 16:33:34">
+    <Property Name="ElementName" Value="[dbo].[Countries].[EnglishO]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Countries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EnglishOfficialName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0afa8734-0fdc-4bec-be4a-28d931e94eac" ChangeDateTime="06/05/2017 16:34:19">
+    <Property Name="ElementName" Value="[dbo].[Continent].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Continent]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="50bdf00a-15e2-460a-ac78-1955b35dba69" ChangeDateTime="06/05/2017 16:40:16">
+    <Property Name="ElementName" Value="[dbo].[Regions].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Regions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2d309499-7e10-4106-8f81-29a8a6e0adb1" ChangeDateTime="06/05/2017 17:02:13">
+    <Property Name="ElementName" Value="[dbo].[FK_Regions_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Regions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Regions_ToContinent]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9181adfc-0aa6-449c-a345-10b29ba07bbc" ChangeDateTime="06/05/2017 17:08:40">
+    <Property Name="ElementName" Value="[dbo].[Countries].[Denomyn]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Countries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Demonyn" />
+  </Operation>
 </Operations>
