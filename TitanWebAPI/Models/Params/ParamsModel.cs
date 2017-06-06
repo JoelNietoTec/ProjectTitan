@@ -21,11 +21,7 @@ namespace TitanWebAPI.Models.Params
                 .Property(e => e.Weighting)
                 .HasPrecision(5, 2);
 
-            modelBuilder.Entity<ParamCategory>()
-                .HasMany(e => e.ParamMasters)
-                .WithRequired(e => e.ParamCategory)
-                .HasForeignKey(e => e.CategoryID)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ParamCategory>();
 
             modelBuilder.Entity<ParamMaster>()
                 .Property(e => e.FreeField)
@@ -41,16 +37,9 @@ namespace TitanWebAPI.Models.Params
                 .Property(e => e.Weighting)
                 .HasPrecision(5, 2);
 
-            modelBuilder.Entity<ParamMaster>()
-                .HasMany(e => e.ParamValues)
-                .WithRequired(e => e.ParamMaster)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ParamMaster>();
 
-            modelBuilder.Entity<ParamMatrix>()
-                .HasMany(e => e.ParamCategories)
-                .WithRequired(e => e.ParamMatrix)
-                .HasForeignKey(e => e.MatrixID)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ParamMatrix>();
 
             modelBuilder.Entity<ParamValue>()
                 .Property(e => e.Score)

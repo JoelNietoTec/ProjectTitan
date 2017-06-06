@@ -161,4 +161,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="fba60990-cc83-42b4-afbb-7868069870c3" ChangeDateTime="06/06/2017 22:47:14">
+    <Property Name="ElementName" Value="[dbo].[ParamCategories].[MatrixID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParamCategories]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamMatrixID" />
+  </Operation>
 </Operations>

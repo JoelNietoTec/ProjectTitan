@@ -6,15 +6,10 @@ namespace TitanWebAPI.Models.Params
 
     public partial class ParamCategory
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ParamCategory()
-        {
-            ParamMasters = new HashSet<ParamMaster>();
-        }
 
         public int ID { get; set; }
 
-        public int MatrixID { get; set; }
+        public int ParamMatrixID { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }
@@ -27,7 +22,5 @@ namespace TitanWebAPI.Models.Params
 
         public virtual ParamMatrix ParamMatrix { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParamMaster> ParamMasters { get; set; }
     }
 }
