@@ -147,4 +147,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Demonyn" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="63dff98b-f218-41e0-a0e9-19cc96689cd0" ChangeDateTime="06/06/2017 11:13:46">
+    <Property Name="ElementName" Value="[dbo].[Users].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="650f977d-4636-4c22-9342-ac390a5cafe4" ChangeDateTime="06/06/2017 11:18:53">
+    <Property Name="ElementName" Value="[dbo].[MatrixTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MatrixTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
 </Operations>

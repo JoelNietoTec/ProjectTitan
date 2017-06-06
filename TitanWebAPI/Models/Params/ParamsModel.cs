@@ -1,9 +1,6 @@
 namespace TitanWebAPI.Models.Params
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class ParamsModel : DbContext
     {
@@ -16,6 +13,7 @@ namespace TitanWebAPI.Models.Params
         public virtual DbSet<ParamMaster> ParamMasters { get; set; }
         public virtual DbSet<ParamMatrix> ParamMatrices { get; set; }
         public virtual DbSet<ParamValue> ParamValues { get; set; }
+        public virtual DbSet<MatrixType> MatrixTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -57,6 +55,8 @@ namespace TitanWebAPI.Models.Params
             modelBuilder.Entity<ParamValue>()
                 .Property(e => e.Score)
                 .HasPrecision(10, 2);
+
+            modelBuilder.Entity<MatrixType>();
         }
     }
 }

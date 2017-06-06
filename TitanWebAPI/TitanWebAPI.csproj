@@ -190,6 +190,7 @@
     <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualsController.cs" />
+    <Compile Include="Controllers\MatrixTypesController.cs" />
     <Compile Include="Controllers\ParamCategoriesController.cs" />
     <Compile Include="Controllers\ParamMastersController.cs" />
     <Compile Include="Controllers\ParamMatricesController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Models\Individuals\Individual.cs" />
     <Compile Include="Models\Individuals\IndividualsDocument.cs" />
     <Compile Include="Models\Individuals\IndividualsModel.cs" />
+    <Compile Include="Models\Params\MatrixType.cs" />
     <Compile Include="Models\Params\ParamCategory.cs" />
     <Compile Include="Models\Params\ParamMaster.cs" />
     <Compile Include="Models\Params\ParamMatrix.cs" />

@@ -72,6 +72,8 @@
     <Build Include="Tables\Countries.sql" />
     <Build Include="Tables\Continents.sql" />
     <Build Include="Tables\Regions.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Tables\MatrixTypes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />
@@ -79,5 +81,6 @@
   <ItemGroup>
     <None Include="ConnPersonal.publish.xml" />
     <None Include="TitanDB.publish.xml" />
+    <None Include="TitanDB_1.publish.xml" />
   </ItemGroup>
 </Project>

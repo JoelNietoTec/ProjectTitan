@@ -9,7 +9,7 @@ using TitanWebAPI.Models.Individuals;
 
 namespace TitanWebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
     public class IndividualsController : ApiController
     {
         private IndividualsModel db = new IndividualsModel();
