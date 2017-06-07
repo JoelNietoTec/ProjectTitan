@@ -1,11 +1,15 @@
-﻿namespace TitanWebAPI.Models.Params
+namespace TitanWebAPI.Models.Params
 {
+    using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-    public class MatrixType
+    public partial class MatrixType
     {
-        public int ID { get; set; }
 
+        public int ID { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -14,5 +18,6 @@
         [Required]
         [StringLength(50)]
         public string EnglishName { get; set; }
+
     }
 }

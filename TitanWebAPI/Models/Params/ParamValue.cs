@@ -18,6 +18,5 @@ namespace TitanWebAPI.Models.Params
         [Column(TypeName = "numeric")]
         public decimal? Score { get; set; }
 
-        public virtual ParamMaster ParamMaster { get; set; }
     }
 }
