@@ -26,9 +26,6 @@ namespace TitanWebAPI.Models.Params
                 .Property(e => e.Weighting)
                 .HasPrecision(5, 2);
 
-            modelBuilder.Entity<ParamCategory>()
-                .HasMany(e => e.ParamMasters);
-
             modelBuilder.Entity<ParamMaster>()
                 .Property(e => e.FreeField)
                 .IsFixedLength()
@@ -38,10 +35,6 @@ namespace TitanWebAPI.Models.Params
                 .Property(e => e.IsRequired)
                 .IsFixedLength()
                 .IsUnicode(false);
-
-            modelBuilder.Entity<ParamMaster>()
-                .Property(e => e.Weighting)
-                .HasPrecision(5, 2);
 
             modelBuilder.Entity<ParamMaster>()
                 .HasMany(e => e.ParamValues);

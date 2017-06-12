@@ -15,8 +15,6 @@ namespace TitanWebAPI.Models.Params
 
         public int ID { get; set; }
 
-        public int ParamCategoryID { get; set; }
-
         [StringLength(100)]
         public string Name { get; set; }
 
@@ -28,9 +26,6 @@ namespace TitanWebAPI.Models.Params
 
         [StringLength(2)]
         public string IsRequired { get; set; }
-
-        [Column(TypeName = "numeric")]
-        public decimal? Weighting { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParamValue> ParamValues { get; set; }
