@@ -21,11 +21,9 @@ namespace TitanWebAPI.Models.Params
         [StringLength(100)]
         public string EnglishName { get; set; }
 
-        [StringLength(2)]
-        public string FreeField { get; set; }
+        public int FreeField { get; set; }
 
-        [StringLength(2)]
-        public string IsRequired { get; set; }
+        public int IsRequired { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParamValue> ParamValues { get; set; }

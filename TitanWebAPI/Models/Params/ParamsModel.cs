@@ -27,16 +27,6 @@ namespace TitanWebAPI.Models.Params
                 .HasPrecision(5, 2);
 
             modelBuilder.Entity<ParamMaster>()
-                .Property(e => e.FreeField)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ParamMaster>()
-                .Property(e => e.IsRequired)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ParamMaster>()
                 .HasMany(e => e.ParamValues);
 
             modelBuilder.Entity<ParamMatrix>()

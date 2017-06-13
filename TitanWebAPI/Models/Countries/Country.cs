@@ -40,8 +40,6 @@ namespace TitanWebAPI.Models.Countries
         [Column(TypeName = "numeric")]
         public decimal? Score { get; set; }
 
-        public virtual Continent Continent { get; set; }
-
         public virtual Region Region { get; set; }
     }
 }
