@@ -192,8 +192,9 @@
     <Compile Include="Controllers\IndividualsController.cs" />
     <Compile Include="Controllers\MatrixTypesController.cs" />
     <Compile Include="Controllers\ParamCategoriesController.cs" />
-    <Compile Include="Controllers\ParamMastersController.cs" />
     <Compile Include="Controllers\ParamMatricesController.cs" />
+    <Compile Include="Controllers\ParamsController.cs" />
+    <Compile Include="Controllers\ParamTablesController.cs" />
     <Compile Include="Controllers\ParamValuesController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,10 +210,11 @@
     <Compile Include="Models\Individuals\IndividualsDocument.cs" />
     <Compile Include="Models\Individuals\IndividualsModel.cs" />
     <Compile Include="Models\Params\MatrixType.cs" />
+    <Compile Include="Models\Params\Param.cs" />
     <Compile Include="Models\Params\ParamCategory.cs" />
-    <Compile Include="Models\Params\ParamMaster.cs" />
     <Compile Include="Models\Params\ParamMatrix.cs" />
     <Compile Include="Models\Params\ParamsModel.cs" />
+    <Compile Include="Models\Params\ParamTable.cs" />
     <Compile Include="Models\Params\ParamValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

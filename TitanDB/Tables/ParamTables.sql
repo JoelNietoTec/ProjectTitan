@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[ParamMaster]
+﻿CREATE TABLE [dbo].[ParamTables]
 (
 	[ID] INT NOT NULL PRIMARY KEY IDENTITY,
     [Name] NVARCHAR(100) NULL, 

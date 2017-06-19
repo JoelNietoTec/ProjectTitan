@@ -1,5 +1,6 @@
 namespace TitanWebAPI.Models.Params
 {
+    using Newtonsoft.Json;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,7 +8,7 @@ namespace TitanWebAPI.Models.Params
     {
         public int ID { get; set; }
 
-        public int ParamMasterID { get; set; }
+        public int ParamTableID { get; set; }
 
         [StringLength(100)]
         public string DisplayValue { get; set; }
@@ -18,5 +19,7 @@ namespace TitanWebAPI.Models.Params
         [Column(TypeName = "numeric")]
         public decimal? Score { get; set; }
 
+        [JsonIgnore]
+        public virtual ParamTable ParamTable { get; set; }
     }
 }
