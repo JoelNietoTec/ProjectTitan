@@ -10,44 +10,44 @@ using TitanWebAPI.Models.Params;
 namespace TitanWebAPI.Controllers
 {
     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
-    public class ParamMastersController : ApiController
+    public class ParamTablesController : ApiController
     {
         private ParamsModel db = new ParamsModel();
 
-        // GET: api/ParamMasters
-        public IQueryable<ParamMaster> GetParamMasters()
+        // GET: api/ParamTables
+        public IQueryable<ParamTable> GetParamTables()
         {
-            return db.ParamMasters;
+            return db.ParamTables;
         }
 
-        // GET: api/ParamMasters/5
-        [ResponseType(typeof(ParamMaster))]
-        public IHttpActionResult GetParamMaster(int id)
+        // GET: api/ParamTables/5
+        [ResponseType(typeof(ParamTable))]
+        public IHttpActionResult GetParamTable(int id)
         {
-            ParamMaster paramMaster = db.ParamMasters.Find(id);
-            if (paramMaster == null)
+            ParamTable paramTable = db.ParamTables.Find(id);
+            if (paramTable == null)
             {
                 return NotFound();
             }
 
-            return Ok(paramMaster);
+            return Ok(paramTable);
         }
 
-        // PUT: api/ParamMasters/5
+        // PUT: api/ParamTables/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutParamMaster(int id, ParamMaster paramMaster)
+        public IHttpActionResult PutParamTable(int id, ParamTable paramTable)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != paramMaster.ID)
+            if (id != paramTable.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(paramMaster).State = EntityState.Modified;
+            db.Entry(paramTable).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace TitanWebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ParamMasterExists(id))
+                if (!ParamTableExists(id))
                 {
                     return NotFound();
                 }
@@ -68,35 +68,35 @@ namespace TitanWebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ParamMasters
-        [ResponseType(typeof(ParamMaster))]
-        public IHttpActionResult PostParamMaster(ParamMaster paramMaster)
+        // POST: api/ParamTables
+        [ResponseType(typeof(ParamTable))]
+        public IHttpActionResult PostParamTable(ParamTable paramTable)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ParamMasters.Add(paramMaster);
+            db.ParamTables.Add(paramTable);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = paramMaster.ID }, paramMaster);
+            return CreatedAtRoute("DefaultApi", new { id = paramTable.ID }, paramTable);
         }
 
-        // DELETE: api/ParamMasters/5
-        [ResponseType(typeof(ParamMaster))]
-        public IHttpActionResult DeleteParamMaster(int id)
+        // DELETE: api/ParamTables/5
+        [ResponseType(typeof(ParamTable))]
+        public IHttpActionResult DeleteParamTable(int id)
         {
-            ParamMaster paramMaster = db.ParamMasters.Find(id);
-            if (paramMaster == null)
+            ParamTable paramTable = db.ParamTables.Find(id);
+            if (paramTable == null)
             {
                 return NotFound();
             }
 
-            db.ParamMasters.Remove(paramMaster);
+            db.ParamTables.Remove(paramTable);
             db.SaveChanges();
 
-            return Ok(paramMaster);
+            return Ok(paramTable);
         }
 
         protected override void Dispose(bool disposing)
@@ -108,9 +108,9 @@ namespace TitanWebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ParamMasterExists(int id)
+        private bool ParamTableExists(int id)
         {
-            return db.ParamMasters.Count(e => e.ID == id) > 0;
+            return db.ParamTables.Count(e => e.ID == id) > 0;
         }
     }
 }

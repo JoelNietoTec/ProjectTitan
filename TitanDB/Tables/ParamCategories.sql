@@ -4,6 +4,5 @@
 	[ParamMatrixID] INT NOT NULL,
     [Name] NVARCHAR(100) NULL, 
     [EnglishName] NVARCHAR(100) NULL, 
-    [Weighting] NUMERIC(5, 2) NULL, 
-    CONSTRAINT [FK_ParamCategories_ToMatrices] FOREIGN KEY ([ParamMatrixID]) REFERENCES [ParamMatrices]([ID])
+    [Weighting] NUMERIC(5, 2) NULL 
 )

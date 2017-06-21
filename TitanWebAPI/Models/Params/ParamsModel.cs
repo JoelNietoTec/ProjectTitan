@@ -14,23 +14,35 @@ namespace TitanWebAPI.Models.Params
 
         public virtual DbSet<MatrixType> MatrixTypes { get; set; }
         public virtual DbSet<ParamCategory> ParamCategories { get; set; }
-        public virtual DbSet<ParamMaster> ParamMasters { get; set; }
         public virtual DbSet<ParamMatrix> ParamMatrices { get; set; }
+        public virtual DbSet<Param> Params { get; set; }
+        public virtual DbSet<ParamTable> ParamTables { get; set; }
         public virtual DbSet<ParamValue> ParamValues { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MatrixType>();
+            modelBuilder.Entity<MatrixType>()
+                .HasMany(e => e.ParamMatrices)
+                .WithRequired(e => e.MatrixType)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ParamCategory>()
                 .Property(e => e.Weighting)
                 .HasPrecision(5, 2);
 
-            modelBuilder.Entity<ParamMaster>()
-                .HasMany(e => e.ParamValues);
+            modelBuilder.Entity<ParamCategory>()
+                .HasMany(e => e.Params)
+                .WithRequired(e => e.ParamCategory)
+                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ParamMatrix>()
-                .HasMany(e => e.ParamCategories);
+            modelBuilder.Entity<Param>()
+                .Property(e => e.Weighting)
+                .HasPrecision(5, 2);
+
+            modelBuilder.Entity<ParamTable>()
+                .HasMany(e => e.ParamValues)
+                .WithRequired(e => e.ParamTable)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ParamValue>()
                 .Property(e => e.Score)

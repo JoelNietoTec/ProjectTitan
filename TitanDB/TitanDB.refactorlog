@@ -175,4 +175,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ParamCategoryID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="7ba38575-49be-4e19-9dbd-11944f6bbcf0" ChangeDateTime="06/16/2017 23:53:03">
+    <Property Name="ElementName" Value="[dbo].[ParamMatrixTables].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParamMatrixTables]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="acb04df0-e611-4218-957a-d089f38494eb" ChangeDateTime="06/17/2017 04:19:09">
+    <Property Name="ElementName" Value="[dbo].[ParamMatrixTables].[ID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParamMatrixTables]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamCategoryID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="764505d6-ad6a-4cef-9a6b-086ca3d70b6e" ChangeDateTime="06/17/2017 04:25:55">
+    <Property Name="ElementName" Value="[dbo].[ParamMatrixTables].[ParamTableID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParamMatrixTables]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamMasterID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9684554c-30f7-48e4-a238-98338f4c792c" ChangeDateTime="06/19/2017 02:29:53">
+    <Property Name="ElementName" Value="[dbo].[Params].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Params]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="28042436-0d2d-49a0-9413-e62aad6f54b9" ChangeDateTime="06/19/2017 02:33:41">
+    <Property Name="ElementName" Value="[dbo].[Params].[EnglishName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Params]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e3449dca-efd3-492b-85c6-65a7518ba776" ChangeDateTime="06/19/2017 02:45:58">
+    <Property Name="ElementName" Value="[dbo].[ParamValues].[ParamMasterID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParamValues]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamTableID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="adfac7e5-d4c3-476f-97f0-4c7154cc890e" ChangeDateTime="06/19/2017 02:50:23">
+    <Property Name="ElementName" Value="[dbo].[Params].[Wei]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Params]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Weighting" />
+  </Operation>
 </Operations>
