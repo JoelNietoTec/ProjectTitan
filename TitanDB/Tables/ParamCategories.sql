@@ -6,3 +6,11 @@
     [EnglishName] NVARCHAR(100) NULL, 
     [Weighting] NUMERIC(5, 2) NULL 
 )
+
+GO
+
+CREATE UNIQUE INDEX [IX_ParamCategories_Name] ON [dbo].[ParamCategories] ([ParamMatrixID], [Name])
+
+GO
+
+CREATE UNIQUE INDEX [IX_ParamCategories_EnglishName] ON [dbo].[ParamCategories] ([ParamMatrixID], [EnglishName])

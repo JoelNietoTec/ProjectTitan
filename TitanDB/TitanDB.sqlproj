@@ -75,6 +75,7 @@
     <Build Include="Tables\Users.sql" />
     <Build Include="Tables\MatrixTypes.sql" />
     <Build Include="Tables\Params.sql" />
+    <Build Include="Tables\TableTypes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />
@@ -83,5 +84,8 @@
     <None Include="ConnPersonal.publish.xml" />
     <None Include="TitanDB.publish.xml" />
     <None Include="TitanDB_1.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Tables\Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>

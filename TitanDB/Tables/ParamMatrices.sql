@@ -9,3 +9,7 @@
     [MatrixTypeID] INT NOT NULL, 
     CONSTRAINT [FK_ParamMatrices_ToMatrixTypes] FOREIGN KEY ([MatrixTypeID]) REFERENCES [MatrixTypes]([ID])
 )
+
+GO
+
+CREATE UNIQUE INDEX [IX_ParamMatrices_Code] ON [dbo].[ParamMatrices] ([Code])

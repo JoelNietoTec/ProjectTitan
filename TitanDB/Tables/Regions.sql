@@ -8,3 +8,5 @@
     [EnglishShortName] NVARCHAR(50) NULL, 
     CONSTRAINT [FK_Regions_ToContinent] FOREIGN KEY ([ContinentID]) REFERENCES [Continents]([ID])
 )
+
+GO

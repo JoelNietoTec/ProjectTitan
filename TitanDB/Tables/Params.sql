@@ -10,3 +10,11 @@
     CONSTRAINT [FK_Params_ToParamTable] FOREIGN KEY ([ParamTableID]) REFERENCES [ParamTables]([ID]), 
     CONSTRAINT [FK_Params_ToCategories] FOREIGN KEY ([ParamCategoryID]) REFERENCES [ParamCategories]([ID])
 )
+
+GO
+
+CREATE UNIQUE INDEX [IX_Params_Name] ON [dbo].[Params] ([ParamCategoryID], [Name])
+
+GO
+
+CREATE UNIQUE INDEX [IX_Params_EnglishName] ON [dbo].[Params] ([ParamCategoryID], [EnglishName])

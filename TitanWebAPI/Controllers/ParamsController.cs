@@ -77,6 +77,7 @@ namespace TitanWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            param.ParamTable = null; //Evita Param Tables Duplicados
             db.Params.Add(param);
             db.SaveChanges();
 
