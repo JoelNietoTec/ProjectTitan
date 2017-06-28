@@ -25,6 +25,10 @@ namespace TitanWebAPI.Models.Params
 
         public DateTime? ModificateDate { get; set; }
 
+        public int TableTypeID { get; set; }
+
+        public virtual TableType TableType { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParamValue> ParamValues { get; set; }
     }

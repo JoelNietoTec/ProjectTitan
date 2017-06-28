@@ -13,10 +13,10 @@ Plantilla de script posterior a la implementación
 
 IF NOT EXISTS (SELECT 1 FROM dbo.TableTypes)
 BEGIN
-	INSERT INTO dbo.ParamTables (Name, EnglishName)
+	INSERT INTO dbo.TableTypes (Name, EnglishName)
 	SELECT N'Simple', N'Simple'
 
-	INSERT INTO dbo.ParamTables (Name, EnglishName)
+	INSERT INTO dbo.TableTypes (Name, EnglishName)
 	SELECT N'Compuesto', N'Complex'
 END
 

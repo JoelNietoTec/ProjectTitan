@@ -18,6 +18,7 @@ namespace TitanWebAPI.Models.Params
         public virtual DbSet<Param> Params { get; set; }
         public virtual DbSet<ParamTable> ParamTables { get; set; }
         public virtual DbSet<ParamValue> ParamValues { get; set; }
+        public virtual DbSet<TableType> TableTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

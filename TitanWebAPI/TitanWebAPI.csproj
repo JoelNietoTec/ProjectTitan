@@ -216,6 +216,7 @@
     <Compile Include="Models\Params\ParamsModel.cs" />
     <Compile Include="Models\Params\ParamTable.cs" />
     <Compile Include="Models\Params\ParamValue.cs" />
+    <Compile Include="Models\Params\TableType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
