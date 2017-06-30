@@ -231,4 +231,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="71220db5-1c7b-4fc1-a0b3-7038e1ca556c" ChangeDateTime="06/29/2017 17:31:47">
+    <Property Name="ElementName" Value="[dbo].[ParamTableChilds].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParamTableChilds]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cdcec29f-2d67-478c-a2cc-214fe858024f" ChangeDateTime="06/29/2017 17:33:36">
+    <Property Name="ElementName" Value="[dbo].[ParamTableChilds].[ParamTableID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParamTableChilds]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamValueID" />
+  </Operation>
 </Operations>

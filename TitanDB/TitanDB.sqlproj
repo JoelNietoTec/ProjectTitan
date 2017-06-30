@@ -76,6 +76,7 @@
     <Build Include="Tables\MatrixTypes.sql" />
     <Build Include="Tables\Params.sql" />
     <Build Include="Tables\TableTypes.sql" />
+    <Build Include="Tables\ParamSubValues.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />
