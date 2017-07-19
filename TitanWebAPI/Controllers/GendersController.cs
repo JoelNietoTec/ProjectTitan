@@ -2,14 +2,14 @@
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using TitanWebAPI.Models.Individuals;
+using TitanWebAPI.Models.Participants;
 
 namespace TitanWebAPI.Controllers
 {
     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers:"*", methods:"*")]
     public class GendersController : ApiController
     {
-        private IndividualsModel db = new IndividualsModel();
+        private ParticipantsModel db = new ParticipantsModel();
 
         // GET: api/Genders
         public IQueryable<Gender> GetGenders()

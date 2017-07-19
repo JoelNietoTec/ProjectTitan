@@ -1,4 +1,4 @@
-namespace TitanWebAPI.Models.Individuals
+namespace TitanWebAPI.Models.Participants
 {
     using System.ComponentModel.DataAnnotations;
 

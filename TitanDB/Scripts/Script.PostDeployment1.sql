@@ -21,3 +21,13 @@ BEGIN
 END
 
 GO
+
+IF NOT EXISTS (SELECT 1 FROM dbo.ParticipantTypes)
+BEGIN
+	INSERT INTO dbo.ParticipantTypes (Name, EnglishName)
+	SELECT N'Individuo', N'Individual'
+
+	INSERT INTO dbo.ParticipantTypes (Name, EnglishName)
+	SELECT N'Entidad', N'Entities'
+
+END

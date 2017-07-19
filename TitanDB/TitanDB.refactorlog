@@ -245,4 +245,137 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ParamValueID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="1726e63e-4575-4237-81c9-3120de0a8bd3" ChangeDateTime="07/04/2017 16:35:05">
+    <Property Name="ElementName" Value="[dbo].[ParticipantTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6548b54c-7f6c-43be-a5b2-fe6b40df89c3" ChangeDateTime="07/04/2017 16:42:49">
+    <Property Name="ElementName" Value="[dbo].[IndividualsDocuments].[IndividualID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[IndividualsDocuments]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParticipantID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2d78bfe6-0ee4-4828-aa90-25540f188a40" ChangeDateTime="07/04/2017 16:43:46">
+    <Property Name="ElementName" Value="[dbo].[IndiviualParams].[IndividualID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[IndiviualParams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParticipantID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6933e743-118f-4f5d-9968-7ef522d50878" ChangeDateTime="07/04/2017 23:30:11">
+    <Property Name="ElementName" Value="[dbo].[ParticipantMatrices].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantMatrices]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="547dca61-cf88-4120-8723-e9b9182a0003" ChangeDateTime="07/04/2017 23:56:09">
+    <Property Name="ElementName" Value="[dbo].[ParticipantMatrices].[Curre]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantMatrices]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Active" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bde23e06-33c9-43c7-9035-2618ebe936cf" ChangeDateTime="07/05/2017 00:01:43">
+    <Property Name="ElementName" Value="[dbo].[ParticipantMatrixValues].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantMatrixValues]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ecb4bb6a-bb72-4715-8f8b-271190ce0f6c" ChangeDateTime="07/08/2017 16:14:43">
+    <Property Name="ElementName" Value="[dbo].[ContactTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ContactTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8075c039-5d3e-4b13-a353-e3c22efa1d5a" ChangeDateTime="07/08/2017 16:18:35">
+    <Property Name="ElementName" Value="[dbo].[ParticipantContacts].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantContacts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="724c6285-89ab-4899-a188-6f43709e5db1" ChangeDateTime="07/08/2017 16:34:25">
+    <Property Name="ElementName" Value="[dbo].[ParticipantContacts].[EnglishName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantContacts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="394192a4-4e00-476f-b2fd-1932c49d1de8" ChangeDateTime="07/08/2017 16:39:19">
+    <Property Name="ElementName" Value="[dbo].[ParticipantContacts].[Description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantContacts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Contact" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c27e0445-be2b-45bd-82ba-75b13fecfa92" ChangeDateTime="07/08/2017 16:49:08">
+    <Property Name="ElementName" Value="[dbo].[ParticipantContacts].[Contact]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantContacts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Phone" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e165ed25-7bb3-4d1b-85ac-9c60e9cd1899" ChangeDateTime="07/08/2017 16:50:56">
+    <Property Name="ElementName" Value="[dbo].[ParticipantContacts].[FaxNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantContacts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Fax" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b9c89830-c107-4f92-9c06-7caf2168b7b1" ChangeDateTime="07/08/2017 17:19:39">
+    <Property Name="ElementName" Value="[dbo].[Participants].[PhoneNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Participants]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Phone" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="66a09db1-cb23-433c-a483-ad611648c9ac" ChangeDateTime="07/08/2017 17:19:46">
+    <Property Name="ElementName" Value="[dbo].[Participants].[Mobile]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Participants]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MobilePhone" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="94a70c00-8a9b-4239-a89d-530e1889c1ce" ChangeDateTime="07/08/2017 23:25:00">
+    <Property Name="ElementName" Value="[dbo].[ParticipantParams].[ParamMasterID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantParams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="52d78777-a386-49f4-9dca-74cce3a90803" ChangeDateTime="07/10/2017 17:57:22">
+    <Property Name="ElementName" Value="[dbo].[ParticipantParams].[ParamID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantParams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamCategoryID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ec883e24-58ce-4a38-b2a6-9a0dc46b8051" ChangeDateTime="07/10/2017 17:57:35">
+    <Property Name="ElementName" Value="[dbo].[ParticipantParams].[ParamTableID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantParams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5eec9e0e-ed67-40cc-b906-d8f08423eab9" ChangeDateTime="07/11/2017 20:41:26">
+    <Property Name="ElementName" Value="[dbo].[Participants].[Matrix]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Participants]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamMatrixID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c0e35a1a-d87e-465b-9a10-7a3e1df2afa1" ChangeDateTime="07/12/2017 00:14:50">
+    <Property Name="ElementName" Value="[dbo].[ParticipantParams].[ParticipantMatrixID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ParticipantParams]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamMatrixID" />
+  </Operation>
 </Operations>

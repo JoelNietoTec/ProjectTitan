@@ -10,46 +10,44 @@ using TitanWebAPI.Models.Params;
 namespace TitanWebAPI.Controllers
 {
     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
-    public class ParamTablesController : ApiController
+    public class ParamSubValuesController : ApiController
     {
         private ParamsModel db = new ParamsModel();
 
-        // GET: api/ParamTables
-        public IQueryable<ParamTable> GetParamTables()
+        // GET: api/ParamSubValues
+        public IQueryable<ParamSubValue> GetParamSubValues()
         {
-            return db.ParamTables;
+            return db.ParamSubValues;
         }
 
-        // GET: api/ParamTables/5
-        [ResponseType(typeof(ParamTable))]
-        public IHttpActionResult GetParamTable(int id)
+        // GET: api/ParamSubValues/5
+        [ResponseType(typeof(ParamSubValue))]
+        public IHttpActionResult GetParamSubValue(int id)
         {
-            ParamTable paramTable = db.ParamTables.Find(id);
-            if (paramTable == null)
+            ParamSubValue paramSubValue = db.ParamSubValues.Find(id);
+            if (paramSubValue == null)
             {
                 return NotFound();
             }
 
-            return Ok(paramTable);
+            return Ok(paramSubValue);
         }
 
-        // PUT: api/ParamTables/5
+        // PUT: api/ParamSubValues/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutParamTable(int id, ParamTable paramTable)
+        public IHttpActionResult PutParamSubValue(int id, ParamSubValue paramSubValue)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != paramTable.ID)
+            if (id != paramSubValue.ID)
             {
                 return BadRequest();
             }
 
-            paramTable.TableType = null;
-
-            db.Entry(paramTable).State = EntityState.Modified;
+            db.Entry(paramSubValue).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +55,7 @@ namespace TitanWebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ParamTableExists(id))
+                if (!ParamSubValueExists(id))
                 {
                     return NotFound();
                 }
@@ -70,37 +68,35 @@ namespace TitanWebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ParamTables
-        [ResponseType(typeof(ParamTable))]
-        public IHttpActionResult PostParamTable(ParamTable paramTable)
+        // POST: api/ParamSubValues
+        [ResponseType(typeof(ParamSubValue))]
+        public IHttpActionResult PostParamSubValue(ParamSubValue paramSubValue)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            paramTable.TableType = null;
-
-            db.ParamTables.Add(paramTable);
+            db.ParamSubValues.Add(paramSubValue);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = paramTable.ID }, paramTable);
+            return CreatedAtRoute("DefaultApi", new { id = paramSubValue.ID }, paramSubValue);
         }
 
-        // DELETE: api/ParamTables/5
-        [ResponseType(typeof(ParamTable))]
-        public IHttpActionResult DeleteParamTable(int id)
+        // DELETE: api/ParamSubValues/5
+        [ResponseType(typeof(ParamSubValue))]
+        public IHttpActionResult DeleteParamSubValue(int id)
         {
-            ParamTable paramTable = db.ParamTables.Find(id);
-            if (paramTable == null)
+            ParamSubValue paramSubValue = db.ParamSubValues.Find(id);
+            if (paramSubValue == null)
             {
                 return NotFound();
             }
 
-            db.ParamTables.Remove(paramTable);
+            db.ParamSubValues.Remove(paramSubValue);
             db.SaveChanges();
 
-            return Ok(paramTable);
+            return Ok(paramSubValue);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +108,9 @@ namespace TitanWebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ParamTableExists(int id)
+        private bool ParamSubValueExists(int id)
         {
-            return db.ParamTables.Count(e => e.ID == id) > 0;
+            return db.ParamSubValues.Count(e => e.ID == id) > 0;
         }
     }
 }

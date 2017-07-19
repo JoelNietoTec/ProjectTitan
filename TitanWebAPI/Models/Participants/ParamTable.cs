@@ -1,20 +1,19 @@
-namespace TitanWebAPI.Models.Params
+﻿namespace TitanWebAPI.Models.Participants
 {
+    using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class ParamCategory
+    public partial class ParamTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ParamCategory()
+        public ParamTable()
         {
-            Params = new HashSet<Param>();
+            ParamValues = new HashSet<ParamValue>();
         }
 
         public int ID { get; set; }
-
-        public int ParamMatrixID { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }
@@ -22,10 +21,15 @@ namespace TitanWebAPI.Models.Params
         [StringLength(100)]
         public string EnglishName { get; set; }
 
-        [Column(TypeName = "numeric")]
-        public decimal? Weighting { get; set; }
+        public DateTime? CreateDate { get; set; }
+
+        public DateTime? ModificateDate { get; set; }
+
+        public int TableTypeID { get; set; }
+
+        public virtual TableType TableType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Param> Params { get; set; }
+        public virtual ICollection<ParamValue> ParamValues { get; set; }
     }
 }

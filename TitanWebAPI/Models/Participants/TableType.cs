@@ -1,8 +1,10 @@
-namespace TitanWebAPI.Models.Individuals
+﻿namespace TitanWebAPI.Models.Participants
 {
+    using Newtonsoft.Json;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class DocumentType
+    public partial class TableType
     {
         public int ID { get; set; }
 

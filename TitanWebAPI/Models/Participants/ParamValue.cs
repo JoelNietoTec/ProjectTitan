@@ -1,4 +1,4 @@
-namespace TitanWebAPI.Models.Params
+﻿namespace TitanWebAPI.Models.Participants
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
@@ -26,6 +26,7 @@ namespace TitanWebAPI.Models.Params
         [Column(TypeName = "numeric")]
         public decimal? Score { get; set; }
 
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParamSubValue> ParamSubValues { get; set; }
 

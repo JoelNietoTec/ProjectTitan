@@ -19,6 +19,7 @@ namespace TitanWebAPI.Models.Params
         public virtual DbSet<ParamTable> ParamTables { get; set; }
         public virtual DbSet<ParamValue> ParamValues { get; set; }
         public virtual DbSet<TableType> TableTypes { get; set; }
+        public virtual DbSet<ParamSubValue> ParamSubValues { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -48,6 +49,11 @@ namespace TitanWebAPI.Models.Params
             modelBuilder.Entity<ParamValue>()
                 .Property(e => e.Score)
                 .HasPrecision(10, 2);
+
+            modelBuilder.Entity<ParamValue>()
+                .HasMany(e => e.ParamSubValues)
+                .WithRequired(e => e.ParamValue)
+                .WillCascadeOnDelete(false);
         }
     }
 }

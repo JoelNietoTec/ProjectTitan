@@ -1,16 +1,16 @@
-namespace TitanWebAPI.Models.Individuals
+namespace TitanWebAPI.Models.Participants
 {
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class IndividualsDocument
+    public partial class ParticipantsDocument
     {
         public int ID { get; set; }
 
         public int DocumentTypeID { get; set; }
 
-        public int IndividualID { get; set; }
+        public int ParticipantID { get; set; }
 
         [StringLength(50)]
         public string DocumentCode { get; set; }
