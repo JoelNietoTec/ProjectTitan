@@ -185,8 +185,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\ContinentsController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\DocumentTypesController.cs" />
     <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatrixTypesController.cs" />
@@ -198,14 +198,16 @@
     <Compile Include="Controllers\ParamValuesController.cs" />
     <Compile Include="Controllers\ParticipantParamsController.cs" />
     <Compile Include="Controllers\ParticipantsController.cs" />
-    <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="Controllers\ParticipantDocumentsController.cs" />
+    <Compile Include="Controllers\RelationshipTypesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Countries\Continent.cs" />
     <Compile Include="Models\Countries\CountriesModel.cs" />
     <Compile Include="Models\Countries\Country.cs" />
-    <Compile Include="Models\Countries\Region.cs" />
+    <Compile Include="Models\Participants\Document.cs" />
+    <Compile Include="Models\Participants\DocumentCountry.cs" />
     <Compile Include="Models\Participants\DocumentType.cs" />
     <Compile Include="Models\Participants\Gender.cs" />
     <Compile Include="Models\Participants\Param.cs" />
@@ -217,7 +219,8 @@
     <Compile Include="Models\Participants\Participant.cs" />
     <Compile Include="Models\Participants\ParticipantContacts.cs" />
     <Compile Include="Models\Participants\ParticipantParam.cs" />
-    <Compile Include="Models\Participants\ParticipantsDocument.cs" />
+    <Compile Include="Models\Participants\ParticipantDocument.cs" />
+    <Compile Include="Models\Participants\ParticipantRelationship.cs" />
     <Compile Include="Models\Participants\ParticipantsModel.cs" />
     <Compile Include="Models\Params\MatrixType.cs" />
     <Compile Include="Models\Params\Param.cs" />
@@ -229,7 +232,14 @@
     <Compile Include="Models\Params\ParamValue.cs" />
     <Compile Include="Models\Params\TableType.cs" />
     <Compile Include="Models\Participants\ParticipantType.cs" />
+    <Compile Include="Models\Participants\RelatedParticipant.cs" />
+    <Compile Include="Models\Participants\RelationshipType.cs" />
     <Compile Include="Models\Participants\TableType.cs" />
+    <Compile Include="Models\Participants\ParticipantsByRisk.cs" />
+    <Compile Include="Models\Participants\User.cs" />
+    <Compile Include="Models\Users\Login.cs" />
+    <Compile Include="Models\Users\User.cs" />
+    <Compile Include="Models\Users\UsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

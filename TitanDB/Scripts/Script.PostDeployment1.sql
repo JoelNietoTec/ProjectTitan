@@ -31,3 +31,18 @@ BEGIN
 	SELECT N'Entidad', N'Entities'
 
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.DocumentTypes)
+BEGIN
+	INSERT INTO DocumentTypes (Name, EnglishName)
+	SELECT N'Pasaporte', N'Passport'
+
+	INSERT INTO DocumentTypes (Name, EnglishName)
+	SELECT N'Cédula', N'Carnet'
+
+	INSERT INTO DocumentTypes (Name, EnglishName)
+	SELECT N'Licencia de conducir', N'Driver''s license'
+
+	INSERT INTO DocumentTypes (Name, EnglishName)
+	SELECT N'Declaración de renta', N'Income statement'
+END

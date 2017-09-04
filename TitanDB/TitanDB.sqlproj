@@ -61,6 +61,7 @@
     <Folder Include="Scripts" />
     <Folder Include="StoreProcedures" />
     <Folder Include="Functions" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Participants.sql" />
@@ -73,8 +74,6 @@
     <Build Include="Tables\ParamMatrices.sql" />
     <Build Include="Tables\ParticipantParams.sql" />
     <Build Include="Tables\Countries.sql" />
-    <Build Include="Tables\Continents.sql" />
-    <Build Include="Tables\Regions.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="Tables\MatrixTypes.sql" />
     <Build Include="Tables\Params.sql" />
@@ -86,6 +85,10 @@
     <Build Include="Tables\ParticipantMatrixValues.sql" />
     <Build Include="Tables\ParticipantContacts.sql" />
     <Build Include="Functions\GetParticipantScore.sql" />
+    <Build Include="Tables\Documents.sql" />
+    <Build Include="Tables\RelationshipTypes.sql" />
+    <Build Include="Tables\ParticipantRelationships.sql" />
+    <Build Include="Views\ParticipantsByRisk.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

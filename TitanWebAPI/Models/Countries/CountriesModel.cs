@@ -9,19 +9,11 @@ namespace TitanWebAPI.Models.Countries
         {
         }
 
-        public virtual DbSet<Continent> Continents { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<Region> Regions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Continent>();
-
-            modelBuilder.Entity<Country>()
-                .Property(e => e.Score)
-                .HasPrecision(18, 5);
-
-            modelBuilder.Entity<Region>();
+            modelBuilder.Entity<Country>();
         }
     }
 }

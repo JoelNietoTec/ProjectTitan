@@ -11,3 +11,17 @@
 )
 
 GO
+
+
+CREATE TRIGGER [dbo].[Trigger_Params]
+    ON [dbo].[ParticipantParams]
+    FOR UPDATE
+    AS
+    BEGIN
+        SET NoCount ON
+		DECLARE @id int
+
+		SELECT @id = ParticipantID FROM inserted
+
+		EXEC GetParticipantScore @id
+    END

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Documents]
+(
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [File] VARBINARY(MAX) NULL
+)

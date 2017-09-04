@@ -11,9 +11,10 @@ namespace TitanWebAPI.Models.Participants
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Participant()
         {
-            ParticipantsDocuments = new HashSet<ParticipantsDocument>();
+            ParticipantDocuments = new HashSet<ParticipantDocument>();
             ParticipantContacts = new HashSet<ParticipantContacts>();
             ParticipantParams = new HashSet<ParticipantParam>();
+            Relationships = new HashSet<ParticipantRelationship>();
         }
 
         public int ID { get; set; }
@@ -66,16 +67,37 @@ namespace TitanWebAPI.Models.Participants
 
         public decimal? Score { get; set; }
 
+        public DateTime? CreateDate { get; set; }
+
+        public int? CreatedBy { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [ForeignKey("CreatedBy")]
+        public virtual User CreatedByUser { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        public int? ModifiedBy { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [ForeignKey("ModifiedBy")]
+        public virtual User ModifiedByUser { get; set; }
+
         [JsonIgnore]
         public virtual ParamMatrix ParamMatrix { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParticipantsDocument> ParticipantsDocuments { get; set; }
+        public virtual ICollection<ParticipantDocument> ParticipantDocuments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParticipantContacts> ParticipantContacts { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParticipantParam> ParticipantParams { get; set; }
+        
+        [InverseProperty("Participant")]
+        public virtual ICollection<ParticipantRelationship> Relationships { get; set; }
+
+        public Boolean PEP { get; set; }
     }
 }
