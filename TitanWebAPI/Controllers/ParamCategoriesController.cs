@@ -20,6 +20,13 @@ namespace TitanWebAPI.Controllers
             return db.ParamCategories;
         }
 
+        [HttpGet]
+        [Route("api/parammatrices/{id}/categories")]
+        public IQueryable<ParamCategory> GetParamCategoriesByMatrix(int id)
+        {
+            return db.ParamCategories.Where(x => x.ParamMatrixID == id);
+        }
+
         // GET: api/ParamCategories/5
         [ResponseType(typeof(ParamCategory))]
         public IHttpActionResult GetParamCategory(int id)
@@ -34,7 +41,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/ParamCategories/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(ParamCategory))]
         public IHttpActionResult PutParamCategory(int id, ParamCategory paramCategory)
         {
             if (!ModelState.IsValid)
@@ -65,7 +72,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = paramCategory.ID }, paramCategory);
         }
 
         // POST: api/ParamCategories

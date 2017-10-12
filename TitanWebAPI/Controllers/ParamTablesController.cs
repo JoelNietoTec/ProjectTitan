@@ -34,7 +34,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/ParamTables/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(ParamTable))]
         public IHttpActionResult PutParamTable(int id, ParamTable paramTable)
         {
             if (!ModelState.IsValid)
@@ -67,7 +67,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = paramTable.ID }, paramTable);
         }
 
         // POST: api/ParamTables

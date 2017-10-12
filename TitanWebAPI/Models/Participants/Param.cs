@@ -24,10 +24,5 @@
         [Column(TypeName = "numeric")]
         public decimal? Weighting { get; set; }
 
-        [JsonIgnore]
-        public virtual ParamCategory ParamCategory { get; set; }
-
-        [JsonIgnore]
-        public virtual ParamTable ParamTable { get; set; }
     }
 }

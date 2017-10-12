@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -197,9 +198,12 @@
     <Compile Include="Controllers\ParamTablesController.cs" />
     <Compile Include="Controllers\ParamValuesController.cs" />
     <Compile Include="Controllers\ParticipantParamsController.cs" />
+    <Compile Include="Controllers\ParticipantRelationshipsController.cs" />
     <Compile Include="Controllers\ParticipantsController.cs" />
     <Compile Include="Controllers\ParticipantDocumentsController.cs" />
     <Compile Include="Controllers\RelationshipTypesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\TaskStatusController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +222,8 @@
     <Compile Include="Models\Participants\ParamValue.cs" />
     <Compile Include="Models\Participants\Participant.cs" />
     <Compile Include="Models\Participants\ParticipantContacts.cs" />
+    <Compile Include="Models\Participants\ParticipantCountry.cs" />
+    <Compile Include="Models\Participants\ParticipantNationality.cs" />
     <Compile Include="Models\Participants\ParticipantParam.cs" />
     <Compile Include="Models\Participants\ParticipantDocument.cs" />
     <Compile Include="Models\Participants\ParticipantRelationship.cs" />
@@ -237,6 +243,9 @@
     <Compile Include="Models\Participants\TableType.cs" />
     <Compile Include="Models\Participants\ParticipantsByRisk.cs" />
     <Compile Include="Models\Participants\User.cs" />
+    <Compile Include="Models\Tasks\Task.cs" />
+    <Compile Include="Models\Tasks\TasksModel.cs" />
+    <Compile Include="Models\Tasks\TaskStatu.cs" />
     <Compile Include="Models\Users\Login.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Models\Users\UsersModel.cs" />
@@ -281,7 +290,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Properties\PublishProfiles\ComplianceWebAPI - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\ComplianceAPI - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -305,6 +314,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />

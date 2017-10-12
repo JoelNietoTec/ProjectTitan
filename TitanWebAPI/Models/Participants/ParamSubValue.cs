@@ -19,8 +19,5 @@
         [Column(TypeName = "numeric")]
         public decimal? Score { get; set; }
 
-        [JsonIgnore]
-        public virtual ParamValue ParamValue { get; set; }
-
     }
 }

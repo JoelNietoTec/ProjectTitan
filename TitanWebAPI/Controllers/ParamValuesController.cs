@@ -34,7 +34,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/ParamValues/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(ParamValue))]
         public IHttpActionResult PutParamValue(int id, ParamValue paramValue)
         {
             if (!ModelState.IsValid)
@@ -65,7 +65,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = paramValue.ID }, paramValue);
         }
 
         // POST: api/ParamValues

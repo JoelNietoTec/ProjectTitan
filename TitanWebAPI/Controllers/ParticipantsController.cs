@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Core.Objects.DataClasses;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
@@ -50,7 +49,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/Participants/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(Participant))]
         public IHttpActionResult PutParticipant(int id, Participant participant)
         {
             if (!ModelState.IsValid)
@@ -63,13 +62,6 @@ namespace TitanWebAPI.Controllers
                 return BadRequest();
             }
 
-            var updatedParticipant = new Participant()
-            {
-                ID = participant.ID
-            };
-
-            db.Entry(participant.ModifiedByUser).State = EntityState.Modified;
-            db.Entry(participant.CreatedByUser).State = EntityState.Modified;
             db.Entry(participant).State = EntityState.Modified;
 
             try
@@ -88,7 +80,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = participant.ID }, participant);
         }
 
         // POST: api/Participants
@@ -101,30 +93,14 @@ namespace TitanWebAPI.Controllers
             }
 
             db.Participants.Add(participant);
+ /*           foreach (var item in participant.Nationalities)
+            {
+                db.Entry(item).CurrentValues.SetValues(item);
+                db.Entry(item).State = EntityState.Modified;
+            } */
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = participant.ID }, participant);
-        }
-
-        [HttpPost]
-        [Route("api/participants/relationships")]
-        public IHttpActionResult PostParticipantRelationship(ParticipantRelationship relationship)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            relationship.ParticipantID = relationship.Participant.ID;
-            relationship.RelatedParticipantID = relationship.RelatedParticipant.ID;
-            relationship.RelationshipTypeID = relationship.Type.ID;
-
-            db.ParticipantRelationships.Add(relationship);
-            db.Entry(relationship.Participant).State = EntityState.Unchanged;
-            db.Entry(relationship.RelatedParticipant).State = EntityState.Detached;
-            db.Entry(relationship.Type).State = EntityState.Detached;
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = relationship.ID }, relationship);
         }
 
         [HttpDelete]

@@ -38,7 +38,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/RelationshipTypes/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(RelationshipType))]
         public IHttpActionResult PutRelationshipType(int id, RelationshipType relationshipType)
         {
             if (!ModelState.IsValid)
@@ -69,7 +69,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = relationshipType.ID }, relationshipType);
         }
 
         // POST: api/RelationshipTypes

@@ -26,23 +26,28 @@ namespace TitanWebAPI.Models.Participants
         public virtual DbSet<ParticipantRelationship> ParticipantRelationships { get; set; }
         public virtual DbSet<RelationshipType> RelationshipTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ParticipantNationality> Nationalities { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DocumentType>();
+
+            modelBuilder.Entity<ParticipantNationality>()
+                .HasKey(c => new { c.ParticipantID, c.CountryID });
 
             modelBuilder.Entity<Gender>();
 
             modelBuilder.Entity<ParticipantType>();
 
             modelBuilder.Entity<Participant>()
-                .HasMany(e => e.ParticipantDocuments);
-
-            modelBuilder.Entity<Participant>()
-                .HasMany(e => e.Relationships);
-
-            modelBuilder.Entity<Participant>()
-                .HasMany(e => e.ParticipantParams);
+                .HasMany<ParticipantCountry>(c => c.Nationalities)
+                .WithMany(n => n.Participants)
+                .Map(cn =>
+                {
+                    cn.MapLeftKey("ParticipantID");
+                    cn.MapRightKey("CountryID");
+                    cn.ToTable("ParticipantNationalities");
+                });
 
             modelBuilder.Entity<Participant>()
                 .HasMany(e => e.ParticipantContacts);

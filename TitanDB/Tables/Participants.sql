@@ -20,8 +20,6 @@
     [Rate] NVARCHAR(50) NULL, 
 	[CreateDate] DATETIME NULL,
 	[CreatedBy] INT DEFAULT 1,
-    [ModifiedDate] DATETIME NULL, 
-    [ModifiedBy] INT NULL, 
     [PurposeID] INT NULL DEFAULT 1, 
     [PEP] BIT NULL DEFAULT 0, 
     CONSTRAINT [FK_Participants_ToType] FOREIGN KEY ([ParticipantTypeID]) REFERENCES [ParticipantTypes]([ID]), 
@@ -56,13 +54,3 @@ CREATE TRIGGER [dbo].[Trigger_Participants]
 
     END
 GO
-
-CREATE TRIGGER [dbo].[Trigger_ParticipantsUpdate]
-    ON [dbo].[Participants]
-    FOR UPDATE
-    AS
-    BEGIN
-        SET NoCount ON
-
-		UPDATE Participants SET [ModifiedDate] = GETDATE() FROM inserted INS INNER JOIN dbo.Participants P ON P.ID = INS.ID
-    END

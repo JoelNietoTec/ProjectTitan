@@ -34,7 +34,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/DocumentTypes/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(DocumentType))]
         public IHttpActionResult PutDocumentType(int id, DocumentType documentType)
         {
             if (!ModelState.IsValid)
@@ -65,7 +65,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = documentType.ID }, documentType);
         }
 
         // POST: api/DocumentTypes

@@ -8,10 +8,6 @@
     public partial class ParamValue
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ParamValue()
-        {
-            ParamSubValues = new HashSet<ParamSubValue>();
-        }
 
         public int ID { get; set; }
 
@@ -26,11 +22,5 @@
         [Column(TypeName = "numeric")]
         public decimal? Score { get; set; }
 
-        [JsonIgnore]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParamSubValue> ParamSubValues { get; set; }
-
-        [JsonIgnore]
-        public virtual ParamTable ParamTable { get; set; }
     }
 }

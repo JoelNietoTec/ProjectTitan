@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+﻿      using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -34,7 +34,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/ParamMatrices/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(ParamMatrix))]
         public IHttpActionResult PutParamMatrix(int id, ParamMatrix paramMatrix)
         {
             if (!ModelState.IsValid)
@@ -65,7 +65,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = paramMatrix.ID }, paramMatrix);
         }
 
         // POST: api/ParamMatrices

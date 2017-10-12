@@ -39,7 +39,7 @@ namespace TitanWebAPI.Controllers
             return db.ParticipantParams.Where(x => x.ParticipantID.Equals(participantID));
         }
         // PUT: api/ParticipantParams/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(ParticipantParam))]
         public IHttpActionResult PutParticipantParam(int id, ParticipantParam participantParam)
         {
             if (!ModelState.IsValid)
@@ -70,7 +70,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = participantParam.ID }, participantParam);
         }
 
         // POST: api/ParticipantParams

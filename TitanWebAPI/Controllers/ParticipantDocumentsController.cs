@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -38,8 +34,15 @@ namespace TitanWebAPI.Controllers
             return Ok(participantsDocument);
         }
 
+        [HttpGet]
+        [Route("api/participants/{id}/documents")]
+        public IQueryable<ParticipantDocument> GetDocumentsByParticipant(int id)
+        {
+            return db.ParticipantDocuments.Where(x => x.ParticipantID == id);
+        }
+
         // PUT: api/ParticipantsDocuments/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(ParticipantDocument))]
         public IHttpActionResult PutParticipantsDocument(int id, ParticipantDocument participantsDocument)
         {
             if (!ModelState.IsValid)
@@ -70,7 +73,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { id = participantsDocument.ID }, participantsDocument);
         }
 
         // POST: api/ParticipantsDocuments

@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{1a710d2d-9829-4fef-9b46-03b63cb2f738}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -89,6 +89,11 @@
     <Build Include="Tables\RelationshipTypes.sql" />
     <Build Include="Tables\ParticipantRelationships.sql" />
     <Build Include="Views\ParticipantsByRisk.sql" />
+    <Build Include="Tables\ParticipantLog.sql" />
+    <Build Include="Tables\Tasks.sql" />
+    <Build Include="Tables\TaskStatus.sql" />
+    <Build Include="Tables\ParticipantNationalities.sql" />
+    <Build Include="Views\DocumentCountries.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />
@@ -97,5 +102,6 @@
     <None Include="ConnPersonal.publish.xml" />
     <None Include="TitanDB.publish.xml" />
     <None Include="TitanDB_1.publish.xml" />
+    <None Include="Azure.publish.xml" />
   </ItemGroup>
 </Project>

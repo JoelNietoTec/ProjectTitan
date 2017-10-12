@@ -20,6 +20,15 @@ BEGIN
 	SELECT N'Compuesto', N'Complex'
 END
 
+IF NOT EXISTS (SELECT 1 FROM dbo.Genders)
+BEGIN
+	INSERT INTO dbo.Genders (Name, EnglishName)
+	SELECT N'Femenino', N'Female'
+
+	INSERT INTO dbo.Genders(Name, EnglishName)
+	SELECT N'Masculino', N'Male'
+END
+
 GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.ParticipantTypes)
@@ -28,6 +37,16 @@ BEGIN
 	SELECT N'Individuo', N'Individual'
 
 	INSERT INTO dbo.ParticipantTypes (Name, EnglishName)
+	SELECT N'Entidad', N'Entities'
+
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.MatrixTypes)
+BEGIN
+	INSERT INTO dbo.MatrixTypes (Name, EnglishName)
+	SELECT N'Individuo', N'Individual'
+
+	INSERT INTO dbo.MatrixTypes (Name, EnglishName)
 	SELECT N'Entidad', N'Entities'
 
 END
@@ -45,4 +64,16 @@ BEGIN
 
 	INSERT INTO DocumentTypes (Name, EnglishName)
 	SELECT N'Declaración de renta', N'Income statement'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.TaskStatus)
+BEGIN
+	INSERT INTO TaskStatus (Name, EnglishName)
+	SELECT N'Sin Iniciar', N'To Do'
+
+	INSERT INTO TaskStatus (Name, EnglishName)
+	SELECT N'En Progreso', N'Doing'
+
+	INSERT INTO TaskStatus (Name, EnglishName)
+	SELECT N'Terminada', N'Done'
 END
