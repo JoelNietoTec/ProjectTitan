@@ -13,8 +13,9 @@ namespace TitanWebAPI.Models.Participants
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Participant> Participants { get; set; }
         public virtual DbSet<ParticipantDocument> ParticipantDocuments { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<ParticipantType> ParticipantTypes { get; set; }
-        public virtual DbSet<ParticipantContacts> ParticipantContacts { get; set; }
+        public virtual DbSet<ParticipantContact> ParticipantContacts { get; set; }
         public virtual DbSet<ParticipantParam> ParticipantParams { get; set; }
         public virtual DbSet<ParamMatrix> ParamMatrices { get; set; }
         public virtual DbSet<ParamCategory> ParamCategories { get; set; }
@@ -27,6 +28,11 @@ namespace TitanWebAPI.Models.Participants
         public virtual DbSet<RelationshipType> RelationshipTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ParticipantNationality> Nationalities { get; set; }
+        public virtual DbSet<Discard> Discards { get; set; }
+        public virtual DbSet<DiscardMatch> DiscardMatches { get; set; }
+        public virtual DbSet<Sanction> Sanctions { get; set; }
+        public virtual DbSet<List> Lists { get; set; }
+        public virtual DbSet<PendingDocument> PendingDocuments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -67,6 +73,5 @@ namespace TitanWebAPI.Models.Participants
             modelBuilder.Entity<ParticipantsByRisk>();
         }
 
-        public System.Data.Entity.DbSet<TitanWebAPI.Models.Participants.Document> Documents { get; set; }
     }
 }

@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Sanctions]
+(
+	[ID] INT NOT NULL IDENTITY, 
+    [ListID] INT NULL, 
+	[Date] DATETIME NULL,
+    [Term1] NVARCHAR(1000) NULL, 
+    [Term2] NVARCHAR(1000) NULL, 
+    [Term3] NVARCHAR(1000) NULL, 
+    [Term4] NVARCHAR(1000) NULL, 
+    [Term5] NVARCHAR(2000) NULL
+)

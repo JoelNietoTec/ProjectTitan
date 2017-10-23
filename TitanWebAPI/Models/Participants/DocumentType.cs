@@ -11,5 +11,9 @@ namespace TitanWebAPI.Models.Participants
 
         [StringLength(50)]
         public string EnglishName { get; set; }
+
+        public bool? RequiredIndividual { get; set; }
+
+        public bool? RequiredEntity { get; set; }
     }
 }

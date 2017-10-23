@@ -94,6 +94,11 @@
     <Build Include="Tables\TaskStatus.sql" />
     <Build Include="Tables\ParticipantNationalities.sql" />
     <Build Include="Views\DocumentCountries.sql" />
+    <Build Include="Tables\Sanctions.sql" />
+    <Build Include="Tables\Lists.sql" />
+    <Build Include="Tables\Discards.sql" />
+    <Build Include="Tables\DiscardMatches.sql" />
+    <Build Include="Views\PendingDocuments.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

@@ -1,4 +1,4 @@
-﻿namespace TitanWebAPI.Models.Participants
+namespace TitanWebAPI.Models.Participants
 {
     public partial class ParticipantParam
     {
@@ -16,7 +16,7 @@
 
         public int? ParamValueID { get; set; }
 
-        public virtual ParamValue ParamValue { get; set; } 
+        public virtual ParamValue ParamValue { get; set; }
 
         public int? ParamSubValueID { get; set; }
 

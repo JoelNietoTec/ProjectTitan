@@ -9,3 +9,13 @@
 )
 
 GO
+
+
+CREATE TRIGGER [dbo].[Trigger_ParamSubValues]
+    ON [dbo].[ParamSubValues]
+    FOR UPDATE
+    AS
+    BEGIN
+        SET NoCount ON
+		UPDATE ParticipantParams SET Score = inserted.Score FROM inserted WHERE ParamSubValueID = inserted.ID
+    END

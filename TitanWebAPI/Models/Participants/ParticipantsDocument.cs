@@ -1,10 +1,12 @@
 namespace TitanWebAPI.Models.Participants
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-    public partial class ParticipantDocument
+    public partial class ParticipantsDocument
     {
         public int ID { get; set; }
 
@@ -24,15 +26,8 @@ namespace TitanWebAPI.Models.Participants
         [StringLength(200)]
         public string FilePath { get; set; }
 
-        public int CountryID { get; set; }
-
-        public virtual DocumentType DocumentType { get; set; }
-
-        public virtual DocumentCountry Country { get; set; }
+        public int? CountryID { get; set; }
 
         public int? FileID { get; set; }
-
-        [ForeignKey("FileID")]
-        public virtual Document Document { get; set; }
     }
 }

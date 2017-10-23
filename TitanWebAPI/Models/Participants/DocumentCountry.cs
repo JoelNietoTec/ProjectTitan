@@ -1,7 +1,6 @@
 ﻿namespace TitanWebAPI.Models.Participants
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class DocumentCountry
     {

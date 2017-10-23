@@ -11,7 +11,7 @@ namespace TitanWebAPI.Models.Participants
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Participant()
         {
-            ParticipantContacts = new HashSet<ParticipantContacts>();
+            ParticipantContacts = new HashSet<ParticipantContact>();
             Nationalities = new HashSet<ParticipantCountry>();
         }
 
@@ -31,7 +31,7 @@ namespace TitanWebAPI.Models.Participants
 
         [StringLength(100)]
         public string FourthName { get; set; }
-                
+
         public int GenderID { get; set; }
 
         [Column(TypeName = "ntext")]
@@ -69,6 +69,29 @@ namespace TitanWebAPI.Models.Participants
 
         public int? CreatedBy { get; set; }
 
+
+        public string FullName
+        {
+            get
+            {
+                if (ParticipantTypeID == 1)
+                    return ThirdName + " " + FourthName + ", " + FirstName + " " + SecondName;
+                else
+                    return FirstName;
+            }
+        }
+
+        public string ShortName
+        {
+            get
+            {
+                if (ParticipantTypeID == 1)
+                    return FirstName + " " + ThirdName;
+                else
+                    return SecondName;
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [ForeignKey("CreatedBy")]
         public virtual User CreatedByUser { get; set; }
@@ -77,9 +100,11 @@ namespace TitanWebAPI.Models.Participants
         public virtual ParamMatrix ParamMatrix { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParticipantContacts> ParticipantContacts { get; set; }
+        public virtual ICollection<ParticipantContact> ParticipantContacts { get; set; }
 
         public Boolean PEP { get; set; }
+
+        public Boolean? MatrixReady { get; set; }
 
         public virtual ICollection<ParticipantCountry> Nationalities { get; set; }
     }

@@ -66,7 +66,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = task.ID }, task);
+            return Ok(task);
         }
 
         // POST: api/Tasks

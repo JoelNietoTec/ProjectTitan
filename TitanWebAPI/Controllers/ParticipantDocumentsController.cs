@@ -73,7 +73,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = participantsDocument.ID }, participantsDocument);
+            return Ok(participantsDocument);
         }
 
         // POST: api/ParticipantsDocuments
@@ -84,11 +84,11 @@ namespace TitanWebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            participantsDocument.CountryID = participantsDocument.Country.ID;
-            participantsDocument.DocumentTypeID = participantsDocument.DocumentType.ID;
+            // participantsDocument.CountryID;
+            /*participantsDocument.DocumentTypeID = participantsDocument.DocumentType.ID;
             db.ParticipantDocuments.Add(participantsDocument);
             db.Entry(participantsDocument.Country).State = EntityState.Detached;
-            db.Entry(participantsDocument.DocumentType).State = EntityState.Detached;
+            db.Entry(participantsDocument.DocumentType).State = EntityState.Detached;*/
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = participantsDocument.ID }, participantsDocument);

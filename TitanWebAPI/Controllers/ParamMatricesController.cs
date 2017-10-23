@@ -65,7 +65,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = paramMatrix.ID }, paramMatrix);
+            return Ok(paramMatrix);
         }
 
         // POST: api/ParamMatrices

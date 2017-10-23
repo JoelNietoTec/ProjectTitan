@@ -15,3 +15,16 @@ CREATE UNIQUE INDEX [IX_ParamValues_DisplayValue] ON [dbo].[ParamValues] ([Param
 GO
 
 CREATE UNIQUE INDEX [IX_ParamValues_EnglishDisplayValue] ON [dbo].[ParamValues] ([ParamTableID], [EnglishDisplayValue])
+
+GO
+
+CREATE TRIGGER [dbo].[Trigger_ParamValues]
+    ON [dbo].[ParamValues]
+    FOR UPDATE
+    AS
+    BEGIN
+	SET NoCount ON
+        UPDATE ParticipantParams 
+		SET Score = inserted.Score 
+		FROM inserted WHERE ParamValueID = inserted.ID
+    END

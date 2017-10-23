@@ -72,7 +72,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = paramCategory.ID }, paramCategory);
+            return Ok(paramCategory);
         }
 
         // POST: api/ParamCategories

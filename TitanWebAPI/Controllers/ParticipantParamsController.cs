@@ -70,7 +70,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = participantParam.ID }, participantParam);
+            return Ok(participantParam);
         }
 
         // POST: api/ParticipantParams

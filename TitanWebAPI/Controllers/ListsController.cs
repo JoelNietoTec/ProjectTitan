@@ -5,49 +5,49 @@ using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using TitanWebAPI.Models.Params;
+using TitanWebAPI.Models.Participants;
 
 namespace TitanWebAPI.Controllers
 {
     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
-    public class ParamsController : ApiController
+    public class ListsController : ApiController
     {
-        private ParamsModel db = new ParamsModel();
+        private ParticipantsModel db = new ParticipantsModel();
 
-        // GET: api/Params
-        public IQueryable<Param> GetParams()
+        // GET: api/Lists
+        public IQueryable<List> GetLists()
         {
-            return db.Params;
+            return db.Lists;
         }
 
-        // GET: api/Params/5
-        [ResponseType(typeof(Param))]
-        public IHttpActionResult GetParam(int id)
+        // GET: api/Lists/5
+        [ResponseType(typeof(List))]
+        public IHttpActionResult GetList(int id)
         {
-            Param param = db.Params.Find(id);
-            if (param == null)
+            List list = db.Lists.Find(id);
+            if (list == null)
             {
                 return NotFound();
             }
 
-            return Ok(param);
+            return Ok(list);
         }
 
-        // PUT: api/Params/5
-        [ResponseType(typeof(Param))]
-        public IHttpActionResult PutParam(int id, Param param)
+        // PUT: api/Lists/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutList(int id, List list)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != param.ID)
+            if (id != list.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(param).State = EntityState.Modified;
+            db.Entry(list).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace TitanWebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ParamExists(id))
+                if (!ListExists(id))
                 {
                     return NotFound();
                 }
@@ -65,39 +65,38 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = param.ID }, param);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Params
-        [ResponseType(typeof(Param))]
-        public IHttpActionResult PostParam(Param param)
+        // POST: api/Lists
+        [ResponseType(typeof(List))]
+        public IHttpActionResult PostList(List list)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            param.ParamTable = null; //Evita Param Tables Duplicados
-            db.Params.Add(param);
+            db.Lists.Add(list);
             db.SaveChanges();
 
-            return Ok(param);
+            return CreatedAtRoute("DefaultApi", new { id = list.ID }, list);
         }
 
-        // DELETE: api/Params/5
-        [ResponseType(typeof(Param))]
-        public IHttpActionResult DeleteParam(int id)
+        // DELETE: api/Lists/5
+        [ResponseType(typeof(List))]
+        public IHttpActionResult DeleteList(int id)
         {
-            Param param = db.Params.Find(id);
-            if (param == null)
+            List list = db.Lists.Find(id);
+            if (list == null)
             {
                 return NotFound();
             }
 
-            db.Params.Remove(param);
+            db.Lists.Remove(list);
             db.SaveChanges();
 
-            return Ok(param);
+            return Ok(list);
         }
 
         protected override void Dispose(bool disposing)
@@ -109,9 +108,9 @@ namespace TitanWebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ParamExists(int id)
+        private bool ListExists(int id)
         {
-            return db.Params.Count(e => e.ID == id) > 0;
+            return db.Lists.Count(e => e.ID == id) > 0;
         }
     }
 }

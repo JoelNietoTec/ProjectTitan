@@ -2,14 +2,11 @@ namespace TitanWebAPI.Models.Participants
 {
     using System.ComponentModel.DataAnnotations;
 
-    public partial class RelationshipType
+    public partial class List
     {
         public int ID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string Name { get; set; }
-
-        [StringLength(50)]
-        public string EnglishName { get; set; }
     }
 }

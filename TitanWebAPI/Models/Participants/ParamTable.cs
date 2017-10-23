@@ -1,6 +1,5 @@
-﻿namespace TitanWebAPI.Models.Participants
+namespace TitanWebAPI.Models.Participants
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

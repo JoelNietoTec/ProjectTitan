@@ -1,8 +1,8 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
+using System.Data.SqlClient;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -25,12 +25,14 @@ namespace TitanWebAPI.Controllers
         [ResponseType(typeof(Participant))]
         public IHttpActionResult GetParticipant(int id)
         {
+            db.Database.SqlQuery<decimal>("dbo.GetParticipantScore @ParticipantID", new SqlParameter("ParticipantID", id));
             Participant participant = db.Participants.Find(id);
             if (participant == null)
             {
                 return NotFound();
             }
 
+            
             return Ok(participant);
         }
 
@@ -42,6 +44,13 @@ namespace TitanWebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("api/participants/{participantID}/pending")]
+        public IQueryable<PendingDocument> PendingDocuments(int participantID)
+        {
+            return db.PendingDocuments.Where(x => x.ParticipantID == participantID);
+        }
+
+        [HttpGet]
         [Route("api/participants/byrisk")]
         public IQueryable<ParticipantsByRisk> ParticipantsByRisk()
         {
@@ -49,7 +58,7 @@ namespace TitanWebAPI.Controllers
         }
 
         // PUT: api/Participants/5
-        [ResponseType(typeof(Participant))]
+        [ResponseType(typeof(void))]
         public IHttpActionResult PutParticipant(int id, Participant participant)
         {
             if (!ModelState.IsValid)
@@ -80,7 +89,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = participant.ID }, participant);
+            return Ok(participant);
         }
 
         // POST: api/Participants
@@ -93,30 +102,9 @@ namespace TitanWebAPI.Controllers
             }
 
             db.Participants.Add(participant);
- /*           foreach (var item in participant.Nationalities)
-            {
-                db.Entry(item).CurrentValues.SetValues(item);
-                db.Entry(item).State = EntityState.Modified;
-            } */
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = participant.ID }, participant);
-        }
-
-        [HttpDelete]
-        [Route("api/participants/relationships")]
-        public IHttpActionResult DeleteParticipantRelationShip(int id)
-        {
-            ParticipantRelationship relationship = db.ParticipantRelationships.Find(id);
-            if (relationship == null)
-            {
-                return NotFound();
-            }
-
-            db.ParticipantRelationships.Remove(relationship);
-            db.SaveChanges();
-
-            return Ok(relationship);
+            return Ok(db.Participants.Find(participant.ID));
         }
 
         // DELETE: api/Participants/5

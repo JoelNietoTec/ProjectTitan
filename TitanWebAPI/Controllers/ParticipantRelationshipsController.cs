@@ -74,7 +74,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = participantRelationship.ID }, participantRelationship);
+            return Ok(participantRelationship);
         }
 
         // POST: api/ParticipantRelationships

@@ -1,6 +1,7 @@
-﻿namespace TitanWebAPI.Models.Participants
+namespace TitanWebAPI.Models.Participants
 {
     using System.ComponentModel.DataAnnotations.Schema;
+
     public class ParticipantRelationship
     {
         public int ID { get; set; }
