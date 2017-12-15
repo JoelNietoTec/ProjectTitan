@@ -12,7 +12,7 @@ namespace TitanWebAPI.Models.Participants
         public Participant()
         {
             ParticipantContacts = new HashSet<ParticipantContact>();
-            Nationalities = new HashSet<ParticipantCountry>();
+            /*Nationalities = new HashSet<ParticipantCountry>();*/
         }
 
         public int ID { get; set; }
@@ -54,6 +54,10 @@ namespace TitanWebAPI.Models.Participants
 
         [StringLength(50)]
         public string MobilePhone { get; set; }
+
+        public int CountryID { get; set; }
+
+        public virtual ParticipantCountry Country { get; set; }
 
         public virtual Gender Gender { get; set; }
 
@@ -106,6 +110,6 @@ namespace TitanWebAPI.Models.Participants
 
         public Boolean? MatrixReady { get; set; }
 
-        public virtual ICollection<ParticipantCountry> Nationalities { get; set; }
+        /*public virtual ICollection<ParticipantCountry> Nationalities { get; set; }*/
     }
 }

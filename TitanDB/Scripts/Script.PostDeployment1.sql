@@ -77,3 +77,33 @@ BEGIN
 	INSERT INTO TaskStatus (Name, EnglishName)
 	SELECT N'Terminada', N'Done'
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.Recurrence)
+BEGIN
+	INSERT INTO Recurrence (Name, EnglishName)
+	SELECT N'Diario', N'Daily'
+
+	INSERT INTO Recurrence (Name, EnglishName)
+	SELECT N'Semanal', N'Weekly'
+
+	INSERT INTO Recurrence (Name, EnglishName)
+	SELECT N'Quincenal', N'Biweekly'
+
+	INSERT INTO Recurrence (Name, EnglishName)
+	SELECT N'Mensual', N'Monthly'
+
+	INSERT INTO Recurrence (Name, EnglishName)
+	SELECT N'Trimensual', N'Quarter'
+
+	INSERT INTO Recurrence (Name, EnglishName)
+	SELECT N'Semestral', N'BiAnnual'
+
+	INSERT INTO Recurrence (Name, EnglishName)
+	SELECT N'Anual', N'Annual'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.Schedules WHERE Year = YEAR(GETDATE()))
+BEGIN 
+INSERT INTO Schedules 
+SELECT YEAR(GETDATE()), 'Programa de Operativo Anual 2017', 'Programa de Operativo Anual 2017', '20170101', '20171231', 1
+END

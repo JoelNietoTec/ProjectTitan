@@ -83,6 +83,8 @@ namespace TitanWebAPI.Controllers
             db.ParamTables.Add(paramTable);
             db.SaveChanges();
 
+            db.Entry(paramTable).Reference(t => t.TableType).Load();
+
             return CreatedAtRoute("DefaultApi", new { id = paramTable.ID }, paramTable);
         }
 

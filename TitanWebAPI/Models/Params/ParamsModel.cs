@@ -41,11 +41,6 @@ namespace TitanWebAPI.Models.Params
                 .Property(e => e.Weighting)
                 .HasPrecision(5, 2);
 
-            modelBuilder.Entity<ParamTable>()
-                .HasMany(e => e.ParamValues)
-                .WithRequired(e => e.ParamTable)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<ParamValue>()
                 .Property(e => e.Score)
                 .HasPrecision(10, 2);

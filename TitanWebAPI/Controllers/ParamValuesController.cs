@@ -33,6 +33,13 @@ namespace TitanWebAPI.Controllers
             return Ok(paramValue);
         }
 
+        [HttpGet]
+        [Route("api/paramtables/{id}/values")]
+        public IQueryable<ParamValue> GetValuesByTable(int id)
+        {
+            return db.ParamValues.Where(x => x.ParamTableID == id);
+        }
+
         // PUT: api/ParamValues/5
         [ResponseType(typeof(ParamValue))]
         public IHttpActionResult PutParamValue(int id, ParamValue paramValue)

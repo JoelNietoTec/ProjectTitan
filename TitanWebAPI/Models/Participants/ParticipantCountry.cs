@@ -8,10 +8,6 @@
     [Table("Countries")]
     public class ParticipantCountry
     {
-        public ParticipantCountry()
-        {
-            Participants = new HashSet<Participant>();
-        }
 
         public int ID { get; set; }
 

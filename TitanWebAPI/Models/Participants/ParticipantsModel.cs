@@ -24,6 +24,7 @@ namespace TitanWebAPI.Models.Participants
         public virtual DbSet<ParamSubValue> ParamSubValues { get; set; }
         public virtual DbSet<DocumentCountry> DocumentCountries { get; set; }
         public virtual DbSet<ParticipantsByRisk> ParticipantsByRisk { get; set; }
+        public virtual DbSet<ParticipantsByCountry> ParticipantsByCountry { get; set; }
         public virtual DbSet<ParticipantRelationship> ParticipantRelationships { get; set; }
         public virtual DbSet<RelationshipType> RelationshipTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -38,13 +39,14 @@ namespace TitanWebAPI.Models.Participants
         {
             modelBuilder.Entity<DocumentType>();
 
-            modelBuilder.Entity<ParticipantNationality>()
+            /*modelBuilder.Entity<ParticipantNationality>()
                 .HasKey(c => new { c.ParticipantID, c.CountryID });
-
+                */
             modelBuilder.Entity<Gender>();
 
             modelBuilder.Entity<ParticipantType>();
 
+            /*
             modelBuilder.Entity<Participant>()
                 .HasMany<ParticipantCountry>(c => c.Nationalities)
                 .WithMany(n => n.Participants)
@@ -54,7 +56,7 @@ namespace TitanWebAPI.Models.Participants
                     cn.MapRightKey("CountryID");
                     cn.ToTable("ParticipantNationalities");
                 });
-
+                */
             modelBuilder.Entity<Participant>()
                 .HasMany(e => e.ParticipantContacts);
 
@@ -71,6 +73,9 @@ namespace TitanWebAPI.Models.Participants
                 .HasMany(e => e.Params);
 
             modelBuilder.Entity<ParticipantsByRisk>();
+
+            modelBuilder.Entity<ParticipantsByCountry>();
+
         }
 
     }

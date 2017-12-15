@@ -99,6 +99,15 @@
     <Build Include="Tables\Discards.sql" />
     <Build Include="Tables\DiscardMatches.sql" />
     <Build Include="Views\PendingDocuments.sql" />
+    <Build Include="Tables\Events.sql" />
+    <Build Include="Tables\Recurrence.sql" />
+    <Build Include="Functions\DocumentsByType.sql" />
+    <Build Include="Views\ParticipantsByCountry.sql" />
+    <Build Include="Tables\Projects.sql" />
+    <Build Include="Tables\Schedules.sql" />
+    <Build Include="Tables\Milestones.sql" />
+    <Build Include="Tables\Jobs.sql" />
+    <Build Include="Tables\Roles.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

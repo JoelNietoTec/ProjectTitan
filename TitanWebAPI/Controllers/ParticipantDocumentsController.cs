@@ -2,6 +2,8 @@
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Web;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -40,6 +42,25 @@ namespace TitanWebAPI.Controllers
         {
             return db.ParticipantDocuments.Where(x => x.ParticipantID == id);
         }
+
+        [HttpPost]
+        [Route("api/documents")]
+        public HttpResponseMessage UploadFile()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 0)
+            {
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    var filePath = HttpContext.Current.Server.MapPath("~/Files/" + postedFile.FileName);
+                    postedFile.SaveAs(filePath);
+                }
+            }
+            return response;
+        }
+
 
         // PUT: api/ParticipantsDocuments/5
         [ResponseType(typeof(ParticipantDocument))]
@@ -86,10 +107,14 @@ namespace TitanWebAPI.Controllers
             }
             // participantsDocument.CountryID;
             /*participantsDocument.DocumentTypeID = participantsDocument.DocumentType.ID;
-            db.ParticipantDocuments.Add(participantsDocument);
+            
             db.Entry(participantsDocument.Country).State = EntityState.Detached;
             db.Entry(participantsDocument.DocumentType).State = EntityState.Detached;*/
+            db.ParticipantDocuments.Add(participantsDocument);
             db.SaveChanges();
+
+            db.Entry(participantsDocument).Reference(c => c.Country).Load();
+            db.Entry(participantsDocument).Reference(t => t.DocumentType).Load();
 
             return CreatedAtRoute("DefaultApi", new { id = participantsDocument.ID }, participantsDocument);
         }

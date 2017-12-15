@@ -38,6 +38,21 @@ namespace TitanWebAPI.Controllers
         {
             return db.ParticipantParams.Where(x => x.ParticipantID.Equals(participantID));
         }
+
+        [HttpGet]
+        [Route("api/participants/{participantID}/params/{paramID}")]
+        [ResponseType(typeof(ParticipantParam))]
+        public IHttpActionResult GetParam(int participantID, int paramID)
+        {
+            ParticipantParam param =  db.ParticipantParams.Where(x => x.ParticipantID.Equals(participantID) && x.ParamID.Equals(paramID)).FirstOrDefault();
+            if (param == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(param);
+        }
+
         // PUT: api/ParticipantParams/5
         [ResponseType(typeof(ParticipantParam))]
         public IHttpActionResult PutParticipantParam(int id, ParticipantParam participantParam)

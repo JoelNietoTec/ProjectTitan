@@ -23,6 +23,7 @@
     [PurposeID] INT NULL DEFAULT 1, 
     [PEP] BIT NULL , 
     [MatrixReady] BIT NULL, 
+    [CountryID] INT NOT NULL DEFAULT 165, 
     CONSTRAINT [FK_Participants_ToType] FOREIGN KEY ([ParticipantTypeID]) REFERENCES [ParticipantTypes]([ID]), 
     CONSTRAINT [FK_Participants_ToGenders] FOREIGN KEY ([GenderID]) REFERENCES [Genders]([ID]) ,
 	CONSTRAINT [FK_Participants_ToUsers] FOREIGN KEY ([CreatedBy]) REFERENCES [Users]([ID]) 

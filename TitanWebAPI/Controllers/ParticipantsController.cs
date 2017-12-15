@@ -50,11 +50,20 @@ namespace TitanWebAPI.Controllers
             return db.PendingDocuments.Where(x => x.ParticipantID == participantID);
         }
 
+        
+
         [HttpGet]
         [Route("api/participants/byrisk")]
         public IQueryable<ParticipantsByRisk> ParticipantsByRisk()
         {
             return db.ParticipantsByRisk;
+        }
+
+        [HttpGet]
+        [Route("api/participants/bycountry")]
+        public IQueryable<ParticipantsByCountry> ParticipantsByCountry()
+        {
+            return db.ParticipantsByCountry;
         }
 
         // PUT: api/Participants/5
@@ -122,6 +131,7 @@ namespace TitanWebAPI.Controllers
 
             return Ok(participant);
         }
+
 
         protected override void Dispose(bool disposing)
         {

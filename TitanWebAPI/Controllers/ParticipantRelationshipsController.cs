@@ -89,6 +89,10 @@ namespace TitanWebAPI.Controllers
             db.ParticipantRelationships.Add(participantRelationship);
             db.SaveChanges();
 
+            db.Entry(participantRelationship).Reference(p => p.RelatedParticipant).Load();
+            db.Entry(participantRelationship).Reference(p => p.Participant).Load();
+            db.Entry(participantRelationship).Reference(p => p.Type).Load();
+
             return CreatedAtRoute("DefaultApi", new { id = participantRelationship.ID }, participantRelationship);
         }
 

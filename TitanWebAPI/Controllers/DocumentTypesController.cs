@@ -19,6 +19,25 @@ namespace TitanWebAPI.Controllers
             return db.DocumentTypes;
         }
 
+
+        [HttpGet]
+        [Route("api/documenttypes/type/{participantID}")]
+        public IQueryable<DocumentType> GetDocumentsByType(int participantID)
+        {
+            if (participantID == 1)
+            {
+                return db.DocumentTypes.Where(x => x.RequiredIndividual == true);
+            }
+            else if (participantID == 2)
+            {
+                return db.DocumentTypes.Where(x => x.RequiredEntity == true);
+            }
+            else
+            {
+                return db.DocumentTypes;
+            }
+        }
+
         // GET: api/DocumentTypes/5
         [ResponseType(typeof(DocumentType))]
         public IHttpActionResult GetDocumentType(int id)
@@ -31,6 +50,7 @@ namespace TitanWebAPI.Controllers
 
             return Ok(documentType);
         }
+
 
         // PUT: api/DocumentTypes/5
         [ResponseType(typeof(DocumentType))]
@@ -97,6 +117,7 @@ namespace TitanWebAPI.Controllers
 
             return Ok(documentType);
         }
+
 
         protected override void Dispose(bool disposing)
         {
