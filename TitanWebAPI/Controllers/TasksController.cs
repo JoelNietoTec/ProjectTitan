@@ -2,7 +2,6 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -19,6 +18,13 @@ namespace TitanWebAPI.Controllers
         public IQueryable<Task> GetTasks()
         {
             return db.Tasks;
+        }
+
+        [HttpGet]
+        [Route("api/tasks/category/{id}")]
+        public IQueryable<Task> GetTasksByCategory(int id)
+        {
+            return db.Tasks.Where(x => x.CategoryID == id);
         }
 
         // GET: api/Tasks/5

@@ -107,3 +107,15 @@ BEGIN
 INSERT INTO Schedules 
 SELECT YEAR(GETDATE()), 'Programa de Operativo Anual 2017', 'Programa de Operativo Anual 2017', '20170101', '20171231', 1
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.TaskCategories)
+BEGIN
+	INSERT INTO TaskCategories (Name)
+	SELECT N'Diarias'
+
+	INSERT INTO TaskCategories (Name)
+	SELECT N'Participantes'
+
+	INSERT INTO TaskCategories (Name)
+	SELECT N'Cronograma'
+END

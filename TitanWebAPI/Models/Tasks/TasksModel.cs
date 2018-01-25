@@ -14,6 +14,7 @@ namespace TitanWebAPI.Models.Tasks
 
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<TaskStatu> TaskStatus { get; set; }
+        public virtual DbSet<TaskCategory> TaskCategories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

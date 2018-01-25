@@ -77,6 +77,48 @@ namespace TitanWebAPI.Controllers
             return Ok(discardMatch);
         }
 
+        [HttpGet]
+        [Route("api/discards/matches/{id}/{valid}")]
+        [ResponseType(typeof(DiscardMatch))]
+        public IHttpActionResult ValidDiscard(int id, string valid)
+        {
+            DiscardMatch discard = db.DiscardMatches.Find(id);
+
+            if (discard == null)
+            {
+                return NotFound();
+            }
+
+            if (valid == "valid")
+            {
+                discard.Valid = true;
+            } else
+            {
+                discard.Valid = false;
+            }
+
+            discard.Pending = false;
+
+            db.Entry(discard).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if(!DiscardMatchExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok(discard);
+        }
         // POST: api/DiscardMatches
         [ResponseType(typeof(DiscardMatch))]
         public IHttpActionResult PostDiscardMatch(DiscardMatch discardMatch)

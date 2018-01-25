@@ -763,4 +763,53 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="99009757-9f88-4a85-b52f-7c601f70e874" ChangeDateTime="01/12/2018 04:04:47">
+    <Property Name="ElementName" Value="[dbo].[Comparisons].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Comparisons]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="99747ac2-bebb-432b-b96d-065f91ac634c" ChangeDateTime="01/12/2018 04:10:17">
+    <Property Name="ElementName" Value="[dbo].[Comparisons].[FileName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Comparisons]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="File" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="88ed6589-b29b-4035-b316-b8fed93c5d92" ChangeDateTime="01/12/2018 04:25:17">
+    <Property Name="ElementName" Value="[dbo].[Pairs].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Pairs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cd582b06-29e4-48a1-a305-e891a5e4f664" ChangeDateTime="01/12/2018 04:31:17">
+    <Property Name="ElementName" Value="[dbo].[Matches].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Matches]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6a3147a9-4287-419e-8dc6-32e17ce81995" ChangeDateTime="01/12/2018 04:34:17">
+    <Property Name="ElementName" Value="[dbo].[Matches].[M]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Matches]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ComparisonID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="12fb746e-9627-4475-86ed-a465fcc5e691" ChangeDateTime="01/12/2018 04:43:33">
+    <Property Name="ElementName" Value="[dbo].[Matches].[Confirm]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Matches]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Confirmed" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e969bcc8-480b-4ffb-923b-017eda96c165" ChangeDateTime="01/22/2018 22:15:25">
+    <Property Name="ElementName" Value="[dbo].[TaskCategories].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TaskCategories]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
 </Operations>

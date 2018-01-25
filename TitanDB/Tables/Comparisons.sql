@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Comparisons]
+(
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Date] DATETIME NULL, 
+    [File] VARCHAR(50) NULL
+)

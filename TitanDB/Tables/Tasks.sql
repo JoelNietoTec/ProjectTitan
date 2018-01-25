@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Tasks]
 (
 	[ID] INT NOT NULL PRIMARY KEY IDENTITY,
+	[CategoryID] INT NOT NULL DEFAULT 1,
 	[ProjectID] INT NOT NULL DEFAULT 1,
     [Title] NVARCHAR(100) NULL, 
     [Description] NTEXT NULL, 

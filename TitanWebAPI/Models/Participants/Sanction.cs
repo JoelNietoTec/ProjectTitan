@@ -20,6 +20,17 @@ namespace TitanWebAPI.Models.Participants
         [StringLength(1000)]
         public string Term2 { get; set; }
 
+        public string FullTerm
+        {
+            get
+            {
+                if (Term1[Term1.Length - 1] == '"')
+                    return Term1;
+                else
+                    return Term1 + " " + Term2;
+            }
+        }
+
         [StringLength(1000)]
         public string Term3 { get; set; }
 

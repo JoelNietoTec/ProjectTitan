@@ -34,6 +34,8 @@ namespace TitanWebAPI.Models.Participants
         public virtual DbSet<Sanction> Sanctions { get; set; }
         public virtual DbSet<List> Lists { get; set; }
         public virtual DbSet<PendingDocument> PendingDocuments { get; set; }
+        public virtual DbSet<Match> Matches { get; set; }
+        public virtual DbSet<Comparison> Comparisons { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

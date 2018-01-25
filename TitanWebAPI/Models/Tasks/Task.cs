@@ -1,14 +1,17 @@
 namespace TitanWebAPI.Models.Tasks
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     public partial class Task
     {
         public int ID { get; set; }
+
+        public int CategoryID { get; set; }
+
+        public virtual TaskCategory Category { get; set; }
+
+        public int ProjectID { get; set; }
 
         [StringLength(100)]
         public string Title { get; set; }
@@ -28,5 +31,7 @@ namespace TitanWebAPI.Models.Tasks
         public int? StatusID { get; set; }
 
         public int? ParticipantID { get; set; }
+
+        public virtual Participant Participant { get; set; }
     }
 }
