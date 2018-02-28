@@ -5,7 +5,7 @@
     [DisplayValue] NVARCHAR(200) NULL, 
     [EnglishDisplayValue] NVARCHAR(200) NULL, 
     [Score] NUMERIC(10, 2) NULL, 
-    CONSTRAINT [FK_ParamSubValues_ToParamValue] FOREIGN KEY ([ParamValueID]) REFERENCES [ParamValues]([ID]) 
+    CONSTRAINT [FK_ParamSubValues_ToParamValue] FOREIGN KEY ([ParamValueID]) REFERENCES [ParamValues]([ID]) ON DELETE CASCADE
 )
 
 GO

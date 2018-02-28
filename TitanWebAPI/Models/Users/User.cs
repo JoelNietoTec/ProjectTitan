@@ -3,7 +3,9 @@
     using Newtonsoft.Json;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("Users")]
     public partial class User
     {
         public int ID { get; set; }
@@ -13,7 +15,6 @@
 
         [Required]
         [DataType(DataType.Password)]
-        [JsonIgnore]
         public string Password { get; set; }
 
         [Required]

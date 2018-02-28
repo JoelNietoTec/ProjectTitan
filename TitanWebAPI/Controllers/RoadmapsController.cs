@@ -10,44 +10,51 @@ using TitanWebAPI.Models.Roadmaps;
 namespace TitanWebAPI.Controllers
 {
     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
-    public class MilestonesController : ApiController
+    public class RoadmapsController : ApiController
     {
         private RoadmapModel db = new RoadmapModel();
 
-        // GET: api/Milestones
-        public IQueryable<Milestone> GetMilestones()
+        // GET: api/Roadmaps
+        public IQueryable<Roadmap> GetRoadmaps()
         {
-            return db.Milestones;
+            return db.Roadmaps;
         }
 
-        // GET: api/Milestones/5
-        [ResponseType(typeof(Milestone))]
-        public IHttpActionResult GetMilestone(int id)
+        [HttpGet]
+        [Route("api/recurrences")]
+        public IQueryable<Recurrence> GetRecurrence()
         {
-            Milestone milestone = db.Milestones.Find(id);
-            if (milestone == null)
+            return db.Recurrences;
+        }
+
+        // GET: api/Roadmaps/5
+        [ResponseType(typeof(Roadmap))]
+        public IHttpActionResult GetRoadmap(int id)
+        {
+            Roadmap roadmap = db.Roadmaps.Find(id);
+            if (roadmap == null)
             {
                 return NotFound();
             }
 
-            return Ok(milestone);
+            return Ok(roadmap);
         }
 
-        // PUT: api/Milestones/5
+        // PUT: api/Roadmaps/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMilestone(int id, Milestone milestone)
+        public IHttpActionResult PutRoadmap(int id, Roadmap roadmap)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != milestone.ID)
+            if (id != roadmap.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(milestone).State = EntityState.Modified;
+            db.Entry(roadmap).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +62,7 @@ namespace TitanWebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MilestoneExists(id))
+                if (!RoadmapExists(id))
                 {
                     return NotFound();
                 }
@@ -68,35 +75,35 @@ namespace TitanWebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Milestones
-        [ResponseType(typeof(Milestone))]
-        public IHttpActionResult PostMilestone(Milestone milestone)
+        // POST: api/Roadmaps
+        [ResponseType(typeof(Roadmap))]
+        public IHttpActionResult PostRoadmap(Roadmap roadmap)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Milestones.Add(milestone);
+            db.Roadmaps.Add(roadmap);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = milestone.ID }, milestone);
+            return CreatedAtRoute("DefaultApi", new { id = roadmap.ID }, roadmap);
         }
 
-        // DELETE: api/Milestones/5
-        [ResponseType(typeof(Milestone))]
-        public IHttpActionResult DeleteMilestone(int id)
+        // DELETE: api/Roadmaps/5
+        [ResponseType(typeof(Roadmap))]
+        public IHttpActionResult DeleteRoadmap(int id)
         {
-            Milestone milestone = db.Milestones.Find(id);
-            if (milestone == null)
+            Roadmap roadmap = db.Roadmaps.Find(id);
+            if (roadmap == null)
             {
                 return NotFound();
             }
 
-            db.Milestones.Remove(milestone);
+            db.Roadmaps.Remove(roadmap);
             db.SaveChanges();
 
-            return Ok(milestone);
+            return Ok(roadmap);
         }
 
         protected override void Dispose(bool disposing)
@@ -108,9 +115,9 @@ namespace TitanWebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool MilestoneExists(int id)
+        private bool RoadmapExists(int id)
         {
-            return db.Milestones.Count(e => e.ID == id) > 0;
+            return db.Roadmaps.Count(e => e.ID == id) > 0;
         }
     }
 }

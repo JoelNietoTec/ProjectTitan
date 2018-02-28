@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Recurrence]
+﻿CREATE TABLE [dbo].[Recurrences]
 (
 	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Name] NVARCHAR(50) NULL, 

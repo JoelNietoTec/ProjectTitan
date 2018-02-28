@@ -24,6 +24,7 @@
     [PEP] BIT NULL , 
     [MatrixReady] BIT NULL, 
     [CountryID] INT NOT NULL DEFAULT 165, 
+    [Status] BIT NOT NULL DEFAULT 1, 
     CONSTRAINT [FK_Participants_ToType] FOREIGN KEY ([ParticipantTypeID]) REFERENCES [ParticipantTypes]([ID]), 
     CONSTRAINT [FK_Participants_ToGenders] FOREIGN KEY ([GenderID]) REFERENCES [Genders]([ID]) ,
 	CONSTRAINT [FK_Participants_ToUsers] FOREIGN KEY ([CreatedBy]) REFERENCES [Users]([ID]) 
@@ -66,4 +67,17 @@ CREATE TRIGGER [dbo].[Trigger_PEP]
 		DECLARE @ID INT
 		SELECT @ID = inserted.ID FROM inserted
 		EXEC GetParticipantScore @ID
+    END
+GO
+
+CREATE TRIGGER [dbo].[Trigger_Tasks]
+    ON [dbo].[Participants]
+    FOR INSERT
+    AS
+    BEGIN
+        SET NoCount ON
+		INSERT INTO [Tasks] (ParticipantID, CategoryID, ProjectID, Title, StatusID, CreatedDate, CreatedBy)
+		SELECT inserted.ID, 2, 1, PendingDocuments.Name, 1, GETDATE(), inserted.CreatedBy
+		FROM [PendingDocuments] INNER JOIN inserted ON PendingDocuments.ParticipantID = inserted.ID
+		WHERE PendingDocuments.Uploaded = 0
     END

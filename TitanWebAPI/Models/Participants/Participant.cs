@@ -73,6 +73,28 @@ namespace TitanWebAPI.Models.Participants
 
         public int? CreatedBy { get; set; }
 
+        public Boolean Status { get; set; }
+
+        public string Rate
+        {
+            get
+            {
+                if (Score == null)
+                {
+                    return "Incompleto";
+                } else if (Score < 3)
+                {
+                    return "Bajo";
+                } else if (Score < 6)
+                {
+                    return "Medio";
+                } else
+                {
+                    return "Alto";
+                }
+            }
+        }
+
 
         public string FullName
         {

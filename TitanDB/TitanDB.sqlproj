@@ -100,17 +100,28 @@
     <Build Include="Tables\DiscardMatches.sql" />
     <Build Include="Views\PendingDocuments.sql" />
     <Build Include="Tables\Events.sql" />
-    <Build Include="Tables\Recurrence.sql" />
     <Build Include="Functions\DocumentsByType.sql" />
     <Build Include="Views\ParticipantsByCountry.sql" />
     <Build Include="Tables\Projects.sql" />
     <Build Include="Tables\Schedules.sql" />
-    <Build Include="Tables\Milestones.sql" />
     <Build Include="Tables\Jobs.sql" />
     <Build Include="Tables\Roles.sql" />
     <Build Include="Tables\Comparisons.sql" />
     <Build Include="Tables\Matches.sql" />
     <Build Include="Tables\TaskCategories.sql" />
+    <Build Include="Views\TasksByCategories.sql" />
+    <Build Include="Tables\Files.sql" />
+    <Build Include="Tables\Roadmaps.sql" />
+    <Build Include="Tables\Phases.sql" />
+    <Build Include="Tables\Milestones.sql" />
+    <Build Include="Tables\Recurrences.sql" />
+    <Build Include="Views\UsersInfo.sql" />
+    <Build Include="Views\TasksEvents.sql" />
+    <Build Include="Tables\ParticipantProfiles.sql" />
+    <Build Include="Tables\ProfileAccounts.sql" />
+    <Build Include="Tables\AccountTypes.sql" />
+    <Build Include="Tables\Transactions.sql" />
+    <Build Include="Tables\TransactionTypes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

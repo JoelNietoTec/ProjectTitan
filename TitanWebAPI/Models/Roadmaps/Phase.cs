@@ -1,35 +1,35 @@
-namespace TitanWebAPI.Models.Schedules
+namespace TitanWebAPI.Models.Roadmaps
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
-    public partial class Schedule
+    public partial class Phase
     {
-        public Schedule()
+
+        public Phase()
         {
             Milestones = new HashSet<Milestone>();
         }
+
         public int ID { get; set; }
 
-        public int? Year { get; set; }
+        public int RoadmapID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(200)]
         public string Title { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [StringLength(500)]
         public string Description { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? BeginDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? CompleteDate { get; set; }
-
-        public bool? Status { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public virtual ICollection<Milestone> Milestones { get; set; }
+
     }
 }

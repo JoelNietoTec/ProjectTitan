@@ -21,6 +21,24 @@ namespace TitanWebAPI.Controllers
             return db.Participants;
         }
 
+        [Route("api/participants/individuals")]
+        public IQueryable<Participant> GetIndividuals()
+        {
+            return db.Participants.Where(x => x.ParticipantTypeID == 1);
+        }
+
+        [Route("api/participants/last")]
+        public IQueryable<Participant> GetLastParticipant()
+        {
+            return db.Participants.OrderByDescending(x => x.CreateDate).Take(10);
+        }
+
+        [Route("api/participants/entities")]
+        public IQueryable<Participant> GetEntities()
+        {
+            return db.Participants.Where(x => x.ParticipantTypeID == 2);
+        }
+
         // GET: api/Participants/5
         [ResponseType(typeof(Participant))]
         public IHttpActionResult GetParticipant(int id)

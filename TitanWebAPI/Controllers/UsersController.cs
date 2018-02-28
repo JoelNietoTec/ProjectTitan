@@ -16,16 +16,16 @@ namespace TitanWebAPI.Controllers
         private UsersModel db = new UsersModel();
 
         // GET: api/Users
-        public IQueryable<User> GetUsers()
+        public IQueryable<UsersInfo> GetUsers()
         {
-            return db.Users;
+            return db.UsersInfo;
         }
 
         // GET: api/Users/5
-        [ResponseType(typeof(User))]
+        [ResponseType(typeof(UsersInfo))]
         public IHttpActionResult GetUser(int id)
         {
-            User user = db.Users.Find(id);
+            UsersInfo user = db.UsersInfo.Find(id);
             if (user == null)
             {
                 return NotFound();

@@ -27,6 +27,21 @@ namespace TitanWebAPI.Controllers
             return db.Tasks.Where(x => x.CategoryID == id);
         }
 
+        [HttpGet]
+        [Route("api/tasks/byparticipant")]
+        public IQueryable<Participant> GetTasksByParticipant()
+        {
+            var participants = db.Tasks.Where(x => x.StatusID != 3 && x.CategoryID == 2).Select(i => i.ParticipantID).ToList();
+            return db.Participants.Where(x => participants.Contains(x.ID));
+        }
+
+        [HttpGet]
+        [Route("api/tasks/category/{id}/count")]
+        public IQueryable<TasksByCategory> GetTasksCount(int id)
+        {
+            return db.TaskByCategories.Where(x => x.CategoryID == id);
+        }
+
         // GET: api/Tasks/5
         [ResponseType(typeof(Task))]
         public IHttpActionResult GetTask(int id)

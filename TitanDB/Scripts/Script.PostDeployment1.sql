@@ -78,27 +78,27 @@ BEGIN
 	SELECT N'Terminada', N'Done'
 END
 
-IF NOT EXISTS (SELECT 1 FROM dbo.Recurrence)
+IF NOT EXISTS (SELECT 1 FROM dbo.Recurrences)
 BEGIN
-	INSERT INTO Recurrence (Name, EnglishName)
+	INSERT INTO Recurrences (Name, EnglishName)
 	SELECT N'Diario', N'Daily'
 
-	INSERT INTO Recurrence (Name, EnglishName)
+	INSERT INTO Recurrences (Name, EnglishName)
 	SELECT N'Semanal', N'Weekly'
 
-	INSERT INTO Recurrence (Name, EnglishName)
+	INSERT INTO Recurrences (Name, EnglishName)
 	SELECT N'Quincenal', N'Biweekly'
 
-	INSERT INTO Recurrence (Name, EnglishName)
+	INSERT INTO Recurrences (Name, EnglishName)
 	SELECT N'Mensual', N'Monthly'
 
-	INSERT INTO Recurrence (Name, EnglishName)
+	INSERT INTO Recurrences (Name, EnglishName)
 	SELECT N'Trimensual', N'Quarter'
 
-	INSERT INTO Recurrence (Name, EnglishName)
+	INSERT INTO Recurrences (Name, EnglishName)
 	SELECT N'Semestral', N'BiAnnual'
 
-	INSERT INTO Recurrence (Name, EnglishName)
+	INSERT INTO Recurrences (Name, EnglishName)
 	SELECT N'Anual', N'Annual'
 END
 
@@ -118,4 +118,22 @@ BEGIN
 
 	INSERT INTO TaskCategories (Name)
 	SELECT N'Cronograma'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.AccountTypes)
+BEGIN
+	INSERT INTO AccountTypes (Name)
+	SELECT N'Activos'
+
+	INSERT INTO AccountTypes (Name)
+	SELECT N'Pasivos'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.TransactionTypes)
+BEGIN
+	INSERT INTO TransactionTypes (Name)
+	SELECT N'Ingresos'
+
+	INSERT INTO TransactionTypes (Name)
+	SELECT N'Egresos'
 END

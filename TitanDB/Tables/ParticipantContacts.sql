@@ -8,5 +8,5 @@
     [Email] NVARCHAR(50) NULL, 
     [MobilePhone] NVARCHAR(50) NULL, 
     [Fax] NVARCHAR(50) NULL, 
-    CONSTRAINT [FK_ParticipantContacts_ToParticipants] FOREIGN KEY ([ParticipantID]) REFERENCES [Participants]([ID]) 
+    CONSTRAINT [FK_ParticipantContacts_ToParticipants] FOREIGN KEY ([ParticipantID]) REFERENCES [Participants]([ID]) ON DELETE CASCADE
 )

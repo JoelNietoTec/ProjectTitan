@@ -1,61 +1,53 @@
-﻿using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using TitanWebAPI.Models.Schedules;
+using TitanWebAPI.Models.Roadmaps;
 
 namespace TitanWebAPI.Controllers
 {
     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
-    public class JobsController : ApiController
+    public class PhasesController : ApiController
     {
-        private SchedulesModel db = new SchedulesModel();
+        private RoadmapModel db = new RoadmapModel();
 
-        // GET: api/Jobs
-        public IQueryable<Job> GetJobs()
+        // GET: api/Phases
+        public IQueryable<Phase> GetPhases()
         {
-            return db.Jobs;
+            return db.Phases;
         }
 
-        // GET: api/Jobs/5
-        [ResponseType(typeof(Job))]
-        public IHttpActionResult GetJob(int id)
+        // GET: api/Phases/5
+        [ResponseType(typeof(Phase))]
+        public IHttpActionResult GetPhase(int id)
         {
-            Job job = db.Jobs.Find(id);
-            if (job == null)
+            Phase phase = db.Phases.Find(id);
+            if (phase == null)
             {
                 return NotFound();
             }
 
-            return Ok(job);
+            return Ok(phase);
         }
 
-        [HttpGet]
-        [Route("api/milestones/{id}/jobs")]
-        public IQueryable<Job> GetMilestoneJobs(int id)
-        {
-            return db.Jobs.Where(x => x.MilestoneID == id);
-        }
-
-        // PUT: api/Jobs/5
+        // PUT: api/Phases/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutJob(int id, Job job)
+        public IHttpActionResult PutPhase(int id, Phase phase)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != job.ID)
+            if (id != phase.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(job).State = EntityState.Modified;
+            db.Entry(phase).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +55,7 @@ namespace TitanWebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!JobExists(id))
+                if (!PhaseExists(id))
                 {
                     return NotFound();
                 }
@@ -76,35 +68,35 @@ namespace TitanWebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Jobs
-        [ResponseType(typeof(Job))]
-        public IHttpActionResult PostJob(Job job)
+        // POST: api/Phases
+        [ResponseType(typeof(Phase))]
+        public IHttpActionResult PostPhase(Phase phase)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Jobs.Add(job);
+            db.Phases.Add(phase);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = job.ID }, job);
+            return CreatedAtRoute("DefaultApi", new { id = phase.ID }, phase);
         }
 
-        // DELETE: api/Jobs/5
-        [ResponseType(typeof(Job))]
-        public IHttpActionResult DeleteJob(int id)
+        // DELETE: api/Phases/5
+        [ResponseType(typeof(Phase))]
+        public IHttpActionResult DeletePhase(int id)
         {
-            Job job = db.Jobs.Find(id);
-            if (job == null)
+            Phase phase = db.Phases.Find(id);
+            if (phase == null)
             {
                 return NotFound();
             }
 
-            db.Jobs.Remove(job);
+            db.Phases.Remove(phase);
             db.SaveChanges();
 
-            return Ok(job);
+            return Ok(phase);
         }
 
         protected override void Dispose(bool disposing)
@@ -116,9 +108,9 @@ namespace TitanWebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool JobExists(int id)
+        private bool PhaseExists(int id)
         {
-            return db.Jobs.Count(e => e.ID == id) > 0;
+            return db.Phases.Count(e => e.ID == id) > 0;
         }
     }
 }
