@@ -120,20 +120,83 @@ BEGIN
 	SELECT N'Cronograma'
 END
 
-IF NOT EXISTS (SELECT 1 FROM dbo.AccountTypes)
-BEGIN
-	INSERT INTO AccountTypes (Name)
-	SELECT N'Activos'
 
-	INSERT INTO AccountTypes (Name)
-	SELECT N'Pasivos'
+IF NOT EXISTS (SELECT 1 FROM dbo.BankTypes)
+BEGIN
+	INSERT INTO BankTypes (Name)
+	SELECT N'Local'
+
+	INSERT INTO BankTypes (Name)
+	SELECT N'Extranjero'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.ProductTypes)
+BEGIN
+	INSERT INTO ProductTypes(Name, EnglishName)
+	SELECT N'Activo', N'Asset'
+
+	INSERT INTO ProductTypes (Name, EnglishName)
+	SELECT N'Deuda', N'Debt'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.NotificationTypes)
+BEGIN
+	INSERT INTO dbo.NotificationTypes (Name, URL, Icon)
+	SELECT N'Participantes', 'app/participantes', 'fa-users'
+
+	INSERT INTO dbo.NotificationTypes (Name, URL, Icon)
+	SELECT N'Tareas', 'app/tareas', 'fa-tasks'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.AlertTypes)
+BEGIN
+	INSERT INTO dbo.AlertTypes (Name)
+	SELECT N'Sanción'
+
+	INSERT INTO dbo.AlertTypes (Name)
+	SELECT N'Financiero'
+
+END
+
+
+IF NOT EXISTS (SELECT 1 FROM dbo.TransactionSources)
+BEGIN
+	INSERT INTO dbo.TransactionSources(Name, EnglishName)
+	SELECT N'Efectivo', N'Cash'
+
+	INSERT INTO dbo.TransactionSources(Name, EnglishName)
+	SELECT N'Transferencia local', N'Local Transfer'
+
+	INSERT INTO dbo.TransactionSources(Name, EnglishName)
+	SELECT N'Transferencia internacional', N'International transfer'
+
+	INSERT INTO dbo.TransactionSources(Name, EnglishName)
+	SELECT N'Tarjeta de crédito', N'Credit card'
+
+	INSERT INTO dbo.TransactionSources(Name, EnglishName)
+	SELECT N'Cheque local', N'Local check'
+
+	INSERT INTO dbo.TransactionSources(Name, EnglishName)
+	SELECT N'Cheque internacional', N'International check'
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.UserProfiles)
+BEGIN
+	INSERT INTO dbo.UserProfiles (Name, EnglishName)
+	SELECT N'Administrador', N'Administrator'
+
+	INSERT INTO dbo.UserProfiles (Name, EnglishName)
+	SELECT N'Usuario', N'User'
+
+	INSERT INTO dbo.UserProfiles (Name, EnglishName)
+	SELECT N'Prueba', N'Test'
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.TransactionTypes)
 BEGIN
-	INSERT INTO TransactionTypes (Name)
-	SELECT N'Ingresos'
+	INSERT INTO dbo.TransactionTypes (Name, EnglishName)
+	SELECT N'Ingreso/Pago', N'Entry/Payment'
 
-	INSERT INTO TransactionTypes (Name)
-	SELECT N'Egresos'
+	INSERT INTO dbo.TransactionTypes (Name, EnglishName)
+	SELECT N'Desembolso', N'Withdrawal'
 END

@@ -24,6 +24,8 @@
 
         public int Active { get; set; }
 
+        public int UserProfileID { get; set; }
+
         public DateTime? CreateDate { get; set; }
 
         public DateTime? LastChangePassword { get; set; }

@@ -122,6 +122,27 @@
     <Build Include="Tables\AccountTypes.sql" />
     <Build Include="Tables\Transactions.sql" />
     <Build Include="Tables\TransactionTypes.sql" />
+    <Build Include="Tables\Banks.sql" />
+    <Build Include="Tables\BankTypes.sql" />
+    <Build Include="Views\FinancialProfiles.sql" />
+    <Build Include="Tables\Notifications.sql" />
+    <Build Include="Tables\NotificationTypes.sql" />
+    <Build Include="Tables\ParticipantAlerts.sql" />
+    <Build Include="Tables\AlertTypes.sql" />
+    <Build Include="Tables\SanctionLists.sql" />
+    <Build Include="Tables\TransactionSources.sql" />
+    <Build Include="Tables\Months.sql" />
+    <Build Include="Views\FinancialDashboards.sql" />
+    <Build Include="Tables\Companies.sql" />
+    <Build Include="Tables\UserProfiles.sql" />
+    <Build Include="Tables\UserCompanies.sql" />
+    <Build Include="Tables\Frecuencies.sql" />
+    <Build Include="Tables\FinancialProducts.sql" />
+    <Build Include="Tables\ProductTypes.sql" />
+    <Build Include="Tables\ProfileProducts.sql" />
+    <Build Include="Tables\Alerts.sql" />
+    <Build Include="Tables\AlertReasons.sql" />
+    <Build Include="Tables\AlertSources.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

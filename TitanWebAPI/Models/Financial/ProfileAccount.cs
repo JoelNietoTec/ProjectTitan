@@ -8,6 +8,12 @@ namespace TitanWebAPI.Models.Financial
 
         public int ParticipantProfileID { get; set; }
 
+        public FinancialProfile ParticipantProfile { get; set; }
+
+        public int BankID { get; set; }
+
+        public virtual Bank Bank { get; set; }
+
         [StringLength(200)]
         public string Name { get; set; }
 
@@ -15,5 +21,13 @@ namespace TitanWebAPI.Models.Financial
         public string Code { get; set; }
 
         public int? AccountTypeID { get; set; }
+
+        public virtual AccountType AccountType { get; set; }
+
+        public decimal? Amount {get; set;}
+
+        public decimal? MonthlyIncomeLimit { get; set; }
+
+        public decimal? MonthlyExpenseLimit { get; set; }
     }
 }

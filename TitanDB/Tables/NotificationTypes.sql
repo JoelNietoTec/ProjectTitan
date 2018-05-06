@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[NotificationTypes]
+(
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NVARCHAR(50) NULL, 
+    [URL] NVARCHAR(50) NULL, 
+    [Icon] NVARCHAR(50) NULL
+)

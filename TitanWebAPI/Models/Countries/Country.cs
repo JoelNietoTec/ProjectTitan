@@ -1,7 +1,6 @@
 namespace TitanWebAPI.Models.Countries
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Country
     {

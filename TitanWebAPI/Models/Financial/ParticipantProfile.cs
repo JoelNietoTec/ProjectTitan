@@ -5,10 +5,6 @@ namespace TitanWebAPI.Models.Financial
 
     public partial class ParticipantProfile
     {
-        public ParticipantProfile()
-        {
-            Accounts = new HashSet<ProfileAccount>();
-        }
 
         public int ID { get; set; }
 
@@ -18,6 +14,8 @@ namespace TitanWebAPI.Models.Financial
 
         public DateTime? ModifiedDate { get; set; }
 
-        public virtual ICollection<ProfileAccount> Accounts { get; set; }
+        public decimal? MonthlyIncomeLimit { get; set; }
+
+        public decimal? MonthlyExpenseLimit { get; set; }
     }
 }

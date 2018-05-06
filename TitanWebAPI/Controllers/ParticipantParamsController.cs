@@ -9,7 +9,7 @@ using TitanWebAPI.Models.Participants;
 
 namespace TitanWebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
+     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net, http://procompliancesoft.net", headers: "*", methods: "*")]
     public class ParticipantParamsController : ApiController
     {
         private ParticipantsModel db = new ParticipantsModel();

@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -7,7 +9,7 @@ using TitanWebAPI.Models.Financial;
 
 namespace TitanWebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
+     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net, http://procompliancesoft.net", headers: "*", methods: "*")]
     public class ParticipantProfilesController : ApiController
     {
         private FinancialModel db = new FinancialModel();
@@ -21,8 +23,8 @@ namespace TitanWebAPI.Controllers
         [Route("api/participants/{id}/profile")]
         public IHttpActionResult GetProfileByParticipant(int id)
         {
-            ParticipantProfile profile = db.ParticipantProfiles.Where(x => x.ParticipantID == id).FirstOrDefault();
-
+            FinancialProfile profile = db.FinancialProfiles.Where(x => x.ParticipantID == id).FirstOrDefault();
+           
             if (profile == null)
             {
                 return NotFound();
@@ -30,6 +32,42 @@ namespace TitanWebAPI.Controllers
 
             return Ok(profile);
         }
+
+        // PUT: api/ParticipantRelationships/5
+        [ResponseType(typeof(ParticipantProfile))]
+        public IHttpActionResult PutParticipantRelationship(int id, ParticipantProfile profile)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != profile.ID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(profile).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ParticipantProfileExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok(profile);
+        }
+
 
         // GET: api/ParticipantProfiles/5
         [ResponseType(typeof(ParticipantProfile))]

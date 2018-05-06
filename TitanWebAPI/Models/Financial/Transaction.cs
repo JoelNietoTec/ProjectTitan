@@ -1,10 +1,7 @@
 namespace TitanWebAPI.Models.Financial
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     public partial class Transaction
     {
@@ -12,7 +9,23 @@ namespace TitanWebAPI.Models.Financial
 
         public int TransactionTypeID { get; set; }
 
+        public int ParticipantID { get; set; }
+
+        public virtual Participant Participant { get; set; }
+
+        public int ProfileProductID { get; set; }
+
+        public virtual ProfileProduct ProfileProduct { get; set; }
+
+        public int TransactionSourceID { get; set; }
+
+        public virtual FinancialProfile ParticipantProfile { get; set; }
+
+        public int ParticipantProfileID { get; set; }
+
         public virtual TransactionType TransactionType { get; set; }
+
+        public virtual TransactionSource TransactionSource { get; set; }
 
         public string Title { get; set; }
 
@@ -20,8 +33,10 @@ namespace TitanWebAPI.Models.Financial
 
         public int AccountID { get; set; }
 
+        public virtual ProfileAccount Account { get; set; }
+
         [Column(TypeName = "date")]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         public decimal? Amount { get; set; }
     }

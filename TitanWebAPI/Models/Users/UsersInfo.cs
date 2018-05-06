@@ -15,5 +15,9 @@
         public int Active { get; set; }
 
         public DateTime? CreateDate { get; set; }
+
+        public int UserProfileID { get; set; }
+
+        public virtual UserProfile UserProfile { get; set; }
     }
 }

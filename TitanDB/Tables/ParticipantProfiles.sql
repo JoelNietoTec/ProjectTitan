@@ -2,8 +2,10 @@
 (
 	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
     [ParticipantID] INT NOT NULL, 
-    [Total] DECIMAL NULL, 
-    [ModifiedDate] DATETIME NULL
+    [Total] MONEY NULL, 
+    [ModifiedDate] DATETIME NULL, 
+    [MonthlyIncomeLimit] MONEY NULL, 
+    [MonthlyExpenseLimit] MONEY NULL
 )
 
 GO

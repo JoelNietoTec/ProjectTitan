@@ -7,7 +7,7 @@
     [ThirdName] NVARCHAR(100) NULL, 
     [FourthName] NVARCHAR(100) NULL, 
     [GenderID] INT NOT NULL DEFAULT 1, 
-    [BirthDate] DATE NULL, 
+    [BirthDate] DATETIME NULL, 
     [Email] VARCHAR(100) NULL, 
     [ParticipantTypeID] INT NOT NULL DEFAULT 1, 
     [Address] NTEXT NULL, 
@@ -52,7 +52,8 @@ CREATE TRIGGER [dbo].[Trigger_Participants]
 		INNER JOIN dbo.ParamCategories PC ON PC.ParamMatrixID = PM.ID
 		INNER JOIN dbo.Params PR ON PR.ParamCategoryID = PC.ID;
 
-		UPDATE dbo.Participants SET CreateDate = GETDATE() FROM inserted INS INNER JOIN dbo.Participants ON dbo.Participants.ID = INS.ID
+		INSERT INTO ParticipantProfiles 
+		SELECT ID, 0, GETDATE(), 0, 0 FROM inserted
 		
     END
 GO

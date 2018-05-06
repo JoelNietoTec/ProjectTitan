@@ -1,9 +1,6 @@
 namespace TitanWebAPI.Models.Financial
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class FinancialModel : DbContext
     {
@@ -17,6 +14,14 @@ namespace TitanWebAPI.Models.Financial
         public virtual DbSet<ProfileAccount> ProfileAccounts { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<TransactionType> TransactionTypes { get; set; }
+        public virtual DbSet<Bank> Banks { get; set; }
+        public virtual DbSet<BankType> BankTypes { get; set; }
+        public virtual DbSet<FinancialProfile> FinancialProfiles { get; set; }
+        public virtual DbSet<TransactionSource> TransactionSources { get; set; }
+        public virtual DbSet<FinancialDashboard> FinancialDashboards { get; set; }
+        public virtual DbSet<FinancialProduct> FinancialProducts { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<ProfileProduct> ProfileProducts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

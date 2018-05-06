@@ -8,5 +8,7 @@ namespace TitanWebAPI.Models.Financial
 
         [StringLength(50)]
         public string Name { get; set; }
+
+        public string EnglishName { get; set; }
     }
 }

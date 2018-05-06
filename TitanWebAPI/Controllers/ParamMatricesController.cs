@@ -9,7 +9,7 @@ using TitanWebAPI.Models.Params;
 
 namespace TitanWebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
+     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net, http://procompliancesoft.net", headers: "*", methods: "*")]
     public class ParamMatricesController : ApiController
     {
         private ParamsModel db = new ParamsModel();
@@ -79,6 +79,7 @@ namespace TitanWebAPI.Controllers
 
             db.ParamMatrices.Add(paramMatrix);
             db.SaveChanges();
+            db.Entry(paramMatrix).Reference(t => t.MatrixType).Load();
 
             return CreatedAtRoute("DefaultApi", new { id = paramMatrix.ID }, paramMatrix);
         }
@@ -95,7 +96,7 @@ namespace TitanWebAPI.Controllers
 
             db.ParamMatrices.Remove(paramMatrix);
             db.SaveChanges();
-
+            
             return Ok(paramMatrix);
         }
 

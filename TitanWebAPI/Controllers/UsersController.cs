@@ -2,7 +2,6 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -10,7 +9,7 @@ using TitanWebAPI.Models.Users;
 
 namespace TitanWebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
+     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net, http://procompliancesoft.net", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
         private UsersModel db = new UsersModel();
@@ -34,28 +33,28 @@ namespace TitanWebAPI.Controllers
             return Ok(user);
         }
 
+
         [HttpPost]
         [Route("api/users/login/")]
-        [ResponseType(typeof(User))]
+        [ResponseType(typeof(UsersInfo))]
         public IHttpActionResult Login (Login log)
         {
             log.UserName = log.UserName.ToLower();
 
             User user;
+            UsersInfo loggedUser;
 
-            user = db.Users.Where(x => x.Email.ToLower() == log.UserName || x.UserName.ToLower() == log.UserName).FirstOrDefault();
+            user = db.Users.Where(x => x.Email.ToLower() == log.UserName || x.UserName.ToLower() == log.UserName && (x.Password == log.Password)).FirstOrDefault();
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            if (user.Password != log.Password)
-            {
-                return NotFound();
-            }
+            loggedUser = db.UsersInfo.Find(user.ID);
 
-            return Ok(user);
+
+            return Ok(loggedUser);
 
         }
 
@@ -66,12 +65,16 @@ namespace TitanWebAPI.Controllers
 
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutUser(int id, UsersInfo user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            var _user = db.Users.Find(user.ID);
+
+            _user.UserProfileID = user.UserProfileID;
 
             if (id != user.ID)
             {
@@ -79,6 +82,7 @@ namespace TitanWebAPI.Controllers
             }
 
             db.Entry(user).State = EntityState.Modified;
+
 
             try
             {
@@ -96,7 +100,7 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(user);
         }
 
         // POST: api/Users

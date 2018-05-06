@@ -4,7 +4,11 @@ namespace TitanWebAPI.Models.Tasks
 {
     public class TasksEvent
     {
-        public int id { get; set; }
+        public Int64 id { get; set; }
+
+        public int taskid { get; set; }
+
+        public int categoryid { get; set; }
 
         public string title { get; set; }
 

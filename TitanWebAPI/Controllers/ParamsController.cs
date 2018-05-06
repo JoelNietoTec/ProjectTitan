@@ -9,7 +9,7 @@ using TitanWebAPI.Models.Params;
 
 namespace TitanWebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net", headers: "*", methods: "*")]
+     [EnableCors(origins: "http://localhost:4200, http://procompliance.azurewebsites.net, http://procompliancesoft.net", headers: "*", methods: "*")]
     public class ParamsController : ApiController
     {
         private ParamsModel db = new ParamsModel();
