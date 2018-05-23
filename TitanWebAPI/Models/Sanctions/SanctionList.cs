@@ -16,6 +16,8 @@ namespace TitanWebAPI.Models.Sanctions
         [StringLength(100)]
         public string URL { get; set; }
 
+        public string NameSpace { get; set; }
+
         [StringLength(50)]
         public string ElementIDs { get; set; }
 
@@ -29,5 +31,7 @@ namespace TitanWebAPI.Models.Sanctions
         public string CountryField { get; set; }
 
         public bool? ActiveSearch { get; set; }
+
+        public DateTime? LoadDate { get; set; }
     }
 }

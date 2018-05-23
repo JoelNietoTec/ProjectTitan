@@ -30,9 +30,5 @@ namespace TitanWebAPI.Models.Participants
 
         public virtual DocumentCountry Country { get; set; }
 
-        public int? FileID { get; set; }
-
-        [ForeignKey("FileID")]
-        public virtual Document Document { get; set; }
     }
 }

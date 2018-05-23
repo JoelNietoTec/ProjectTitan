@@ -1281,4 +1281,81 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Name" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="2da0acc3-1351-4604-9d09-5ea3d6268e44" ChangeDateTime="05/08/2018 04:16:22">
+    <Property Name="ElementName" Value="[dbo].[Alerts].[AlertTypeID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Alerts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AlertSourceID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5d4f4648-786a-4ef8-9bdf-336560765601" ChangeDateTime="05/10/2018 00:06:18">
+    <Property Name="ElementName" Value="[dbo].[AlertPriorities].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[AlertPriorities]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="04f6f8ed-0b57-49ab-b2ab-21452b80571c" ChangeDateTime="05/16/2018 04:07:21">
+    <Property Name="ElementName" Value="[dbo].[SanctionedItems].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionedItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="53ed7b1e-343b-4746-a004-79a3569485e7" ChangeDateTime="05/16/2018 04:07:50">
+    <Property Name="ElementName" Value="[dbo].[SanctionedItems].[Term1]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionedItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ListID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="58336fab-bb09-4d1a-b61a-b6d77217c74e" ChangeDateTime="05/16/2018 04:07:59">
+    <Property Name="ElementName" Value="[dbo].[SanctionedItems].[Ter]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionedItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Term1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="95f2ae8f-bf9e-4986-9cc2-5d0f3ce9183a" ChangeDateTime="05/16/2018 04:09:29">
+    <Property Name="ElementName" Value="[dbo].[SanctionedItems].[tER]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionedItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Term2" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="eabb2855-8dff-4437-9ca1-25d7153d10ef" ChangeDateTime="05/16/2018 04:15:12">
+    <Property Name="ElementName" Value="[dbo].[SanctionLists].[LastUpdate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionLists]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LoadDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a86114e4-687b-4eaf-9aa5-99c03dbdc6a2" ChangeDateTime="05/22/2018 22:05:49">
+    <Property Name="ElementName" Value="[dbo].[SanctionMatches].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionMatches]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f9b97b3d-5520-424d-89f3-b0afbd4519a4" ChangeDateTime="05/22/2018 22:09:57">
+    <Property Name="ElementName" Value="[dbo].[SanctionMatches].[Confirmed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionMatches]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Status" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="26dd5283-8b9a-4101-aa47-8d390b5a6406" ChangeDateTime="05/22/2018 22:14:47">
+    <Property Name="ElementName" Value="[dbo].[SanctionMatches].[Status]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionMatches]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Confirmed" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9dde223b-35be-4941-9552-1bbd0ecbae50" ChangeDateTime="05/22/2018 22:28:55">
+    <Property Name="ElementName" Value="[dbo].[SanctionMatches].[Confirmed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SanctionMatches]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Status" />
+  </Operation>
 </Operations>

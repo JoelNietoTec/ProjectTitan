@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -34,6 +35,13 @@ namespace TitanWebAPI.Controllers
             }
 
             return Ok(participantsDocument);
+        }
+
+        [HttpGet]
+        [Route("api/participantdocuments/expired")]
+        public IQueryable<ParticipantDocument> GetExpiredDocuments()
+        {
+            return db.ParticipantDocuments.Where(x => x.ExpirationDate <= DateTime.Today);
         }
 
         [HttpGet]
@@ -76,6 +84,9 @@ namespace TitanWebAPI.Controllers
                 return BadRequest();
             }
 
+            participantsDocument.DocumentType = null;
+            participantsDocument.Country = null;
+
             db.Entry(participantsDocument).State = EntityState.Modified;
 
             try
@@ -94,6 +105,9 @@ namespace TitanWebAPI.Controllers
                 }
             }
 
+            db.Entry(participantsDocument).Reference(c => c.Country).Load();
+            db.Entry(participantsDocument).Reference(t => t.DocumentType).Load();
+
             return Ok(participantsDocument);
         }
 
@@ -105,11 +119,8 @@ namespace TitanWebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            // participantsDocument.CountryID;
-            /*participantsDocument.DocumentTypeID = participantsDocument.DocumentType.ID;
-            
-            db.Entry(participantsDocument.Country).State = EntityState.Detached;
-            db.Entry(participantsDocument.DocumentType).State = EntityState.Detached;*/
+            participantsDocument.DocumentType = null;
+            participantsDocument.Country = null;
             db.ParticipantDocuments.Add(participantsDocument);
             db.SaveChanges();
 

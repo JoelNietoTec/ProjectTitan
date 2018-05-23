@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{1a710d2d-9829-4fef-9b46-03b63cb2f738}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -84,7 +84,6 @@
     <Build Include="Tables\ParticipantMatrices.sql" />
     <Build Include="Tables\ParticipantMatrixValues.sql" />
     <Build Include="Tables\ParticipantContacts.sql" />
-    <Build Include="Functions\GetParticipantScore.sql" />
     <Build Include="Tables\Documents.sql" />
     <Build Include="Tables\RelationshipTypes.sql" />
     <Build Include="Tables\ParticipantRelationships.sql" />
@@ -143,6 +142,13 @@
     <Build Include="Tables\Alerts.sql" />
     <Build Include="Tables\AlertReasons.sql" />
     <Build Include="Tables\AlertSources.sql" />
+    <Build Include="Tables\AlertPriorities.sql" />
+    <Build Include="Views\ExpiredDocuments.sql" />
+    <Build Include="Tables\SanctionedItems.sql" />
+    <Build Include="StoreProcedures\GetParticipantScore.sql" />
+    <Build Include="StoreProcedures\DeleteSanctions.sql" />
+    <Build Include="Functions\SplitString.sql" />
+    <Build Include="Tables\SanctionMatches.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

@@ -1,7 +1,6 @@
-﻿namespace TitanWebAPI.Models.Financial
+﻿namespace TitanWebAPI.Models.Alerts
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Participant

@@ -19,9 +19,6 @@ namespace TitanWebAPI
             json.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
             json.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
-            json.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
-            json.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
-
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
 

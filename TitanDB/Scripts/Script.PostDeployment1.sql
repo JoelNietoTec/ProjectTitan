@@ -200,3 +200,28 @@ BEGIN
 	INSERT INTO dbo.TransactionTypes (Name, EnglishName)
 	SELECT N'Desembolso', N'Withdrawal'
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.AlertSources)
+BEGIN
+	INSERT INTO dbo.AlertSources (Name, EnglishName)
+	SELECT N'Presupuesto', N'Budget'
+
+	INSERT INTO dbo.AlertSources (Name, EnglishName)
+	SELECT N'Documentos', N'Documents'
+
+	INSERT INTO dbo.AlertSources (Name, EnglishName)
+	SELECT N'Sanciones', N'Sanctions'
+
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.AlertPriorities)
+BEGIN
+	INSERT INTO dbo.AlertPriorities (Name, EnglishName)
+	SELECT N'Baja', N'Low'
+
+	INSERT INTO dbo.AlertPriorities (Name, EnglishName)
+	SELECT N'Media', N'Medium'
+
+	INSERT INTO dbo.AlertPriorities (Name, EnglishName)
+	SELECT N'Alta', N'High'
+END

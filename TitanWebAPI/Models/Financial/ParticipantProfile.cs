@@ -17,5 +17,7 @@ namespace TitanWebAPI.Models.Financial
         public decimal? MonthlyIncomeLimit { get; set; }
 
         public decimal? MonthlyExpenseLimit { get; set; }
+
+        public int TransactionsLimit { get; set; }
     }
 }

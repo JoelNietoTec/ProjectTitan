@@ -25,6 +25,8 @@
 
         public decimal? MonthlyExpenseLimit { get; set; }
 
+        public int TransactionsLimit { get; set; }
+
         public decimal? IncomeYTD { get; set; }
 
         public decimal? IncomeMTD { get; set; }

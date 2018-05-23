@@ -36,6 +36,7 @@ namespace TitanWebAPI.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBank(int id, Bank bank)
         {
+            bank.BankType = null;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -63,6 +64,7 @@ namespace TitanWebAPI.Controllers
                     throw;
                 }
             }
+            db.Entry(bank).Reference(p => p.BankType).Load();
 
             return Ok(bank);
         }

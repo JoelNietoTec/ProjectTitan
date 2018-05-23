@@ -5,7 +5,8 @@
     [Total] MONEY NULL, 
     [ModifiedDate] DATETIME NULL, 
     [MonthlyIncomeLimit] MONEY NULL, 
-    [MonthlyExpenseLimit] MONEY NULL
+    [MonthlyExpenseLimit] MONEY NULL, 
+    [TransactionsLimit] INT NOT NULL DEFAULT 0
 )
 
 GO

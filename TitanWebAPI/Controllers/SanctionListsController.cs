@@ -1,10 +1,13 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using System.Xml;
 using TitanWebAPI.Models.Sanctions;
 
 namespace TitanWebAPI.Controllers
@@ -18,6 +21,74 @@ namespace TitanWebAPI.Controllers
         public IQueryable<SanctionList> GetSanctionLists()
         {
             return db.SanctionLists;
+        }
+
+        [HttpPost]
+        [Route("api/sanctionlists/load")]
+        public IHttpActionResult UpdateList(SanctionList list)
+        {
+            XmlDocument xdoc = new XmlDocument();
+            int count = 0;
+            
+            xdoc.Load(list.URL);
+            var param = new SqlParameter("@ListID", list.ID);
+
+            db.Database.ExecuteSqlCommand("dbo.DeleteSanctions @ListID", param);
+
+            string[] elements = list.ElementIDs.Split(',');
+
+            foreach (string element in elements)
+            {
+                var nsmgr = new XmlNamespaceManager(xdoc.NameTable);
+                nsmgr.AddNamespace("a", list.NameSpace);
+                XmlNodeList xnodeLst = xdoc.SelectNodes(element, nsmgr);
+
+                foreach (XmlNode node in xnodeLst)
+                {
+                    SanctionedItem sanction = new SanctionedItem();
+                    sanction.ListID = list.ID;
+
+                    string[] terms = list.TermField.Split(',');
+
+                    if (0 < terms.Length && node.SelectSingleNode(terms[0], nsmgr) != null)
+                    {
+                        sanction.Term1 = node.SelectSingleNode(terms[0], nsmgr).InnerText;
+                    }
+                    if (1 < terms.Length && node.SelectSingleNode(terms[1], nsmgr) != null)
+                    {
+                        sanction.Term2 = node.SelectSingleNode(terms[1], nsmgr).InnerText;
+                    }
+                    if (2 < terms.Length && node.SelectSingleNode(terms[2], nsmgr) != null)
+                    {
+                        sanction.Term3 = node.SelectSingleNode(terms[2], nsmgr).InnerText;
+                    }
+
+                    if (3 < terms.Length && node.SelectSingleNode(terms[3], nsmgr) != null)
+                    {
+                        sanction.Term4 = node.SelectSingleNode(terms[3], nsmgr).InnerText;
+                    }
+
+                    if (node.SelectSingleNode(list.CommentsField, nsmgr) != null)
+                    {
+                        sanction.Comments = node.SelectSingleNode(list.CommentsField, nsmgr).InnerText;
+                    }
+
+                    if (node.SelectSingleNode(list.CountryField, nsmgr) != null)
+                    {
+                        sanction.Country = node.SelectSingleNode(list.CountryField, nsmgr).InnerText;
+                    }
+
+                    sanction.Date = DateTime.Now;
+                    db.SanctionedItems.Add(sanction);
+                    db.SaveChanges();
+                    count++;
+                }
+            }
+            list.LoadDate = DateTime.Now;
+            db.Entry(list).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Ok(count);
         }
 
         // GET: api/SanctionLists/5

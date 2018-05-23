@@ -13,6 +13,10 @@ namespace TitanWebAPI.Models.Sanctions
         }
 
         public virtual DbSet<SanctionList> SanctionLists { get; set; }
+        public virtual DbSet<Sanction> Sanctions { get; set; }
+        public virtual DbSet<SanctionedItem> SanctionedItems { get; set; }
+        public virtual DbSet<SanctionMatch> SanctionMatches { get; set; }
+        public virtual DbSet<Participant> Participants { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
