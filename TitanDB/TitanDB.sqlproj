@@ -88,7 +88,6 @@
     <Build Include="Tables\RelationshipTypes.sql" />
     <Build Include="Tables\ParticipantRelationships.sql" />
     <Build Include="Views\ParticipantsByRisk.sql" />
-    <Build Include="Tables\ParticipantLog.sql" />
     <Build Include="Tables\Tasks.sql" />
     <Build Include="Tables\TaskStatus.sql" />
     <Build Include="Tables\ParticipantNationalities.sql" />
@@ -149,6 +148,9 @@
     <Build Include="StoreProcedures\DeleteSanctions.sql" />
     <Build Include="Functions\SplitString.sql" />
     <Build Include="Tables\SanctionMatches.sql" />
+    <Build Include="Tables\Assignments.sql" />
+    <Build Include="Tables\AssignmentTypes.sql" />
+    <Build Include="Tables\Progress.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

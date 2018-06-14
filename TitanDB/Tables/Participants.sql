@@ -19,7 +19,7 @@
     [Score] NUMERIC(5, 3) NULL, 
     [Rate] NVARCHAR(50) NULL, 
 	[CreateDate] DATETIME NULL,
-	[CreatedBy] INT DEFAULT 1,
+	[CreatedUserID] INT DEFAULT 1,
     [PurposeID] INT NULL DEFAULT 1, 
     [PEP] BIT NULL , 
     [MatrixReady] BIT NULL, 
@@ -27,7 +27,7 @@
     [Status] BIT NOT NULL DEFAULT 1, 
     CONSTRAINT [FK_Participants_ToType] FOREIGN KEY ([ParticipantTypeID]) REFERENCES [ParticipantTypes]([ID]), 
     CONSTRAINT [FK_Participants_ToGenders] FOREIGN KEY ([GenderID]) REFERENCES [Genders]([ID]) ,
-	CONSTRAINT [FK_Participants_ToUsers] FOREIGN KEY ([CreatedBy]) REFERENCES [Users]([ID]) 
+	CONSTRAINT [FK_Participants_ToUsers] FOREIGN KEY ([CreatedUserID]) REFERENCES [Users]([ID]) 
 )
 
 GO
@@ -53,7 +53,7 @@ CREATE TRIGGER [dbo].[Trigger_Participants]
 		INNER JOIN dbo.Params PR ON PR.ParamCategoryID = PC.ID;
 
 		INSERT INTO ParticipantProfiles 
-		SELECT ID, 0, GETDATE(), 0, 0 FROM inserted
+		SELECT ID, 0, GETDATE(), 0, 0, 0 FROM inserted
 		
     END
 GO
@@ -78,7 +78,7 @@ CREATE TRIGGER [dbo].[Trigger_Tasks]
     BEGIN
         SET NoCount ON
 		INSERT INTO [Tasks] (ParticipantID, CategoryID, ProjectID, Title, StatusID, CreatedDate, CreatedBy)
-		SELECT inserted.ID, 2, 1, PendingDocuments.Name, 1, GETDATE(), inserted.CreatedBy
+		SELECT inserted.ID, 2, 1, PendingDocuments.Name, 1, GETDATE(), inserted.[CreatedUserID]
 		FROM [PendingDocuments] INNER JOIN inserted ON PendingDocuments.ParticipantID = inserted.ID
 		WHERE PendingDocuments.Uploaded = 0
     END

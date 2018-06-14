@@ -225,3 +225,15 @@ BEGIN
 	INSERT INTO dbo.AlertPriorities (Name, EnglishName)
 	SELECT N'Alta', N'High'
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.Progress)
+BEGIN
+	INSERT INTO dbo.Progress (Name, EnglishName)
+	SELECT N'Por empezar', N'Not started'
+
+	INSERT INTO dbo.Progress (Name, EnglishName)
+	SELECT N'En progreso', N'In progress'
+
+	INSERT INTO dbo.Progress (Name, EnglishName)
+	SELECT N'Completado', N'Completed'
+END
