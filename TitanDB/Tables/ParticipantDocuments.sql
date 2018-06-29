@@ -7,5 +7,6 @@
     [ExpeditionDate] DATE NULL, 
     [ExpirationDate] DATE NULL, 
     [FilePath] VARCHAR(200) NULL, 
-    [CountryID] INT NULL 
+    [CountryID] INT NULL, 
+    [DocumentID] INT NULL 
 )

@@ -27,6 +27,23 @@ namespace WebAPI.Controllers.Settings
             return _context.DocumentTypes;
         }
 
+        [HttpGet("type/{id}")]
+        public IEnumerable<DocumentType> GetDocumentByType([FromRoute] int id)
+        {
+            if (id == 1)
+            {
+                return _context.DocumentTypes.Where(x => x.RequiredIndividual == true);
+            }
+            else if (id == 2)
+            {
+                return _context.DocumentTypes.Where(x => x.RequiredEntity == true);
+            } else
+            {
+                return _context.DocumentTypes;
+            }
+
+        }
+
         // GET: api/DocumentTypes/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDocumentType([FromRoute] int id)

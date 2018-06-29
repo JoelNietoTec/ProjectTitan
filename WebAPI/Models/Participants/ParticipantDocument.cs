@@ -16,5 +16,7 @@ namespace WebAPI.Models.Participants
         public string FilePath { get; set; }
         public int? CountryId { get; set; }
         public virtual Country Country { get; set; }
+        public int? DocumentId { get; set; }
+        public virtual Document Document { get; set; }
     }
 }

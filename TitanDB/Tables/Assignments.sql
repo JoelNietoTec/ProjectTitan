@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Assignments]
 (
-	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY,
+	[ProjectID] INT NULL,
     [AssignmentTypeID] INT NOT NULL, 
     [Title] NVARCHAR(200) NOT NULL, 
     [Description] NTEXT NULL, 

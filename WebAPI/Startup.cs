@@ -11,10 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WebAPI.Models.Assignments;
 using WebAPI.Models.Financial;
 using WebAPI.Models.Params;
 using WebAPI.Models.Participants;
 using WebAPI.Models.Settings;
+using WebAPI.Models.Users;
 
 namespace WebAPI
 {
@@ -35,7 +37,7 @@ namespace WebAPI
             {
                 options.AddPolicy("AllowOrigin",
                     builder => builder
-                    .WithOrigins("http://localhost:4200")
+                    .WithOrigins("http://localhost:4200", "http://procompliance.azurewebsites.net")
                     .AllowAnyHeader()
                     .AllowAnyMethod());
             });
@@ -52,7 +54,10 @@ namespace WebAPI
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            var connection = "Server = TI04; Database = TitanDB; Trusted_Connection = True;";
+            var connection = Configuration.GetConnectionString("ProjectDB");
+            services.AddDbContext<AssignmentsContext>(options => options
+                .UseLazyLoadingProxies()
+                .UseSqlServer(connection));
             services.AddDbContext<ParticipantsContext>(options => options
                 .UseLazyLoadingProxies()
                 .UseSqlServer(connection));
@@ -63,6 +68,9 @@ namespace WebAPI
                 .UseLazyLoadingProxies()
                 .UseSqlServer(connection));
             services.AddDbContext<FinancialContext>(options => options
+                .UseLazyLoadingProxies()
+                .UseSqlServer(connection));
+            services.AddDbContext<UsersContext>(options => options
                 .UseLazyLoadingProxies()
                 .UseSqlServer(connection));
             

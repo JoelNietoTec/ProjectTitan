@@ -105,7 +105,7 @@ namespace WebAPI.Controllers.Participants
         [HttpGet("{id}/relationships")]
         public IEnumerable<ParticipantRelationship> GetRelationships([FromRoute] int id)
         {
-            return _context.ParticipantRelationships.Where(x => x.ParticipantId.Equals(id));
+            return _context.ParticipantRelationships.Where(x => x.ParticipantId.Equals(id) || x.RelatedParticipantId.Equals(id));
         }
 
         [HttpGet("{id}/documents")]

@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebAPI.Models.Assignments
+namespace WebAPI.Models.Users
 {
-    public partial class Users
+    public partial class User
     {
-        public Users()
-        {
-            Participants = new HashSet<Participants>();
-        }
-
         public int Id { get; set; }
         public int? UserProfileId { get; set; }
         public string UserName { get; set; }
@@ -18,7 +13,5 @@ namespace WebAPI.Models.Assignments
         public int? Active { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? LastChangePassword { get; set; }
-
-        public ICollection<Participants> Participants { get; set; }
     }
 }

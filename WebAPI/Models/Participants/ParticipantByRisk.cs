@@ -16,5 +16,7 @@
         public string Icon { get; set; }
 
         public string ColorType { get; set; }
+
+        public int Count { get; set; }
     }
 }

@@ -97,6 +97,10 @@ namespace WebAPI.Controllers.Participants
             }
 
             _context.ParticipantDocuments.Add(participantDocument);
+
+            _context.Entry(participantDocument.Country).State = EntityState.Unchanged;
+            _context.Entry(participantDocument.Document).State = EntityState.Unchanged;
+            _context.Entry(participantDocument.Type).State = EntityState.Unchanged;
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetParticipantDocument", new { id = participantDocument.Id }, participantDocument);

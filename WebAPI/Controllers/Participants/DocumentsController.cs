@@ -1,64 +1,64 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Models.Participants;
 
 namespace WebAPI.Controllers.Participants
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlertReasonsController : ControllerBase
+    public class DocumentsController : ControllerBase
     {
         private readonly ParticipantsContext _context;
 
-        public AlertReasonsController(ParticipantsContext context)
+        public DocumentsController(ParticipantsContext context)
         {
             _context = context;
         }
 
-        // GET: api/AlertReasons
+        // GET: api/Documents
         [HttpGet]
-        public IEnumerable<AlertReason> GetAlertReasons()
+        public IEnumerable<Document> GetDocuments()
         {
-            return _context.AlertReasons;
+            return _context.Documents;
         }
 
-        // GET: api/AlertReasons/5
+        // GET: api/Documents/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAlertReason([FromRoute] int id)
+        public async Task<IActionResult> GetDocument([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var alertReason = await _context.AlertReasons.FindAsync(id);
+            var document = await _context.Documents.FindAsync(id);
 
-            if (alertReason == null)
+            if (document == null)
             {
                 return NotFound();
             }
 
-            return Ok(alertReason);
+            return Ok(document);
         }
 
-        // PUT: api/AlertReasons/5
+        // PUT: api/Documents/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlertReason([FromRoute] int id, [FromBody] AlertReason alertReason)
+        public async Task<IActionResult> PutDocument([FromRoute] int id, [FromBody] Document document)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != alertReason.Id)
+            if (id != document.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(alertReason).State = EntityState.Modified;
+            _context.Entry(document).State = EntityState.Modified;
 
             try
             {
@@ -66,7 +66,7 @@ namespace WebAPI.Controllers.Participants
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlertReasonExists(id))
+                if (!DocumentExists(id))
                 {
                     return NotFound();
                 }
@@ -79,45 +79,45 @@ namespace WebAPI.Controllers.Participants
             return NoContent();
         }
 
-        // POST: api/AlertReasons
+        // POST: api/Documents
         [HttpPost]
-        public async Task<IActionResult> PostAlertReason([FromBody] AlertReason alertReason)
+        public async Task<IActionResult> PostDocument([FromBody] Document document)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.AlertReasons.Add(alertReason);
+            _context.Documents.Add(document);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAlertReason", new { id = alertReason.Id }, alertReason);
+            return CreatedAtAction("GetDocument", new { id = document.Id }, document);
         }
 
-        // DELETE: api/AlertReasons/5
+        // DELETE: api/Documents/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlertReason([FromRoute] int id)
+        public async Task<IActionResult> DeleteDocument([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var alertReason = await _context.AlertReasons.FindAsync(id);
-            if (alertReason == null)
+            var document = await _context.Documents.FindAsync(id);
+            if (document == null)
             {
                 return NotFound();
             }
 
-            _context.AlertReasons.Remove(alertReason);
+            _context.Documents.Remove(document);
             await _context.SaveChangesAsync();
 
-            return Ok(alertReason);
+            return Ok(document);
         }
 
-        private bool AlertReasonExists(int id)
+        private bool DocumentExists(int id)
         {
-            return _context.AlertReasons.Any(e => e.Id == id);
+            return _context.Documents.Any(e => e.Id == id);
         }
     }
 }

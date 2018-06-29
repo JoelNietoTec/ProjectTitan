@@ -70,7 +70,7 @@ namespace WebAPI.Models.Participants
         public virtual DbSet<Progress> Progress { get; set; }
         public virtual DbSet<Projects> Projects { get; set; }
         public virtual DbSet<Recurrences> Recurrences { get; set; }
-        public virtual DbSet<RelationshipTypes> RelationshipTypes { get; set; }
+        public virtual DbSet<RelationshipType> RelationshipTypes { get; set; }
         public virtual DbSet<Roadmaps> Roadmaps { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<SanctionedItem> SanctionedItems { get; set; }
@@ -926,7 +926,7 @@ namespace WebAPI.Models.Participants
                 entity.Property(e => e.Name).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<RelationshipTypes>(entity =>
+            modelBuilder.Entity<RelationshipType>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 

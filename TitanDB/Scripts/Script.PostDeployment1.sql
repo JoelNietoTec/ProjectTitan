@@ -237,3 +237,16 @@ BEGIN
 	INSERT INTO dbo.Progress (Name, EnglishName)
 	SELECT N'Completado', N'Completed'
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.AssignmentTypes)
+BEGIN
+	INSERT INTO dbo.AssignmentTypes (Name, EnglishName)
+	SELECT N'General', N'General'
+
+	INSERT INTO dbo.AssignmentTypes (Name, EnglishName)
+	SELECT N'Participants', N'Participants'
+
+	INSERT INTO dbo.AssignmentTypes (Name, EnglishName)
+	SELECT N'Proyectos', N'Projects'
+
+END
