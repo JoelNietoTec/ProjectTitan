@@ -40,17 +40,17 @@ namespace WebAPI.Models.Participants
         public virtual DbSet<Jobs> Jobs { get; set; }
         public virtual DbSet<Lists> Lists { get; set; }
         public virtual DbSet<Matches> Matches { get; set; }
-        public virtual DbSet<MatrixTypes> MatrixTypes { get; set; }
+        public virtual DbSet<MatrixType> MatrixTypes { get; set; }
         public virtual DbSet<Milestones> Milestones { get; set; }
         public virtual DbSet<Months> Months { get; set; }
         public virtual DbSet<Notifications> Notifications { get; set; }
         public virtual DbSet<NotificationTypes> NotificationTypes { get; set; }
-        public virtual DbSet<ParamCategories> ParamCategories { get; set; }
-        public virtual DbSet<ParamMatrices> ParamMatrices { get; set; }
+        public virtual DbSet<ParamCategory> ParamCategories { get; set; }
+        public virtual DbSet<ParamMatrix> ParamMatrices { get; set; }
         public virtual DbSet<Param> Params { get; set; }
-        public virtual DbSet<ParamSubValues> ParamSubValues { get; set; }
-        public virtual DbSet<ParamTables> ParamTables { get; set; }
-        public virtual DbSet<ParamValues> ParamValues { get; set; }
+        public virtual DbSet<ParamSubValue> ParamSubValues { get; set; }
+        public virtual DbSet<ParamTable> ParamTables { get; set; }
+        public virtual DbSet<ParamValue> ParamValues { get; set; }
         public virtual DbSet<ParticipantAlerts> ParticipantAlerts { get; set; }
         public virtual DbSet<ParticipantContacts> ParticipantContacts { get; set; }
         public virtual DbSet<ParticipantDocument> ParticipantDocuments { get; set; }
@@ -78,9 +78,8 @@ namespace WebAPI.Models.Participants
         public virtual DbSet<SanctionMatches> SanctionMatches { get; set; }
         public virtual DbSet<Schedules> Schedules { get; set; }
         public virtual DbSet<TableTypes> TableTypes { get; set; }
-        public virtual DbSet<TaskCategories> TaskCategories { get; set; }
-        public virtual DbSet<Tasks> Tasks { get; set; }
-        public virtual DbSet<TaskStatus> TaskStatus { get; set; }
+        public virtual DbSet<Segment> Segments { get; set; }
+        public virtual DbSet<SegmentMember> SegmentMembers { get; set; }
         public virtual DbSet<Transactions> Transactions { get; set; }
         public virtual DbSet<TransactionSources> TransactionSources { get; set; }
         public virtual DbSet<TransactionTypes> TransactionTypes { get; set; }
@@ -409,19 +408,6 @@ namespace WebAPI.Models.Participants
                 entity.Property(e => e.Term2).HasMaxLength(200);
             });
 
-            modelBuilder.Entity<MatrixTypes>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.EnglishName)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
-            });
-
             modelBuilder.Entity<Milestones>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -476,50 +462,6 @@ namespace WebAPI.Models.Participants
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<ParamCategories>(entity =>
-            {
-                entity.HasIndex(e => new { e.ParamMatrixId, e.EnglishName })
-                    .HasName("IX_ParamCategories_EnglishName")
-                    .IsUnique();
-
-                entity.HasIndex(e => new { e.ParamMatrixId, e.Name })
-                    .HasName("IX_ParamCategories_Name")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.EnglishName).HasMaxLength(100);
-
-                entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.Property(e => e.ParamMatrixId).HasColumnName("ParamMatrixID");
-
-                entity.Property(e => e.Weighting).HasColumnType("numeric(5, 2)");
-            });
-
-            modelBuilder.Entity<ParamMatrices>(entity =>
-            {
-                entity.HasIndex(e => e.Code)
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Code)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.CreateDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Description).HasColumnType("ntext");
-
-                entity.Property(e => e.MatrixTypeId).HasColumnName("MatrixTypeID");
-
-                entity.Property(e => e.ModificateDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(100);
-            });
 
             modelBuilder.Entity<Param>(entity =>
             {
@@ -544,65 +486,6 @@ namespace WebAPI.Models.Participants
                 entity.Property(e => e.ParamTableId).HasColumnName("ParamTableID");
 
                 entity.Property(e => e.Weighting).HasColumnType("numeric(5, 2)");
-
-            });
-
-            modelBuilder.Entity<ParamSubValues>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.DisplayValue).HasMaxLength(200);
-
-                entity.Property(e => e.EnglishDisplayValue).HasMaxLength(200);
-
-                entity.Property(e => e.ParamValueId).HasColumnName("ParamValueID");
-
-                entity.Property(e => e.Score).HasColumnType("numeric(10, 2)");
-
-            });
-
-            modelBuilder.Entity<ParamTables>(entity =>
-            {
-                entity.HasIndex(e => e.EnglishName)
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Name)
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.CreateDate).HasColumnType("datetime");
-
-                entity.Property(e => e.EnglishName).HasMaxLength(100);
-
-                entity.Property(e => e.ModificateDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.Property(e => e.TableTypeId)
-                    .HasColumnName("TableTypeID")
-                    .HasDefaultValueSql("((1))");
-            });
-
-            modelBuilder.Entity<ParamValues>(entity =>
-            {
-                entity.HasIndex(e => new { e.ParamTableId, e.DisplayValue })
-                    .HasName("IX_ParamValues_DisplayValue")
-                    .IsUnique();
-
-                entity.HasIndex(e => new { e.ParamTableId, e.EnglishDisplayValue })
-                    .HasName("IX_ParamValues_EnglishDisplayValue")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.DisplayValue).HasMaxLength(100);
-
-                entity.Property(e => e.EnglishDisplayValue).HasMaxLength(100);
-
-                entity.Property(e => e.ParamTableId).HasColumnName("ParamTableID");
-
-                entity.Property(e => e.Score).HasColumnType("numeric(10, 2)");
 
             });
 
@@ -1050,53 +933,6 @@ namespace WebAPI.Models.Participants
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<TaskCategories>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Name).HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<Tasks>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.BeginDate).HasColumnType("datetime");
-
-                entity.Property(e => e.CategoryId)
-                    .HasColumnName("CategoryID")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.CompletedDate).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Description).HasColumnType("ntext");
-
-                entity.Property(e => e.ExpirationDate).HasColumnType("datetime");
-
-                entity.Property(e => e.ParticipantId).HasColumnName("ParticipantID");
-
-                entity.Property(e => e.ProjectId)
-                    .HasColumnName("ProjectID")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.RecurrenceId).HasColumnName("RecurrenceID");
-
-                entity.Property(e => e.StatusId).HasColumnName("StatusID");
-
-                entity.Property(e => e.Title).HasMaxLength(100);
-            });
-
-            modelBuilder.Entity<TaskStatus>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.EnglishName).HasMaxLength(50);
-
-                entity.Property(e => e.Name).HasMaxLength(50);
-            });
-
             modelBuilder.Entity<Transactions>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -1158,33 +994,6 @@ namespace WebAPI.Models.Participants
                 entity.Property(e => e.EnglishName).HasMaxLength(50);
 
                 entity.Property(e => e.Name).HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasIndex(e => e.UserName)
-                    .HasName("IX_Users_Username")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.CreateDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Email).HasMaxLength(100);
-
-                entity.Property(e => e.LastChangePassword).HasColumnType("datetime");
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.UserName)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.UserProfileId)
-                    .HasColumnName("UserProfileID")
-                    .HasDefaultValueSql("((1))");
             });
 
             modelBuilder.Entity<XmlwithOpenXml>(entity =>

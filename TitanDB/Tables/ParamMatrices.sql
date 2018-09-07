@@ -3,7 +3,7 @@
 	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Name] NVARCHAR(100) NOT NULL, 
     [Code] NVARCHAR(50) NOT NULL, 
-    [Description] NTEXT NULL, 
+    [Description] NVARCHAR(500) NULL, 
     [CreateDate] DATETIME NULL, 
     [ModificateDate] DATETIME NULL, 
     [MatrixTypeID] INT NOT NULL, 

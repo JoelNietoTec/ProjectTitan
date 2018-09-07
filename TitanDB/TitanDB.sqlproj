@@ -82,7 +82,6 @@
     <Build Include="Tables\ParticipantTypes.sql" />
     <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
     <Build Include="Tables\ParticipantMatrices.sql" />
-    <Build Include="Tables\ParticipantMatrixValues.sql" />
     <Build Include="Tables\ParticipantContacts.sql" />
     <Build Include="Tables\Documents.sql" />
     <Build Include="Tables\RelationshipTypes.sql" />
@@ -152,6 +151,11 @@
     <Build Include="Tables\AssignmentTypes.sql" />
     <Build Include="Tables\Progress.sql" />
     <Build Include="Tables\ProjectSections.sql" />
+    <Build Include="Functions\InitCap.sql" />
+    <Build Include="Functions\ShortName.sql" />
+    <Build Include="StoreProcedures\UpdateParticipantMatrix.sql" />
+    <Build Include="Functions\GetParticipantSegments.sql" />
+    <Build Include="Tables\Sessions.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TitanDB.refactorlog" />

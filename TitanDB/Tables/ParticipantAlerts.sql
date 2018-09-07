@@ -7,6 +7,6 @@
     [Description] NVARCHAR(100) NULL, 
     [Discard] BIT NULL, 
     [Date] DATETIME NULL, 
-    [Clarification] TEXT NULL, 
+    [Clarification] NVARCHAR(500) NULL, 
     [DiscardedUser] INT NULL
 )

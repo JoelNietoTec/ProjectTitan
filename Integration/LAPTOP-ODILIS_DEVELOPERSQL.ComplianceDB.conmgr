@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-ODILIS_DEVELOPERSQL.ComplianceDB"
+  DTS:DTSID="{489DDD99-347A-4975-A495-322E44FEF5B5}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=LAPTOP-ODILIS\DEVELOPERSQL;Initial Catalog=ComplianceDB;Integrated Security=True;Application Name=SSIS-Integration-{489DDD99-347A-4975-A495-322E44FEF5B5}LAPTOP-ODILIS\DEVELOPERSQL.ComplianceDB;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

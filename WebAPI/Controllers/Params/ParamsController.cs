@@ -26,7 +26,6 @@ namespace WebAPI.Controllers.Params
         {
             return _context.Params;
         }
-
         // GET: api/Params/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetParam([FromRoute] int id)
@@ -91,6 +90,8 @@ namespace WebAPI.Controllers.Params
             }
 
             _context.Params.Add(@param);
+            _context.Entry(@param.Table).State = EntityState.Unchanged;
+            _context.Entry(@param.Table.Type).State = EntityState.Unchanged;
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetParam", new { id = @param.Id }, @param);

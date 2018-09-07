@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Models.Settings;
+using WebAPI.Filters;
 
 namespace WebAPI.Controllers.Settings
 {
@@ -15,17 +16,13 @@ namespace WebAPI.Controllers.Settings
     {
         private readonly SettingsContext _context;
 
-        public CountriesController(SettingsContext context)
-        {
-            _context = context;
-        }
+        
+        public CountriesController(SettingsContext context) => _context = context;
 
         // GET: api/Countries
         [HttpGet]
-        public IEnumerable<Country> GetCountries()
-        {
-            return _context.Countries;
-        }
+        [SkipActionFilter]
+        public IEnumerable<Country> GetCountries() => _context.Countries;
 
         // GET: api/Countries/5
         [HttpGet("{id}")]

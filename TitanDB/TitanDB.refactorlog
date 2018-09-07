@@ -1456,4 +1456,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="StarDate" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="5103d99a-2bfc-491c-8f3a-bc595926ad15" ChangeDateTime="08/04/2018 22:10:55">
+    <Property Name="ElementName" Value="[dbo].[Sessions].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sessions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cf4c2972-5c5c-4706-8b19-07e99c5f49c9" ChangeDateTime="08/04/2018 22:17:22">
+    <Property Name="ElementName" Value="[dbo].[Sessions].[IX_Sessions_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Sessions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_Sessions_Users]" />
+  </Operation>
 </Operations>

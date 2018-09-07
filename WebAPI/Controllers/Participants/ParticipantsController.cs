@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +23,9 @@ namespace WebAPI.Controllers.Participants
         [HttpGet]
         public IEnumerable<Participant> GetParticipants()
         {
-            return _context.Participants;
+            return _context.Participants
+                .Include(p => p.Country)
+                .Include(p => p.Type);
         }
 
         // GET: api/Participants/last
@@ -30,6 +33,38 @@ namespace WebAPI.Controllers.Participants
         public IEnumerable<Participant> GetLastParticipants()
         {
             return _context.Participants.OrderByDescending(x => x.CreateDate).Take(10);
+        }
+
+        [HttpGet("segments/{paramId}")]
+        public IEnumerable<Segment> GetSegments([FromRoute] int paramId)
+        {
+            var query = @"SELECT ROW_NUMBER() OVER (ORDER BY ValueName) Id, ValueName, EnglishValueName, ValueId, SubValueId, Count 
+            FROM [dbo].GetParticipantSegments({0})";
+
+            var param = _context.Params.Find(paramId);
+            _context.Entry(param).Reference(x => x.Table).Load();
+
+            var segments = _context.Segments
+                .FromSql(query, paramId)
+                .ToList();
+            return segments;
+        }
+
+        [HttpGet("byparam/{paramId}/value/{valueId}")]
+        public IEnumerable<Participant> GetParticipantsByParam([FromRoute] int paramId, [FromRoute] int valueId)
+        {
+            var param = _context.Params.Find(paramId);
+            _context.Entry(param).Reference(x => x.Table).Load();
+
+            if (param.Table.TableTypeId == 1) {
+                var segments = _context.ParticipantParams.Where(x => x.ParamId == paramId && x.ParamValueId == valueId);
+                var ids = segments.Select(x => x.ParticipantId).ToList();
+                return _context.Participants.Where(x => ids.Contains(x.Id));
+            } else {
+                var segments = _context.ParticipantParams.Where(x => x.ParamId == paramId && x.ParamSubValueId == valueId);
+                var ids = segments.Select(x => x.ParticipantId).ToList();
+                return _context.Participants.Where(x => ids.Contains(x.Id));
+            }
         }
 
         // GET: api/participants/individuals
@@ -55,14 +90,18 @@ namespace WebAPI.Controllers.Participants
                 return BadRequest(ModelState);
             }
 
-            var participants = await _context.Participants.FindAsync(id);
+            var participant = await _context.Participants.FindAsync(id);
 
-            if (participants == null)
+            _context.Entry(participant).Reference(x => x.Gender).Load();
+            _context.Entry(participant).Reference(x => x.Country).Load();
+            _context.Entry(participant).Reference(x => x.CreatedUser).Load();
+
+            if (participant == null)
             {
                 return NotFound();
             }
 
-            return Ok(participants);
+            return Ok(participant);
         }
 
         [HttpGet("{id}/pending")]
@@ -105,7 +144,11 @@ namespace WebAPI.Controllers.Participants
         [HttpGet("{id}/relationships")]
         public IEnumerable<ParticipantRelationship> GetRelationships([FromRoute] int id)
         {
-            return _context.ParticipantRelationships.Where(x => x.ParticipantId.Equals(id) || x.RelatedParticipantId.Equals(id));
+            return _context.ParticipantRelationships
+                .Where(x => x.ParticipantId.Equals(id) || x.RelatedParticipantId.Equals(id))
+                .Include(x => x.Type)
+                .Include(x => x.Participant)
+                .Include(x => x.RelatedParticipant);
         }
 
         [HttpGet("{id}/documents")]
@@ -164,18 +207,20 @@ namespace WebAPI.Controllers.Participants
 
         // POST: api/Participants
         [HttpPost]
-        public async Task<IActionResult> PostParticipants([FromBody] Participant participants)
+        public async Task<IActionResult> PostParticipants([FromBody] Participant participant)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Participants.Add(participants);
+            participant.CreateDate = DateTime.Now;
+
+            _context.Participants.Add(participant);
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetParticipants", new { id = participants.Id }, participants);
+            return CreatedAtAction("GetParticipants", new { id = participant.Id }, participant);
         }
 
         // DELETE: api/Participants/5

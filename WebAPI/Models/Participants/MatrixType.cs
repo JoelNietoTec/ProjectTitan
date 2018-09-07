@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace WebAPI.Models.Participants
 {
-    public partial class TaskStatus
+    public partial class MatrixType
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string EnglishName { get; set; }
+
     }
 }

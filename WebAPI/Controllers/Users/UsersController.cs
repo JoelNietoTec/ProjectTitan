@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Models.Users;
+using WebAPI.CustomObjects;
 
 namespace WebAPI.Controllers.Users
 {
@@ -14,10 +17,12 @@ namespace WebAPI.Controllers.Users
     public class UsersController : ControllerBase
     {
         private readonly UsersContext _context;
+        private IHttpContextAccessor _accessor;
 
-        public UsersController(UsersContext context)
+        public UsersController(UsersContext context, IHttpContextAccessor accessor)
         {
             _context = context;
+            _accessor = accessor;
         }
 
         // GET: api/Users
@@ -47,24 +52,48 @@ namespace WebAPI.Controllers.Users
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(Login log)
+        public async Task<IActionResult> Login([FromBody] Login log)
         {
-            log.UserName = log.UserName.ToLower();
+            log.UserName = log.UserName.ToLower();          
 
             User user;
             UsersInfo loggedUser;
 
-            user = await _context.Users.Where(x => x.Email.ToLower() == log.UserName || x.UserName.ToLower() == log.UserName && (x.Password == log.Password)).FirstOrDefaultAsync();
+            user = await _context.Users.Where(x => x.Email.ToLower() == log.UserName || x.UserName.ToLower() == log.UserName).FirstOrDefaultAsync();
 
             if (user == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse(404, "Usuario no encontrado"));
             }
+
+            if (user.Password != log.Password)
+            {
+                return NotFound(new ApiResponse(401, "Contraseña incorrecta"));
+            }
+
+            // user = await _context.Users.Where(x => x.Email.ToLower() == log.UserName || x.UserName.ToLower() == log.UserName && (x.Password == log.Password)).FirstOrDefaultAsync();
+            
+            var sessionId = GetSessionId(20);
+
+            Session userSession = new Session
+            {
+                SessionId = sessionId,
+                UserId = user.Id,
+                LoginTime = DateTime.Now,
+                IP = _accessor.HttpContext.Connection.RemoteIpAddress.ToString()
+            };
+
+            _context.Sessions.Add(userSession);
+            await _context.SaveChangesAsync();
+
+            _context.Entry(userSession).Reference(x => x.User).Load();
 
             loggedUser = await _context.UsersInfo.FindAsync(user.Id);
 
-            return Ok(loggedUser);
+            return Ok(userSession);
         }
+
+        
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
@@ -135,6 +164,26 @@ namespace WebAPI.Controllers.Users
             await _context.SaveChangesAsync();
 
             return Ok(user);
+        }
+
+        public static string GetSessionId(int maxSize)
+        {
+            char[] chars = new char[62];
+            chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
+            byte[] data = new byte[1];
+            using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
+            {
+                crypto.GetNonZeroBytes(data);
+                data = new byte[maxSize];
+                crypto.GetNonZeroBytes(data);
+            }
+            StringBuilder result = new StringBuilder(maxSize);
+            foreach (byte b in data)
+            {
+                result.Append(chars[b % (chars.Length)]);
+            }
+
+            return result.ToString();
         }
 
         private bool UserExists(int id)

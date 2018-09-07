@@ -4,7 +4,7 @@
 	[ProjectID] INT NULL,
     [AssignmentTypeID] INT NOT NULL, 
     [Title] NVARCHAR(200) NOT NULL, 
-    [Description] NTEXT NULL, 
+    [Description] NVARCHAR(2000) NULL, 
     [CreatedDate] DATETIME NULL, 
     [CreateUserID] INT NULL, 
     [StartDate] DATETIME NULL, 

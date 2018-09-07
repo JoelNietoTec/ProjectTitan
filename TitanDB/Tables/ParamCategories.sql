@@ -14,3 +14,15 @@ CREATE UNIQUE INDEX [IX_ParamCategories_Name] ON [dbo].[ParamCategories] ([Param
 GO
 
 CREATE UNIQUE INDEX [IX_ParamCategories_EnglishName] ON [dbo].[ParamCategories] ([ParamMatrixID], [EnglishName])
+
+GO
+
+CREATE TRIGGER [dbo].[Trigger_ParamCategories]
+    ON [dbo].[ParamCategories]
+    FOR INSERT
+    AS
+    BEGIN
+        SET NoCount ON
+
+		
+    END

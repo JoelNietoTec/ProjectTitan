@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace WebAPI.Models.Participants
 {
-    public partial class ParamCategories
+    public partial class ParamCategory
     {
-
         public int Id { get; set; }
         public int ParamMatrixId { get; set; }
         public string Name { get; set; }

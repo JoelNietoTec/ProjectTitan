@@ -96,7 +96,10 @@ namespace WebAPI.Controllers.Params
                 return BadRequest(ModelState);
             }
 
+            paramTable.CreateDate = DateTime.Now;
+
             _context.ParamTables.Add(paramTable);
+            _context.Entry(paramTable.Type).State = EntityState.Unchanged;
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetParamTable", new { id = paramTable.Id }, paramTable);

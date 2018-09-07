@@ -10,7 +10,7 @@
     [BirthDate] DATETIME NULL, 
     [Email] VARCHAR(100) NULL, 
     [ParticipantTypeID] INT NOT NULL DEFAULT 1, 
-    [Address] NTEXT NULL, 
+    [Address] NVARCHAR(2000) NULL, 
     [WebSite] NVARCHAR(100) NULL, 
     [LegalRepresentative] NVARCHAR(100) NULL, 
     [Phone] NVARCHAR(50) NULL, 
@@ -38,15 +38,9 @@ CREATE TRIGGER [dbo].[Trigger_Participants]
     AS
     BEGIN
         SET NoCount ON
-		UPDATE P 
-		SET ParamMatrixID = PM.ID 
-		FROM dbo.Participants P 
-		INNER JOIN ParamMatrices PM ON P.ParticipantTypeID = PM.MatrixTypeID
-		INNER JOIN inserted INS ON INS.ID = P.ID;
 
-
-		INSERT INTO dbo.ParticipantParams (ParticipantID, ParamMatrixID, ParamCategoryID, ParamID)
-		SELECT ins.ID, PM.ID ParamMatrixID, PC.ID ParamCategoryID, PR.ID ParamID
+		INSERT INTO dbo.ParticipantParams (ParticipantID, ParamMatrixID, ParamCategoryID, ParamID, ParamValueID, ParamSubValueID)
+		SELECT ins.ID, PM.ID ParamMatrixID, PC.ID ParamCategoryID, PR.ID ParamID, 0 ParamValueID, 0 ParamSubValueID
 		FROM inserted ins
 		INNER JOIN dbo.ParamMatrices PM ON ins.ParticipantTypeID = PM.MatrixTypeID
 		INNER JOIN dbo.ParamCategories PC ON PC.ParamMatrixID = PM.ID

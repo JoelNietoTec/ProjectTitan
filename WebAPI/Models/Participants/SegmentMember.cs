@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-
 namespace WebAPI.Models.Participants
 {
-    public partial class TaskCategories
+    public partial class SegmentMember
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
+
+        public int SegmentId { get; set; }
     }
 }
