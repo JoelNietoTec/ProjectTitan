@@ -50,51 +50,7 @@ namespace WebAPI.Controllers.Users
 
             return Ok(user);
         }
-
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] Login log)
-        {
-            log.UserName = log.UserName.ToLower();          
-
-            User user;
-            UsersInfo loggedUser;
-
-            user = await _context.Users.Where(x => x.Email.ToLower() == log.UserName || x.UserName.ToLower() == log.UserName).FirstOrDefaultAsync();
-
-            if (user == null)
-            {
-                return NotFound(new ApiResponse(404, "Usuario no encontrado"));
-            }
-
-            if (user.Password != log.Password)
-            {
-                return NotFound(new ApiResponse(401, "Contraseña incorrecta"));
-            }
-
-            // user = await _context.Users.Where(x => x.Email.ToLower() == log.UserName || x.UserName.ToLower() == log.UserName && (x.Password == log.Password)).FirstOrDefaultAsync();
-            
-            var sessionId = GetSessionId(20);
-
-            Session userSession = new Session
-            {
-                SessionId = sessionId,
-                UserId = user.Id,
-                LoginTime = DateTime.Now,
-                IP = _accessor.HttpContext.Connection.RemoteIpAddress.ToString()
-            };
-
-            _context.Sessions.Add(userSession);
-            await _context.SaveChangesAsync();
-
-            _context.Entry(userSession).Reference(x => x.User).Load();
-
-            loggedUser = await _context.UsersInfo.FindAsync(user.Id);
-
-            return Ok(userSession);
-        }
-
         
-
         // PUT: api/Users/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser([FromRoute] int id, [FromBody] User user)

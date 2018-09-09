@@ -16,6 +16,7 @@ namespace WebAPI.Filters
             
         }
     }
+
     public class ApiActionFilter : ActionFilterAttribute
     {
         private readonly UsersContext db;
@@ -27,8 +28,6 @@ namespace WebAPI.Filters
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-
-            return;
             var attrib = (context.ActionDescriptor as ControllerActionDescriptor).MethodInfo.GetCustomAttributes(inherit: true);
             foreach (var att in attrib)
             {
@@ -39,20 +38,24 @@ namespace WebAPI.Filters
             }
             
             var request = context.HttpContext.Request;
-            string userName = request.Headers["userName"];
-            userName = userName.ToLower();
-            string pass = request.Headers["password"];
-            User user;
+            int userId = int.Parse(request.Headers["userId"]);
+            string sessionId = request.Headers["sessionId"];
+            Session session;
 
-            user = db.Users.Where(x => x.Email.ToLower() == userName || x.UserName.ToLower() == userName && (x.Password == pass)).FirstOrDefault();
-            if (user == null)
-            {
-                throw new System.NotImplementedException();
+            session = db.Sessions.Where(x => x.UserId == userId && x.SessionId == sessionId).FirstOrDefault();
+
+            if (session == null) {
+                throw new AuthorizationException("Sesión inexistente");
+            }
+
+            if (session.LogoutTime != null) {
+                throw new System.NotFiniteNumberException("Sesión terminada");
             }
         }
 
         public override void OnActionExecuted(ActionExecutedContext context) {
-            //throw new System.NotImplementedException();
-        }
+            var headerName = "OnResultExecuting";
+            context.HttpContext.Response.Headers.Add(
+                headerName, new string[] { "ResultExecutingSuccessfully" });        }
     }
 }

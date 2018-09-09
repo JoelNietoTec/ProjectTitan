@@ -15,4 +15,9 @@ namespace WebAPI.Models.Users
         public string IP { get; set; }
         public virtual UsersInfo User { get; set; }
     }
+
+    public partial class SessionId
+    {
+        public string Id { get; set; }
+    }
 }
