@@ -38,8 +38,19 @@ namespace WebAPI.Filters
             }
             
             var request = context.HttpContext.Request;
-            int userId = int.Parse(request.Headers["userId"]);
+            int userId; 
+            if (!int.TryParse(request.Headers["userId"], out userId))
+            {
+                throw new AuthorizationException("User ID required");
+            }
+
             string sessionId = request.Headers["sessionId"];
+            
+            if (sessionId == null)
+            {
+                throw new AuthorizationException("Session ID required");
+            };
+
             Session session;
 
             session = db.Sessions.Where(x => x.UserId == userId && x.SessionId == sessionId).FirstOrDefault();

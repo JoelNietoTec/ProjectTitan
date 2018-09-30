@@ -6,7 +6,9 @@ namespace WebAPI.Models.Users
     public partial class User
     {
         public int Id { get; set; }
-        public int? UserProfileId { get; set; }
+        public int? RoleId { get; set; }
+        public int? AccountId { get; set; }
+        public virtual Role Role { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }

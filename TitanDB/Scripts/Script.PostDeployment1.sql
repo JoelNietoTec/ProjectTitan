@@ -250,3 +250,15 @@ BEGIN
 	SELECT N'Proyectos', N'Projects'
 
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.Stages)
+BEGIN
+	INSERT INTO Stages (Name, EnglishName)
+	SELECT N'Sin Iniciar', N'To Do'
+
+	INSERT INTO Stages (Name, EnglishName)
+	SELECT N'En Progreso', N'Doing'
+
+	INSERT INTO Stages (Name, EnglishName)
+	SELECT N'Terminada', N'Done'
+END

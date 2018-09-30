@@ -1,2 +1,2 @@
 ﻿CREATE VIEW [dbo].[UsersInfo]
-	AS SELECT ID, UserName, Email, Active, CreateDate, UserProfileID  FROM [Users]
+	AS SELECT ID, AccountID, UserName, Email, Active, CreateDate, RoleID  FROM [Users]

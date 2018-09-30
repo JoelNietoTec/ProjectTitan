@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Models.Users
 {
@@ -14,10 +12,10 @@ namespace WebAPI.Models.Users
             : base(options)
         {
         }
-
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersInfo> UsersInfo { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

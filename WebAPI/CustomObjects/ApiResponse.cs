@@ -7,13 +7,11 @@ namespace WebAPI.CustomObjects
         public int StatusCode { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Message { get; set; }
-
         public ApiResponse(int statusCode, string message = null)
         {
             StatusCode = statusCode;
             Message = message ?? GetDefaultMessage(statusCode);
         }
-
         private static string GetDefaultMessage(int statusCode)
         {
             switch (statusCode)

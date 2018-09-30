@@ -5,7 +5,8 @@
     [SessionID] NVARCHAR(20) NOT NULL UNIQUE, 
     [LoginTime] DATETIME NULL, 
     [LogoutTime] DATETIME NULL, 
-    [IP] NVARCHAR(100) NULL
+    [IP] NVARCHAR(100) NULL, 
+    [Browser] NVARCHAR(200) NULL
 )
 
 GO

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WebAPI.Models.Participants
+namespace WebAPI.Models.Users
 {
-    public partial class Roles
+    public partial class Role
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -91,16 +91,16 @@ namespace WebAPI.Controllers.Participants
                 return BadRequest(ModelState);
             }
 
-            var participant = await _context.Participants.FindAsync(id);
-
-            _context.Entry(participant).Reference(x => x.Gender).Load();
-            _context.Entry(participant).Reference(x => x.Country).Load();
-            _context.Entry(participant).Reference(x => x.CreatedUser).Load();
+            var participant = await _context.Participants.FindAsync(id);    
 
             if (participant == null)
             {
                 return NotFound();
             }
+
+            _context.Entry(participant).Reference(x => x.Gender).Load();
+            _context.Entry(participant).Reference(x => x.Country).Load();
+            _context.Entry(participant).Reference(x => x.CreatedUser).Load();
 
             return Ok(participant);
         }
@@ -155,7 +155,10 @@ namespace WebAPI.Controllers.Participants
         [HttpGet("{id}/documents")]
         public IEnumerable<ParticipantDocument> GetDocuments([FromRoute] int id)
         {
-            return _context.ParticipantDocuments.Where(x => x.ParticipantId.Equals(id));
+            return _context.ParticipantDocuments
+                .Where(x => x.ParticipantId.Equals(id))
+                .Include(x => x.Type)
+                .Include(x => x.Country);
         }
 
         [HttpGet("{id}/profile")]

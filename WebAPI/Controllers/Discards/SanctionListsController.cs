@@ -7,21 +7,21 @@ using System.Xml;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebAPI.Models.Participants;
+using WebAPI.Filters;
+using WebAPI.Models.Discards;
 
-namespace WebAPI.Controllers.Participants
+namespace WebAPI.Controllers.Discards
 {
     [Route("api/[controller]")]
     [ApiController]
     public class SanctionListsController : ControllerBase
     {
-        private readonly ParticipantsContext _context;
+        private readonly DiscardsContext _context;
 
-        public SanctionListsController(ParticipantsContext context)
+        public SanctionListsController(DiscardsContext context)
         {
             _context = context;
         }
-
         [HttpGet("{id}/items")]
         public IEnumerable<SanctionedItem> GetItems([FromRoute] int id)
         {
@@ -53,7 +53,7 @@ namespace WebAPI.Controllers.Participants
                     string[] terms = list.TermField.Split(',');
 
                     if (0 < terms.Length && node.SelectSingleNode(terms[0], nsmgr) != null )
-                     {
+                    {
                         item.Term1 = node.SelectSingleNode(terms[0], nsmgr).InnerText;
                     }
                     if (1 < terms.Length && node.SelectSingleNode(terms[1], nsmgr) != null)
@@ -79,7 +79,6 @@ namespace WebAPI.Controllers.Participants
                     {
                         item.Country = node.SelectSingleNode(list.CountryField, nsmgr).InnerText;
                     }
-
                     item.Date = DateTime.Now;
                     _context.SanctionedItems.Add(item);
                     _context.SaveChanges();
@@ -92,8 +91,9 @@ namespace WebAPI.Controllers.Participants
 
             return Ok(count);       
         }
-
-        // GET: api/SanctionLists
+        
+        // GET: api/SanctionLists]
+        [AlertActionFilter]
         [HttpGet]
         public IEnumerable<SanctionList> GetSanctionLists()
         {

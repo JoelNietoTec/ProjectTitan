@@ -29,7 +29,8 @@ namespace WebAPI.Controllers.Users
         [HttpGet]
         public IEnumerable<UsersInfo> GetUsers()
         {
-            return _context.UsersInfo;
+            return _context.UsersInfo
+                .Include(p => p.Role);
         }
 
         // GET: api/Users/5
@@ -47,6 +48,8 @@ namespace WebAPI.Controllers.Users
             {
                 return NotFound();
             }
+
+            _context.Entry(user).Reference(x => x.Role).Load();
 
             return Ok(user);
         }
@@ -97,6 +100,8 @@ namespace WebAPI.Controllers.Users
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+            _context.Entry(user).Reference(x => x.Role).Load();
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
